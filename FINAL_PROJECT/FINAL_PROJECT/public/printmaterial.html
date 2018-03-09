@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" />
+    <script type="text/javascript" src="/libs/jquery-3.2.1.min.js"></script>
+    <script src="/js/printmaterial.js"></script>
+</head>
+
+<body>
+    <div style="background-color:#f1f1f1;padding:15px;">
+        <h1>Printing Material</h1>
+    </div>
+    <div class="menu">
+        <form id="materialForm">
+            <input type="text" name="material">
+            <input type="submit" id="Search" value="Search">
+        </form>
+        <div class="menuitem"><a href="#" id="showAdd">Add Material</a></div>
+        <div class="menuitem"><a href="#" id="showDel">Delete Material</a></div>
+    </div>
+    <div class="main">
+        <table id="showDat" border="1" cellpadding="7" cellspacing="1">
+            <thead>
+                <tr>
+                    <td>Material ID</td>
+                    <td>Material Name</td>
+                    <td>Material Detail</td>
+                    <td>Material Price</td>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+    <div class="right">
+            <form id="addForm">
+                Package Name:<br><input type="text" name="newPMName" id="newPMName" required disabled><br>
+                Package Detail:<br><input type="text" name="newPMDetail" id="newPMDetail" required disabled><br>
+                Package price:<br><input type="text" name="newPMPrice" id="newPMPrice" required disabled><br>
+                <input type="submit" name="Add" id="Add" value="Add" disabled hidden>
+                <input type="submit" value="Delete" id="Del" name="Del" disabled hidden>
+                <br>
+            </form>
+        </div>
+    </body>
+
+</html>
