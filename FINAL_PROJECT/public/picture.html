@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="/libs/jquery-3.2.1.min.js"></script>
+    <script src="/js/picture.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" />
+</head>
+<body style="font-family:Verdana">
+        <div style="background-color:#f1f1f1;padding:15px;">
+                <h1>Picture Management</h1>
+            </div>
+            <div class="menu">
+                    <form id="picForm">
+                        <table>
+                            <tr>
+                                <th colspan="2">Search Picture by Keyword</th>
+                            </tr>
+                            <tr>
+                                <td  style="text-align: right">Search Type:</td>
+                                <td><select id="SelType">
+                                        <option>Contract ID</option>
+                                        <option>Print Order ID</option>
+                                        <option>Customer Name</option>
+                                        <option>Studio Name</option>
+                                </select>
+                                </td>
+                                
+                            </tr>
+                            <tr>
+                                <td  style="text-align: right" >Keyword:</td>
+                                <td><input type="text" name="key"required></td>
+                                
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td><input type="submit" value="Search"> </td>
+                            </tr>
+                        </table>
+                    </form>
+                    <div class="menuitem"><a href="#" id="showAdd" hidden>Add Picture</a></div>
+                    <br>
+                    <form id="addForm" hidden>
+                        <table>
+                            <tr>
+                                    <th colspan="2">Add new Picture</th>
+                            </tr>
+                            <tr>
+                                <td  style="text-align: right">Contract Detail ID:</td>
+                                <td>
+                                        <select id="SelCD">
+                                        </select><br></td>
+                            </tr>
+                            <tr>
+                                <td  style="text-align: right">Picture Detail:</td>
+                                <td><input type="text" name="newPDetail" id="newPDetail" ></td>
+                            </tr>
+                            <tr>
+                                <td  style="text-align: right">Picture URL:</td>
+                                <td><input type="text" name="newPURL" id="newPURL" ></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td><input type="submit" name="Add" id="Add" value="Add" ></td>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
+
+                <div id="main" class="main" hidden>
+                    <p id="PicNum"></p>
+                        <table id="showDat" border="1" cellpadding="7" cellspacing="1">
+                                <thead>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                </div>
+</body>
+</html>

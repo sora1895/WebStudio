@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="/libs/jquery-3.2.1.min.js"></script>
+    <script src="/js/sub-package.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" />
+</head>
+
+<body style="font-family:Verdana">
+    <div style="background-color:#f1f1f1;padding:15px;">
+        <h1>Package:</h1>
+        <h1 id="MainName"></h1>
+    </div>
+    <div class="menu">
+        <form id="packdetail">
+                <table>
+                    <tr><th colspan="2">Update Package</th></tr>
+                    <tr>
+                        
+                        <th id="pakname" colspan="2"></th>
+                    </tr>
+                    <tr>
+                        <td style="text-align: right"   >New Package Name:</td>
+                        <td><input type="text" id="package" name="package"></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: right">New Package Detail:</td>
+                        <td><input type="text" id="detail" name="detail"></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: right">New Package Price:</td>
+                        <td><input type="text" id="price" name="price"></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: right">
+                                <button type="reset">Reset</button></td>
+                        <td><input type="submit" name='change' value="Update Package"></td>
+                    </tr>
+                </table>
+        </form>
+        <br>
+        <form id="packDel"><input type="submit" name='Del' value="Delete"></form>
+        
+    </div>
+    <div class="main">
+        Package name:
+        <p id="PakName" style="font-size:50px">AAAAA</p>
+        Package detail:
+        <p id="PakDetail" style="font-size:30px">AAAAA</p>
+        Package price:
+        <p id="PakPrice" style="font-size:30px">AAAAA</p>
+    </div>
+
+
+</body>
+
+</html>

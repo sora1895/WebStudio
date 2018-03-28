@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" />
+
+    <script type="text/javascript" src="/libs/jquery-3.2.1.min.js"></script>
+    <script src="/js/contract.js"></script>
+    <style>
+        a:link {
+            text-decoration: none;
+        }
+
+        a:visited {
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        a:active {
+            text-decoration: underline;
+        }
+
+        input[type=text],
+        select {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type=submit] {
+            width: 100%;
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type=submit]:hover {
+            background-color: #45a049;
+        }
+
+        div {
+            border-radius: 5px;
+            background-color: #f2f2f2;
+            padding: 20px;
+        }
+
+        table {
+            font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        table td,
+        table th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        table tr:hover {
+            background-color: #ddd;
+        }
+
+        table th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #4CAF50;
+            color: white;
+        }
+    </style>
+</head>
+
+<body style="font-family:Verdana">
+    <div style="background-color:#f1f1f1;padding:15px;">
+        <h1>Contract Management</h1>
+    </div>
+    <div class="menu">
+        <form id="searchForm">
+            <table>
+                <tr>
+                    <th colspan="2">Search</th>
+                </tr>
+                <tr>
+                    <td style="text-align: right">Enter Contract ID:</td>
+                    <td>
+                        <select id="type" name="type">
+                            <option>Contract ID</option>
+                            <option>Customer Name</option>
+                            <option>Studio Name</option>
+                        </select>
+                        <input type="text" name="key">
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <input type="submit" value="Search">
+                    </td>
+                </tr>
+            </table>
+        </form>
+        <div class="menuitem">
+            <a href="#" id="showAdd">Add Contract</a>
+        </div>
+        <br>
+        <!--<form id="addForm" hidden>
+            <table>
+                <tr>
+                    <th colspan="2">Add new contract</th>
+                </tr>
+                <tr>
+                    <td style="text-align: right">Select Customer:</td>
+                    <td>
+                        <select id="SelNCus">
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: right"> Select Studio:</td>
+                    <td>
+                        <select id="SelNStu">
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: right">Description:</td>
+                    <td>
+                        <input type="text" name="newCDes">
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: right">Create date:</td>
+                    <td>
+                        <input type="date" name="newCdate" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: right">Start date:</td>
+                    <td>
+                        <input type="date" name="newSdate" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: right">End date:</td>
+                    <td>
+                        <input type="date" name="newEdate" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <input type="submit" name="Add" id="Add" value="Add">
+                    </td>
+                </tr>
+            </table>
+        </form>-->
+        <div>
+            <form id="editForm" hidden>
+                <table>
+                    <tr>
+                        <th id="conname" colspan="2">Edit Contract #</th>
+                    </tr>
+                    <tr>
+                        <td style="text-align: right">Select Customer:</td>
+                        <td>
+                            <select id="SelECon">
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: right">Select Studio:</td>
+                        <td>
+                            <select id="SelEStu">
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: right">Description:</td>
+                        <td>
+                            <!--<input type="text" name="newEDes" id="newEDes" required>-->
+                            <textarea rows="5" cols="40" name="newEDes" id="newEDes" required></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: right">Create date:</td>
+                        <td>
+                            <input type="date" name="newEcDate" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: right">Start date:</td>
+                        <td>
+                            <input type="date" name="newEsDate" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: right"> End date:</td>
+                        <td>
+                            <input type="date" name="newEeDate" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: right">
+                            <input type="submit" name="Edit" value="Edit">
+                        </td>
+                        <td>
+                            <button type="reset">Reset</button>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+
+
+    <div class="main">
+        <p id="ConNum"></p>
+        <table id="showDat" border="1" cellpadding="7" cellspacing="1">
+            <thead>
+                <tr>
+                    <th>Contract ID</th>
+                    <th>Customer ID</th>
+                    <th>Studio ID</th>
+                    <th>Contract Description</th>
+                    <th>Create Date</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>#</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+        <form id="addForm">
+            <table id="Addnew" hidden>
+                <thead>
+                    <tr>
+                        <th colspan="4">CONTRACT</th>
+                    </tr>
+
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Họ và Tên:</td>
+                        <td colspan="3">
+                            <input placeholder="Enter Name here ....." type="text" name="newCusName" required>
+                            <input type="checkbox" id="exist" value="exist" onclick="check()"> Old Customer?
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">
+                            <label>Địa chỉ khách hàng</label>
+                            <textarea name="newCusAdd" id="newCusAdd" placeholder="Enter Address here ....." required></textarea>
+                        </td>
+                        <td>Giới tính:
+                            <input type="radio" id="gender" name="gender" value="male" checked> Male
+                            <input type="radio" id="gender" name="gender" value="female"> Female</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <p> Số điện thoại:</p>
+                            <input name="newCusPhone" id="newCusPhone" placeholder="Enter phone number..." type="text" required>
+                        </td>
+                        <td colspan="2">
+                            <p>Email:</p>
+                            <input name="newCusEmail" id="newCusEmail" placeholder="Enter email ....." type="text" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">
+                            <label>Ghi chú về khách hàng</label>
+                            <input type="text" name="newCusNote" id="newCusNote" placeholder="Enter note about Customer here .....">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Studio làm việc:</td>
+                        <td colspan="3">
+                            <select id="SelNStu">
+                                <option>Please select a Studio .....</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Tên sản phẩm:</td>
+                        <td colspan="3">
+                            <select id="SelNPak">
+                                <option>Please select a Package ..... </option>
+                            </select>
+                            <p>
+                                <button id="addPak" class="w3-button w3-green">Add more</button>
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">
+                            <label>Chi tiết sản phẩm</label>
+                            <textarea placeholder="Enter Package detail ....." style="width: 100%" id="newCDDetail" name="newCDDetail" required></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align: right">
+                            <p id="PakPrice">Giá trước VAT: Giá sản phẩm</p>
+                        </td>
+                        <td colspan="2" style="text-align: right">
+                            <p id="VatPrice">Giá VAT: Giá VAT</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="4" style="text-align: right">
+                            <p id="total">Total: Giá sản phẩm</p>
+                        </td>
+                    </tr>
+
+
+
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="4">
+                            <label>Chi tiết Hợp đồng</label>
+                            <textarea placeholder="Enter Contract detail ....." style="width: 100%" name="newCDes" required></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Ngày lập nên Hợp đồng:</td>
+                        <td>
+                            <input type="date" name="newCdate" required>
+                        </td>
+                        <td>Ngày bắt đầu làm việc</td>
+                        <td>
+                            <input type="date" name="newSdate" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Ngày kết thúc (theo dự đoán):</td>
+                        <td>
+                            <input type="date" name="newEdate" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">
+                            <label>Ghi chú:</label>
+                            <input placeholder="Enter note ....." type="text" name="newCNote" width="100%">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">
+                            <input type="submit" name="Add" id="Add" value="Add">
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </form>
+    </div>
+    <script>
+        function check() {
+            if (document.getElementById("exist").checked == true) {
+                document.getElementById("newCusAdd").disabled = true;
+                document.getElementById("gender").disabled = true;
+                document.getElementById("newCusPhone").disabled = true;
+                document.getElementById("newCusEmail").disabled = true;
+                document.getElementById("newCusNote").disabled = true;
+            } else {
+                document.getElementById("newCusAdd").disabled = false;
+                document.getElementById("gender").disabled = false;
+                document.getElementById("newCusPhone").disabled = false;
+                document.getElementById("newCusEmail").disabled = false;
+                document.getElementById("newCusNote").disabled = false;
+            }
+        }
+        
+        $("#addPak").click(function () {
+            $("#Addnew").append('<tr><td>Tên sản phẩm:</td><td colspan="3">'
+                + '<select id="SelNPak"><option>Please select a Package ..... </option> </select>'
+                + '<p><button id="addPak" class="w3-button w3-green">Add more</button></p></td></tr>'
+                + '<tr><td colspan="4">'
+                + '<label>Chi tiết sản phẩm</label>'
+                + '<textarea placeholder="Enter Package detail ....." style="width: 100%" id="newCDDetail" name="newCDDetail" required></textarea>'
+                + '</td></tr>'
+                + '<tr><td colspan="2" style="text-align: right">'
+                + '<p id="PakPrice">Giá trước VAT: Giá sản phẩm</p>'
+                + '</td><td colspan="2" style="text-align: right">'
+                + '<p id="VatPrice">Giá VAT: Giá VAT</p>'
+                + '</td> </tr>'
+                + '<tr><td colspan="4" style="text-align: right">'
+                + '<p id="total">Total: Giá sản phẩm</p>'
+                + '</td></tr>');
+        });
+    </script>
+</body>
+
+</html>

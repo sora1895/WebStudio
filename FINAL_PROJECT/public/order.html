@@ -1,0 +1,133 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="/libs/jquery-3.2.1.min.js"></script>
+    <script src="/js/order.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" />
+</head>
+
+<body style="font-family:Verdana">
+    <div style="background-color:#f1f1f1;padding:15px;">
+        <h1>PrintOrder</h1>
+    </div>
+    <div class="menu">
+        <form id="searchForm">
+            <table>
+                <tr>
+                    <th colspan="2">Search Print Order By KeyWord</th>
+                </tr>
+                <tr>
+                    <td style="text-align: right">Search By:</td>
+                    <td>
+                        <select id="SelCon">
+                            <option>Contract ID</option>
+                            <option>Print Order ID</option>
+                            <option>Customer Name</option>
+                            <option>Studio Name</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: right">
+                        Enter KeyWord:
+                    </td>
+                    <td>
+                        <input type="text" name="key">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+
+                    </td>
+                    <td>
+                        <input type="submit" value="Search">
+                    </td>
+                </tr>
+            </table>
+        </form>
+        <div class="menuitem">
+            <a href="#" id="showAdd">Add Order</a>
+        </div>
+        <br>
+        <form id="addForm" hidden>
+            <table>
+                <tr>
+                        <th colspan="2">Add new Print Order</th>
+                </tr>
+                <tr>
+                    <td style="text-align: right">Enter Contract ID:</td>
+                    <td><input type="text" name="newConId" required></td>
+                </tr>
+                <tr>
+                    <td style="text-align: right">Create date:</td>
+                    <td><input type="date" name="newCdate" required></td>
+                </tr>
+                <tr>
+                    <td style="text-align: right">Start date:</td>
+                    <td><input type="date" name="newSdate" required></td>
+                </tr>
+                <tr>
+                    <td style="text-align: right">End date:</td>
+                    <td><input type="date" name="newEdate" required></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input type="submit" name="Add" id="Add" value="Add"><button type="reset">Reset</button></td>
+                </tr>
+            </table>
+        </form>
+        <div>
+            <form id="editForm" hidden>
+                <table>
+                    <tr>
+                        <th id="poname" colspan="2">Edit Print Order #</th>
+                    </tr>
+                    <tr>
+                        <td style="text-align: right">
+                                Enter Contract ID:
+                        </td>
+                        <td><input type="text" name="SelNCon" required></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: right">Create date:</td>
+                        <td><input type="date" name="newcDate" required></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: right">Start date:</td>
+                        <td><input type="date" name="newsDate" required></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: right">End date:</td>
+                        <td><input type="date" name="neweDate"></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: right"></td>
+                        <td><input type="submit" name="Edit" value="Edit"><button type="reset">Reset</button></td>
+                    </tr>
+                </table>
+                
+            </form>
+        </div>
+    </div>
+
+
+    <div id="main" class="main" hidden>
+        <p id="PONum"></p>
+        <table id="showDat" border="1" cellpadding="7" cellspacing="1">
+            <thead>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Studio Detail</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script type="text/javascript" src="/libs/jquery-3.2.1.min.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" />
+    <script src="js/sub-studio.js"></script>
+</head>
+<body style="font-family:Verdana">
+<div style="background-color:#f1f1f1;padding:15px;">
+    <h1 id="MainName"></h1>
+</div>
+<div class="menu">
+    <form id="studiodetail">
+        <table>
+            <tr>
+                <td style="text-align: right">New Studio Name:</td>
+                <td><input type="text" name="stuname"></td>
+            </tr>
+            <tr>
+                <td style="text-align: right">New Studio Address:</td>
+                <td><input type="text" name="address"></td>
+            </tr>
+            <tr>
+                <td style="text-align: right">Province:</td>
+                <td>
+                    <select id="province" name="province">
+                        <option selected="selected">Please Select</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right">District:</td>
+                <td>
+                    <select id="district" name="district">
+                        <option selected="selected">Please Select</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right">New Studio Email:</td>
+                <td><input type="text" name="email"></td>
+            </tr>
+            <tr>
+                <td style="text-align: right">New Studio Number:</td>
+                <td><input type="text" name="number"></td>
+            </tr>
+            <tr>
+                <td style="text-align: right">New Studio Coordinate:</td>
+                <td><input type="text" name="coordinate"></td>
+            </tr>
+            <tr>
+                <td style="text-align: right"><button type="reset">Reset</button></td>
+                <td><input type="submit" name='change' value="Update Name"></td>
+            </tr>
+        </table>
+    </form>
+    <form id="delform">
+        <input type="submit" name='Del' value="Delete">
+    </form>
+
+</div>
+<div class="main">
+    Studio ID:
+    <p id="Stuids" style="font-size:50px"></p>
+    Studio Name:
+    <p id="names" style="font-size:50px"></p>
+    Studio Address:
+    <p id="addresss" style="font-size:50px"></p>
+    Province:
+    <p id="provinces" style="font-size:50px"></p>
+    District:
+    <p id="districts" style="font-size:50px"></p>
+    Studio Email:
+    <p id="emails" style="font-size:50px"></p>
+    Studio Number:
+    <p id="numbers" style="font-size:50px"></p>
+    Studio Coordinate:
+    <p id="coordinates" style="font-size:50px"></p>
+</div>
+</body>
+</html>

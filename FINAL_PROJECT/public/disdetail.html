@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript" src="/libs/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="/js/sub-select.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" />
+</head>
+
+<body style="font-family:Verdana">
+    <div style="background-color:#f1f1f1;padding:15px;">
+        <h1>District detail</h1>
+    </div>
+    <div class="menu">
+            <form id='disdetail'>
+                <table>
+                    <tr>
+                        <th colspan="2">Update District Name</th>
+                    </tr>
+                    <tr>
+                        <td style="text-align: right"><input type="text" id="district" name="district"></td>
+                        <td><input type="submit"  name='change' value="Update Name"></td>
+                    </tr>
+                </table>
+                </form>
+    </div>
+    <div class="main">
+        <table>
+            <tr>
+                    <th>District:</th>
+                    <th><p id="name" >asdasd</p></th>
+            </tr>
+            
+        </table>
+        <b>
+            <p id="StuNum">Studios found: </p>
+        </b>
+        <table id="showDat" border="1" cellpadding="7" cellspacing="1">
+            <thead>
+                <tr>
+                    <td>Studio ID</td>
+                    <td>District ID</td>
+                    <td>Studio Name</td>
+                    <td>Studio Address</td>
+                    <td>Studio Email</td>
+                    <td>Studio Number</td>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+        <br>
+        <button id="del" >Delete</button>
+    </div>
+</body>
+
+</html>

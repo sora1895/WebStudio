@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="/libs/jquery-3.2.1.min.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" />
+    <script src="/js/orderdetail.js"></script>
+</head>
+<body style="font-family:Verdana">
+    <div style="background-color:#f1f1f1;padding:15px;">
+        <h1>PrintOrderDetail</h1>
+    </div>
+    <div class="menu">
+        <div id="adddiv">
+            <form id="orderDeForm">
+                <table>
+                    <tr><th>Search</th></tr>
+                    <tr>
+                        <td  style="text-align: right">Order ID:</td>
+                        <td>
+                                <select id="SelPOS">
+                                    </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td  style="text-align: right">Material:</td>
+                        <td><input type="text" name="Material"></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><input type="submit" value="Search"></td>
+                    </tr>
+                </table>
+            </form>
+            <div class="menuitem">
+                <a href="#" id="showAdd">Add Order Detail</a>
+            </div>
+            <form id="addForm" hidden>
+                <table>
+                    <tr><th id="addname" colspan="2">Add new Print Order Detail at #</th></tr>
+                    <tr>
+                        <td style="text-align: right">Select Order ID:</td>
+                        <td><select id="SelPO">
+                            </select></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: right">Select Picture:</td>
+                        <td><select id="SelPic">
+                            </select></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: right">Select Material Order:</td>
+                        <td><select id="SelMatOr">
+                            </select></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: right">Order's material Quantity:</td>
+                        <td><input type="text" name="newOQuan" id="newOQuan" required></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: right">Order's material Size:</td>
+                        <td><input type="text" name="newOSize" id="newOSize" required></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: right">Order Price:</td>
+                        <td><input type="text" name="newOPrice" id="newOPrice" required></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: right">Order Note:</td>
+                        <td>
+                                <input type="text" name="newONote" id="newONote">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><input type="submit" name="Add" id="Add" value="Add"></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+        <div>
+            <form id="editForm" hidden>
+                <table>
+                    <tr>
+                            <th colspan="2">Edit Print Order</th>
+                    </tr>
+                    <tr>
+                        <td style="text-align: right">Select Order ID:</td>
+                        <td><select id="SelPOE">
+                            </select></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: right">Select Picture:</td>
+                        <td><select id="SelNPic">
+                            </select></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: right">Select Material Order:</td>
+                        <td><select id="SelNMatOr">
+                            </select></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: right">Order's material Quantity:</td>
+                        <td><input type="text" name="newNOQuan" id="newNOQuan" required></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: right">Order's material Size:</td>
+                        <td><input type="text" name="newNOSize" id="newNOSize" required></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: right">Order Price:</td>
+                        <td><input type="text" name="newNOPrice" id="newNOPrice" required></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: right">Order Note:</td>
+                        <td><input type="text" name="newNONote" id="newNONote"></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                                <input type="submit" name="Edit" id="Edit" value="Edit">
+                        </td>
+                    </tr>
+                </table>
+                
+            </form>
+        </div>
+    </div>
+
+
+    <div class="main">
+        <p id="OrDeNum"></p>
+        <table id="showDat" border="1" cellpadding="7" cellspacing="1">
+            <thead>
+                <tr>
+                    <td>PrintOrder ID</td>
+                    <td>Picture</td>
+                    <td>Material Order</td>
+                    <td>Order Quantity</td>
+                    <td>Order Size</td>
+                    <td>Order Price</td>
+                    <td>Order Note</td>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+    </body>
+
+</html>

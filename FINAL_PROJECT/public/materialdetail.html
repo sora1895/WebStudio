@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script type="text/javascript" src="/libs/jquery-3.2.1.min.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" />
+    <script src="/js/sub-material.js"></script>
+</head>
+
+<body style="font-family:Verdana">
+    <div style="background-color:#f1f1f1;padding:15px;">
+        <h1 id="MainName">Package</h1> 
+    </div>
+    <div class="menu">
+        <form id="materialdetail">
+            <table>
+                <tr>
+                    <th id="matname" colspan="2"></th>
+                </tr>
+                <tr>
+                    <td style="text-align: right">New Material Name:</td>
+                    <td><input type="text" id="material" name="material"></td>
+                </tr>
+                <tr>
+                    <td style="text-align: right">New Material Description:</td>
+                    <td><input type="text" id="des" name="des"></td>
+                </tr>
+                <tr>
+                    <td style="text-align: right"><button type="reset">Reset</button></td>
+                    <td><input type="submit" name='change' value="Update Name"></td>
+                </tr>
+            </table>
+        </form>
+        <form id="delform">
+            <input type="submit" name='Del' value="Delete">
+        </form>
+
+    </div>
+    <div class="main">
+        Material name:
+        <p id="MatName" style="font-size:50px">AAAAA</p>
+        Material detail:
+        <p id="MatDetail" style="font-size:50px">AAAAA</p>
+    </div>
+
+
+</body>
+
+</body>
+
+</html>

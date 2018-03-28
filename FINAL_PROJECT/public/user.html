@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="/libs/jquery-3.2.1.min.js"></script>
+    <script src="js/user.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="css/main.css" />
+</head>
+<body style="font-family:Verdana">
+<div style="background-color:#f1f1f1;padding:15px;">
+    <h1>User</h1>
+</div>
+<div class="menu">
+    <div id="adddiv">
+    <form id="UserForm">
+        <table>
+            <tr>
+                <th colspan="2">Search:</th>
+            </tr>
+            <tr>
+                <td><input type="text" name="userns"></td>
+                <td><input type="submit" value="Search"></td>
+            </tr>
+        </table>
+
+    </form>
+    <div class="menuitem">
+        <a href="#" id="showAdd">Add User</a>
+    </div>
+    <br>
+    <form id="addForm" hidden>
+        <table>
+            <tr>
+                <th colspan="2">Add new User</th>
+            </tr>
+            <tr>
+                <td style="text-align: right">User Name:</td>
+                <td>
+                    <input type="text" name="newPName" id="newPName" required>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right">Password:</td>
+                <td>
+                    <input type="text" name="newPPass" id="newPPass" required>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right">User Role:</td>
+                <td>
+                    <input type="text" name="newPRole" id="newPRole" required>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right">Studio:</td>
+                <td>
+                    <select id="studio" name="studio">
+                        <option selected="selected">Please Select</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right">
+                    <button type="reset">Reset</button>
+                </td>
+                <td>
+                    <input type="submit" name="Add" id="Add" value="Add">
+                </td>
+            </tr>
+        </table>
+    </form>
+    </div>
+    <div>
+        <form id="editForm" hidden>
+            <table>
+                <tr>
+                    <th colspan="2">Edit User</th>
+                </tr>
+                <tr>
+                    <td style="text-align: right">User Name:</td>
+                    <td><p id="newName"></p></td>
+                </tr>
+                <tr>
+                    <td style="text-align: right">Password:</td>
+                    <td><input type="text" name="newPass" id="newPass"></td>
+                </tr>
+                <tr>
+                    <td style="text-align: right">User Role:</td>
+                    <td><input type="text" name="newRole" id="newRole"></td>
+                </tr>
+                <tr>
+                    <td style="text-align: right">Select Studio:</td>
+                    <td><select id="SelStudio">
+                    </select></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <input type="submit" name="Edit" id="Edit" value="Edit">
+                    </td>
+                </tr>
+            </table>
+
+        </form>
+    </div>
+</div>
+
+<div class="main">
+    <p id="UserNum"></p>
+    <table id="showDat" border="1" cellpadding="7" cellspacing="1">
+        <thead>
+        <tr>
+            <td>UserName</td>
+            <td>Password</td>
+            <td>Studio Name</td>
+            <td>User Role</td>
+        </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

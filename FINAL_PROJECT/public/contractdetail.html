@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" />
+    <script type="text/javascript" src="/libs/jquery-3.2.1.min.js"></script>
+    <script src="/js/sub-contract.js"></script>
+</head>
+
+<body style="font-family:Verdana">
+    <div style="background-color:#f1f1f1;padding:15px;">
+        <h1 id="title">Contract #</h1>
+    </div>
+    <div class="menu">
+        <form id="searchForm" hidden>
+            <table>
+                <tr>
+                    <th colspan="2">Search</th>
+                </tr>
+                <tr>
+                    <td style="text-align: right">Enter Contract ID:</td>
+                    <td>
+                        <input type="text" name="stuid">
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: right">Enter Package Name:</td>
+                    <td>
+                        <input type="text" name="pakname">
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <input type="submit" value="Search">
+                    </td>
+                </tr>
+            </table>
+        </form>
+        <div class="menuitem">
+            <a href="#" id="showAdd">Add Contract Detail</a>
+        </div>
+        <br>
+        <div>
+            <form id="addForm" hidden>
+                <table>
+                    <tr>
+                        <th id="addname" colspan="2">Add Contract Detail at #</th>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align: center">Select Package</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align: center">
+                            <select id="SelPak">
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: right">Package Name:</td>
+                        <td><input type="text" name="newPName" required></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: right">Create date:</td>
+                        <td><input type="text" name="newPDetail" required></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: right">Start date:</td>
+                        <td><input type="text" name="newPPrice" required></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: right">End date:</td>
+                        <td><input type="text" name="newNote"></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <input type="submit" name="Add" id="Add" value="Add">
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+
+        <div>
+            <form id="editForm" hidden>
+                <table>
+                    <tr>
+                        <th id="conname" colspan="2">Edit Contract Detail #</th>
+                    </tr>
+                    <tr>
+                        <td style="text-align: right">Select Contract:</td>
+                        <td>
+                            <input type="text" name="SelECon" id="SelECon" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align: center">Select Package:</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align: center">
+                            <select id="SelEPack">
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: right">Package Name:</td>
+                        <td><input type="text" name="newEName" id="newEName" required></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: right">Detail:</td>
+                        <td><!--<input type="text" name="newEDetail" id="newEDetail" required>-->
+                            <textarea rows="5" cols="40" name="newEDetail" id="newEDetail" required></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: right">Price:</td>
+                        <td>
+                            <input type="text" name="newEPrice" id="newEPrice" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: right">Note:</td>
+                        <td>
+                            <input type="text" name="newENote" id="newENote">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: right"><input type="submit" name="Edit" value="Edit"></td>
+                        <td><button type="reset">Reset</button></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+
+    <div class="main">
+        <table id="ConDe">
+
+        </table>
+        <p id="ConNum"></p>
+        <table id="showDat" border="1" cellpadding="7" cellspacing="1">
+            <thead>
+                <tr>
+                    <td>Contract Detail ID</td>
+                    <td>Contract ID</td>
+                    <td>Package ID</td>
+                    <td>Package Name</td>
+                    <td>Package Detail</td>
+                    <td>Package Price</td>
+                    <td>Package Note</td>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+        <br>
+        <p  style="text-align: right" id="total">Total:</p>
+    </div>
+</body>
+
+</html>

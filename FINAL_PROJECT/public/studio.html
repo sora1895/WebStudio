@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Studio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="/libs/jquery-3.2.1.min.js"></script>
+    <script src="js/studio.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="css/main.css" />
+
+</head>
+<body style="font-family:Verdana">
+    <div style="background-color:#f1f1f1;padding:15px;">
+        <h1>Studio</h1>
+    </div>
+    <div class="menu">
+        <div id="adddiv">
+        <form id="StudioForm">
+            <table>
+                <tr>
+                    <th colspan="2">Search:</th>
+                </tr>
+                <tr>
+                    <td><input type="text" name="studios"></td>
+                    <td><input type="submit" value="Search"></td>
+                </tr>
+            </table>
+
+        </form>
+        <div class="menuitem">
+            <a href="#" id="showAdd">Add Studio</a>
+        </div>
+        <br>
+        <form id="addForm" hidden>
+            <table>
+                <tr>
+                    <th colspan="2">Add new Studio</th>
+                </tr>
+                <tr>
+                    <td style="text-align: right">Studio Name:</td>
+                    <td>
+                        <input type="text" name="newPName" id="newPName" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: right">Studio Address:</td>
+                    <td>
+                        <input type="text" name="newPAddress" id="newPAddress" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: right">Province:</td>
+                    <td>
+                        <select id="province" name="province">
+                            <option selected="selected">Please Select</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: right">District:</td>
+                    <td>
+                        <select id="district" name="district">
+                            <option selected="selected">Please Select</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: right">Studio Email:</td>
+                    <td>
+                        <input type="text" name="newPEmail" id="newPEmail" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: right">Studio Number:</td>
+                    <td>
+                        <input type="text" name="newPNumber" id="newPNumber" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: right">Studio Coordinate:</td>
+                    <td>
+                        <input type="text" name="newPCoordinate" id="newPCoordinate" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: right">
+                        <button type="reset">Reset</button>
+                    </td>
+                    <td>
+                        <input type="submit" name="Add" id="Add" value="Add">
+                    </td>
+                </tr>
+            </table>
+        </form>
+        </div>
+        <div>
+            <form id="editForm" hidden>
+                <table>
+                    <tr>
+                        <th colspan="2">Edit Studio</th>
+                    </tr>
+                    <tr>
+                        <td style="text-align: right">Studio ID:</td>
+                        <td><p id="newIDSTu"></p></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: right">Studio Name:</td>
+                        <td>
+
+                            <input type="text" name="newPNames" id="newPNames" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: right">Studio Address:</td>
+                        <td>
+                            <input type="text" name="newPAddresss" id="newPAddresss" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: right">Province:</td>
+                        <td>
+                            <select id="provinces" name="provinces">
+                                <option selected="selected">Please Select</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: right">District:</td>
+                        <td>
+                            <select id="districts" name="districts">
+                                <option selected="selected">Please Select</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: right">Studio Email:</td>
+                        <td>
+                            <input type="text" name="newPEmails" id="newPEmails" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: right">Studio Number:</td>
+                        <td>
+                            <input type="text" name="newPNumbers" id="newPNumbers" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: right">Studio Coordinate:</td>
+                        <td>
+                            <input type="text" name="newPCoordinates" id="newPCoordinates" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <input type="submit" name="Edit" id="Edit" value="Edit">
+                        </td>
+                    </tr>
+                </table>
+
+            </form>
+        </div>
+    </div>
+
+    <div class="main">
+        <p id="StudioNum"></p>
+        <table id="showDat" border="1" cellpadding="7" cellspacing="1">
+            <thead>
+            <tr>
+                <td>Studio ID</td>
+                <td>Studio Name</td>
+                <td>Package Detail</td>
+                <td>Studio Email</td>
+                <td>Studio Number</td>
+                <td>Studio Coordinate</td>
+                <td>Province</td>
+                <td>District</td>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+
+
+
+
+</body>
+
+</html>

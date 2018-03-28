@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="/libs/jquery-3.2.1.min.js"></script>
+    <script src="/js/package.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" />
+</head>
+
+<body style="font-family:Verdana">
+    <div style="background-color:#f1f1f1;padding:15px;">
+        <h1>Packages</h1>
+    </div>
+    <div class="menu">
+        <form id="packForm">
+            <table>
+                <tr>
+                    <th colspan="2">Search:</th>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="text" name="package">
+                    </td>
+                    <td>
+                        <input type="submit" value="Search">
+                    </td>
+                </tr>
+            </table>
+
+        </form>
+        <div class="menuitem">
+            <a href="#" id="showAdd">Add Package</a>
+        </div>
+        <br>
+        <form id="addForm" hidden>
+            <table>
+                <tr>
+                    <th colspan="2">Add new Package</th>
+                </tr>
+                <tr>
+                    <td style="text-align: right">Package Name:</td>
+                    <td>
+                        <input type="text" name="newPName" id="newPName" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: right">Package Detail:</td>
+                    <td>
+                        <input type="text" name="newPDetail" id="newPDetail" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: right">Package price:</td>
+                    <td>
+                        <input type="text" name="newPPrice" id="newPPrice" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: right">
+                        <button type="reset">Reset</button>
+                    </td>
+                    <td>
+                        <input type="submit" name="Add" id="Add" value="Add">
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+
+
+    <div class="main">
+        <p id="PackNum"></p>
+        <table id="showDat" border="1" cellpadding="7" cellspacing="1">
+            <thead>
+                <tr>
+                    <td>Package ID</td>
+                    <td>Package Name</td>
+                    <td>Package Detail</td>
+                    <td>Package Price</td>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+
+</body>
+
+</html>

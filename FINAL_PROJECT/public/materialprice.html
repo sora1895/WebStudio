@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="/libs/jquery-3.2.1.min.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" />
+    <script src="/js/materialprice.js"></script>
+</head>
+<body style="font-family:Verdana">
+    <div style="background-color:#f1f1f1;padding:15px;">
+        <h1>Materials's Price</h1>
+    </div>
+    <div class="menu">
+        <form id="matpriceForm">
+            <table>
+                <tr>
+                        <th colspan="2">Search</th>
+                </tr>
+                <tr>
+                    <td><input type="text" name="materialprice"></td>
+                    <td><input type="submit" value="Search"></td>
+                </tr>
+            </table>
+            
+        </form>
+        <div class="menuitem">
+            <a href="#" id="showAdd">Add Package</a>
+        </div>
+        <br>
+        <form id="addForm" hidden>
+            <table>
+                <tr>
+                    <th colspan="2">Add new Material price</th>
+                </tr>
+                <tr>
+                    <td  style="text-align: right">Select Material:</td>
+                    <td><select id="SelMat" >
+                        </select></td>
+                </tr>
+                <tr>
+                    <td style="text-align: right">Material Size:</td>
+                    <td><input type="text" name="newMSize" id="newMSize" required></td>
+                </tr>
+                <tr>
+                    <td style="text-align: right">Material Price:</td>
+                    <td><input type="text" name="newMPrice" id="newMPrice" required></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input type="submit" name="Add" id="Add" value="Add"></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+
+
+    <div class="main">
+            <p id="MatPriceNum"></p>
+        <table id="showDat" border="1" cellpadding="7" cellspacing="1">
+            <thead>
+                <tr>
+                    <td>Material Price ID</td>
+                    <td>Material Name</td>
+                    <td>Material Size</td>
+                    <td>Material Price</td>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+
+</body>
+</html>

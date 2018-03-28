@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript" src="/libs/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="/js/district.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" />
+
+</head>
+
+<body style="font-family:Verdana">
+    <div style="background-color:#f1f1f1;padding:15px;">
+        <h1>District Manager</h1>
+    </div>
+    <div class="menu">
+        <table>
+            <tr>
+                <th colspan="2">Search district:</th>
+            </tr>
+            <tr>
+                <td style="text-align: right"> Province:</td>
+                <td>
+                    <form id='dismanage'>
+                        <select id="SelDis" name='province'>
+
+                        </select>
+                        <input type="submit" value="Search">
+                        <br>
+
+                    </form>
+                </td>
+            </tr>
+            <tr>
+            </tr>
+            </table>
+            <form id='addDis'>
+            <table>
+            <tr>
+                <th colspan="2">Add new District:
+                </th>
+            </tr>
+            
+                <tr>
+                    <td style="text-align: right">
+                        Choose province:
+                        <br>
+                    </td>
+                    <td>
+
+
+                        <select id="SelNDis" name='nprovince'>
+                        </select>
+                        <br>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: right">Enter new district:</td>
+                    <td>
+                        <input type="text" name="district" required>
+                        <input type="submit" value="Add">
+                    </td>
+                </tr>
+            
+
+        </table></form>
+    </div>
+
+
+    <div class="main" id="main" hidden>
+        <b>
+            <p id="DisNum">Districts found: </p>
+        </b>
+        <table id="showDat" border="1" cellpadding="7" cellspacing="1">
+            <thead>
+                <tr>
+                    <td>ID</td>
+                    <td>District</td>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>
