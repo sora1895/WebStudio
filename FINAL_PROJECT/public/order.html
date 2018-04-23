@@ -54,7 +54,7 @@
             <a href="#" id="showAdd">Add Order</a>
         </div>
         <br>
-        <form id="addForm" hidden>
+        <!--<form id="addForm" hidden>
             <table>
                 <tr>
                         <th colspan="2">Add new Print Order</th>
@@ -80,7 +80,7 @@
                     <td><input type="submit" name="Add" id="Add" value="Add"><button type="reset">Reset</button></td>
                 </tr>
             </table>
-        </form>
+        </form>-->
         <div>
             <form id="editForm" hidden>
                 <table>
@@ -89,34 +89,45 @@
                     </tr>
                     <tr>
                         <td style="text-align: right">
-                                Enter Contract ID:
+                            Enter Contract ID:
                         </td>
-                        <td><input type="text" name="SelNCon" required></td>
+                        <td>
+                            <input type="text" name="SelNCon" required>
+                        </td>
                     </tr>
                     <tr>
                         <td style="text-align: right">Create date:</td>
-                        <td><input type="date" name="newcDate" required></td>
+                        <td>
+                            <input type="date" name="newcDate" required>
+                        </td>
                     </tr>
                     <tr>
                         <td style="text-align: right">Start date:</td>
-                        <td><input type="date" name="newsDate" required></td>
+                        <td>
+                            <input type="date" name="newsDate" required>
+                        </td>
                     </tr>
                     <tr>
                         <td style="text-align: right">End date:</td>
-                        <td><input type="date" name="neweDate"></td>
+                        <td>
+                            <input type="date" name="neweDate">
+                        </td>
                     </tr>
                     <tr>
                         <td style="text-align: right"></td>
-                        <td><input type="submit" name="Edit" value="Edit"><button type="reset">Reset</button></td>
+                        <td>
+                            <input type="submit" name="Edit" value="Edit">
+                            <button type="reset">Reset</button>
+                        </td>
                     </tr>
                 </table>
-                
+
             </form>
         </div>
     </div>
 
 
-    <div id="main" class="main" hidden>
+    <div id="main" class="main">
         <p id="PONum"></p>
         <table id="showDat" border="1" cellpadding="7" cellspacing="1">
             <thead>
@@ -124,6 +135,119 @@
             <tbody>
             </tbody>
         </table>
+
+        <form id="searchCon" hidden>
+            <table>
+                <tr>
+                    <th colspan="4">CONTRACT</th>
+                </tr>
+                <tr>
+                    <td>Số Hợp đồng:</td>
+                    <td colspan="3">
+                        <input placeholder="Enter Contract number here ....." type="number" name="conid" required>
+                        <input type="submit">
+                    </td>
+                </tr>
+            </table>
+
+        </form>
+        <form id="addForm" hidden>
+            <table id="Addnew">
+                <thead>
+
+                </thead>
+                <tbody>
+                    <tr>
+                        <th colspan="4">Hợp đồng in #1</th>
+                    </tr>
+                    <tr>
+                        <td>Gói Hợp đồng đang dùng:</td>
+                        <td colspan="3">
+                            <select id="SelConDe" name="SelConDe">
+                                <option>Please select a Package .....</option>
+                            </select>
+                            <button type="button" name="addPOD" class="w3-button w3-green">Add more</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Ảnh được chọn:
+                                <select id="SelNPic" name="SelNPic">
+                                    <option>Please select a Picture .....</option>
+                                </select></td>
+                        <td colspan="3">
+                            <img width="400px" id="PIC">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Vật liệu được chọn:</td>
+                        <td colspan="3">
+                            <select id="SelNMat" name="SelNMat">
+                                <option>Please select a Material ..... </option>
+                            </select>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <label>Kích cỡ:</label>
+                            <select id="SelNSize" name="SelNSize">
+                                <option>Please select a Size ..... </option>
+                            </select>
+                        </td>
+                        <td colspan="2">
+                            <label>Số lượng:</label>
+                            <input placeholder="Enter quantity ....." type="number" id="Quantity" name="Quantity" width="100%">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align: right">
+                            <p id="MatPrice">Giá trước VAT: Giá sản phẩm</p>
+                        </td>
+                        <td colspan="2" style="text-align: right">
+                            <p id="VatPrice">Giá VAT: Giá VAT</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="4" style="text-align: right">
+                            <p id="total">Total: Giá sản phẩm</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">
+                            <label>Ghi chú:</label>
+                            <input placeholder="Enter note ....." type="text" name="newCNote" width="100%">
+                        </td>
+                    </tr>
+
+                </tbody>
+                <tfoot>
+
+                    <tr>
+                        <td>Ngày lập nên Hợp đồng:</td>
+                        <td>
+                            <input type="date" name="newCdate" required>
+                        </td>
+                        <td>Ngày bắt đầu làm việc</td>
+                        <td>
+                            <input type="date" name="newSdate" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Ngày kết thúc (theo dự đoán):</td>
+                        <td>
+                            <input type="date" name="newEdate" required>
+                        </td>
+                        <td colspan="2"></td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="4">
+                            <input type="submit" name="Add" id="Add" value="Add">
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </form>
     </div>
 
 

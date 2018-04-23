@@ -24,12 +24,16 @@ $(document).ready(function () {
             method: 'post',
             contentType: 'application/json',
             data: JSON.stringify({
+                stuid: localStorage.getItem("UserStudioId"),
                 key: key,
                 type: type,
             })
         }).always(function (res) {
+            var code = res.code;
+            if(code!=200){
+                alert('???')
+            }
             if (res.data[0].Contract_ID != null || res.data[0].PrintOrder_ID != null || res.data[0].Customer_Name != null || res.data[0].Studio_Name != null) {
-
                 show(res, type);
             } else alert('???');
         })
@@ -54,10 +58,10 @@ $(document).ready(function () {
         }
 
         var thead = $(`<tr>
-                        <td>No</td>
+                        <th>No</th>
                         `+ theadbonus + `
-                        <td>Contract ID</td>
-                        <td>Contract Detail ID</td>
+                        <th>Contract ID</th>
+                        <th>Contract Detail ID</th>
                     </tr>`);
         showDatHead.append(thead);
         if (res && res.data && res.data instanceof Array) {
@@ -83,15 +87,15 @@ $(document).ready(function () {
                 var tr = $(`<tr>
                         <td>${count + 1}</td>
                         `+ bonuscol + `
-                        <td><a href="contractdetail.html?id=${ContractID}?Customer=${Customername}">${ContractID}</a></td>
+                        <td><a href="contractdetail.html?id=${ContractID}">${ContractID}</a></td>
                         <td>${ConDetailID}</td>
                     </tr>`);
-                var viewButton = $(`<td><button>View Picture</button></td>`);
+                var viewButton = $(`<td><button style="color:white">View Picture</button></td>`);
                 viewButton.click(function (e) {
+                    localStorage.setItem('condeid',ConDetailID);
                     window.location.href = `viewpicture.html?condeid=${ConDetailID}`;
                 });
                 tr.append(viewButton);
-
                 showDat.append(tr);
                 count++;
 

@@ -1,29 +1,525 @@
 <!DOCTYPE html>
-<html lang="en">
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script type="text/javascript" src="/libs/jquery-3.2.1.min.js"></script>
-    <title>Login</title>
-    <script src="/js/usermain.js"></script>
-    <link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" />
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Home</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Free HTML5 Template by FREEHTML5.CO" />
+	<meta name="keywords" content="free html5, free template, free bootstrap, html5, css3, mobile first, responsive" />
+	<meta name="author" content="FREEHTML5.CO" />
+
+	<!-- 
+	//////////////////////////////////////////////////////
+
+	FREE HTML5 TEMPLATE 
+	DESIGNED & DEVELOPED by FREEHTML5.CO
+		
+	Website: 		http://freehtml5.co/
+	Email: 			info@freehtml5.co
+	Twitter: 		http://twitter.com/fh5co
+	Facebook: 		https://www.facebook.com/fh5co
+
+	//////////////////////////////////////////////////////
+	 -->
+
+	<!-- Facebook and Twitter integration -->
+	<meta property="og:title" content="" />
+	<meta property="og:image" content="" />
+	<meta property="og:url" content="" />
+	<meta property="og:site_name" content="" />
+	<meta property="og:description" content="" />
+	<meta name="twitter:title" content="" />
+	<meta name="twitter:image" content="" />
+	<meta name="twitter:url" content="" />
+	<meta name="twitter:card" content="" />
+
+	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+	<link rel="shortcut icon" href="favicon.ico">
+
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+	<script type="text/javascript" src="/libs/jquery-3.2.1.min.js"></script>
+	<!-- Animate.css -->
+	<link rel="stylesheet" href="css/animate.css">
+	<!-- Icomoon Icon Fonts-->
+	<link rel="stylesheet" href="css/icomoon.css">
+	<!-- Simple Line Icons -->
+	<link rel="stylesheet" href="css/simple-line-icons.css">
+	<!-- Bootstrap  -->
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<!-- Superfish -->
+	<link rel="stylesheet" href="css/superfish.css">
+	<!-- Flexslider  -->
+	<link rel="stylesheet" href="css/flexslider.css">
+
+	<link rel="stylesheet" href="css/style.css">
+
+	<!-- Modernizr JS -->
+	<script src="js/modernizr-2.6.2.min.js"></script>
+
+
+	<!-- jQuery -->
+
+	<script src="js/jquery.min.js"></script>
+	<!-- jQuery Easing -->
+	<script src="js/jquery.easing.1.3.js"></script>
+	<!-- Bootstrap -->
+	<script src="js/bootstrap.min.js"></script>
+	<!-- Waypoints -->
+	<script src="js/jquery.waypoints.min.js"></script>
+	<!-- Superfish -->
+	<script src="js/hoverIntent.js"></script>
+	<script src="js/superfish.js"></script>
+	<!-- Flexslider -->
+	<script src="js/jquery.flexslider-min.js"></script>
+	<!-- Stellar -->
+	<script src="js/jquery.stellar.min.js"></script>
+	<!-- Counters -->
+	<script src="js/jquery.countTo.js"></script>
+
+	<!-- Main JS (Do not remove) -->
+	<script src="js/main.js"></script>
+	<!-- FOR IE9 below -->
+	<!--[if lt IE 9]>
+	<script src="js/respond.min.js"></script>
+	<![endif]-->
+
 </head>
+
 <body>
-    Login Successfully<br>
-    <div id="admin" hidden>
-        <a href="./user.html" >User manager</a><br>
-        <a href="./studio.html">Studio manager</a><br>
-        <a href="./dismanage.html">District manager</a><br>
-    </div>
-    <div id="user" hidden>
-        <a href="./package.html">Package manager</a><br>
-        <a href="./printmaterial.html">Printing Material</a><br>
-        <a href="./materialprice.html">Printing Material Price</a><br>
-        <a href="./picture.html">Picture</a><br>
-        <a href="./order.html">Print Order</a><br>
-        <a href="./contract.html">Contract</a><br>
-    </body>
-    </div>
-    
+	<div id="fh5co-wrapper">
+		<div id="fh5co-page">
+			<div id="fh5co-header">
+				<header id="fh5co-header-section">
+					<div class="container">
+						<div class="nav-header">
+							<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle">
+								<i></i>
+							</a>
+							<h1 id="fh5co-logo">
+								<a href="index.html">StudioWeb</a>
+							</h1>
+							<!-- START #fh5co-menu-wrap -->
+							<nav id="fh5co-menu-wrap" role="navigation">
+								<ul class="sf-menu" id="fh5co-primary-menu">
+									<li>
+										<a class="active" href="index.html">Trang chủ</a>
+									</li>
+									<!--<li><a href="work.html">Tour</a></li>-->
+									<li>
+										<a href="studio-list.html" class="fh5co-sub-ddown">Studio</a>
+										<ul class="fh5co-sub-menu">
+											<li>
+												<a href="studio-main.html" onclick="studioId(3);">Studio A</a>
+											</li>
+											<li>
+												<a href="studio-main.html" onclick="studioId(4);">Studio B</a>
+											</li>
+											<li>
+												<a href="studio-main.html" onclick="studioId(5);">Studio C</a>
+											</li>
+										</ul>
+									</li>
+									<li>
+										<a href="#" class="fh5co-sub-ddown">Album</a>
+										<ul class="fh5co-sub-menu">
+											<li>
+												<a href="left-sidebar.html">Ảnh cưới</a>
+											</li>
+											<li>
+												<a href="right-sidebar.html">Ảnh quảng cáo</a>
+											</li>
+											<li>
+												<a href="#" class="fh5co-sub-ddown">Ảnh trẻ con</a>
+												<ul class="fh5co-sub-menu">
+													<li>
+														<a href="http://freehtml5.co/preview/?item=build-free-html5-bootstrap-template" target="_blank">HIệu ứng đặc biệt</a>
+													</li>
+													<li>
+														<a href="http://freehtml5.co/preview/?item=work-free-html5-template-bootstrap" target="_blank">Ảnh tự nhiên</a>
+													</li>
+													<!--<li><a href="http://freehtml5.co/preview/?item=light-free-html5-template-bootstrap" target="_blank">Light</a></li>
+                                                            <li><a href="http://freehtml5.co/preview/?item=relic-free-html5-template-using-bootstrap" target="_blank">Relic</a></li>
+                                                            <li><a href="http://freehtml5.co/preview/?item=display-free-html5-template-using-bootstrap" target="_blank">Display</a></li>
+                                                            <li><a href="http://freehtml5.co/preview/?item=sprint-free-html5-template-bootstrap" target="_blank">Sprint</a></li>-->
+												</ul>
+											</li>
+											<li>
+												<a href="#">Ảnh gia đình</a>
+											</li>
+											<li>
+												<a href="#">Ảnh chân dung</a>
+											</li>
+											<li>
+												<a href="#">Ảnh chụp tự do</a>
+											</li>
+										</ul>
+									</li>
+									<li>
+										<a href="view-contract.html">Hợp Đồng</a>
+									</li>
+
+									<li>
+										<a id="user" href="login.html">Đăng nhập</a>
+										<ul id="" class="fh5co-sub-menu">
+												<li id="user-btn" hidden><a href="user.html">Người dùng</a></li>
+											<li id="stu-btn" hidden><a href="studio.html">Studio</a></li>
+											<li id="dis-btn" hidden><a href="dismanage.html">Quận & Huyện</a></li>
+											<li id="edit-profile-btn" hidden><a href="edit-studio.html">Hồ sơ</a></li>
+											<li id="pack-btn" hidden><a href="package.html">Gói hàng</a></li>
+											<li id="pic-btn" hidden><a href="picture.html">Ảnh</a></li>
+											<li id="con-btn" hidden><a href="contract.html">Hợp đồng</a></li>
+											<li id="logout-btn" hidden>
+												<a id="logout" href="login.html">Đăng xuất</a></li>
+												
+										</ul>
+									</li>
+
+
+									<!--<li><a href="blog.html">Blog &amp; Social</a></li>
+                                            <li><a href="contact.html">Contact</a></li>-->
+								</ul>
+							</nav>
+						</div>
+					</div>
+					
+				</header>
+			</div>
+			<!-- end:fh5co-header -->
+			<aside id="fh5co-hero" class="js-fullheight">
+				<div class="flexslider js-fullheight">
+					<ul class="slides">
+						<li style="background-image: url(images/slide_1.jpg);">
+							<div class="overlay-gradient"></div>
+							<div class="container">
+								<div class="col-md-10 col-md-offset-1 text-center js-fullheight slider-text">
+									<div class="slider-text-inner">
+										<h2>Tạo một ngày đặc biệt cho cặp vợ chồng</h2>
+										<p>
+											<a href="studio-list.html" class="btn btn-primary btn-lg">Bắt đầu</a>
+										</p>
+									</div>
+								</div>
+							</div>
+						</li>
+						<li style="background-image: url(images/slide_2.jpg);">
+							<div class="overlay-gradient"></div>
+							<div class="container">
+								<div class="col-md-10 col-md-offset-1 text-center js-fullheight slider-text">
+									<div class="slider-text-inner">
+										<h2>Nơi đẹp nhất trên thế giới</h2>
+										<p>
+											<a href="studio-list.html" class="btn btn-primary btn-lg">Bắt đầu</a>
+										</p>
+									</div>
+								</div>
+							</div>
+						</li>
+						<li style="background-image: url(images/slide_3.jpg);">
+							<div class="overlay-gradient"></div>
+							<div class="container">
+								<div class="col-md-10 col-md-offset-1 text-center js-fullheight slider-text">
+									<div class="slider-text-inner">
+										<h2>Bắt đầu cuộc sống của đôi bạn với dịch vụ của chúng tôi</h2>
+										<p>
+											<a href="studio-list.html" class="btn btn-primary btn-lg">Bắt đầu</a>
+										</p>
+									</div>
+								</div>
+							</div>
+						</li>
+						<li style="background-image: url(images/slide_4.jpg);">
+							<div class="overlay-gradient"></div>
+							<div class="container">
+								<div class="col-md-10 col-md-offset-1 text-center js-fullheight slider-text">
+									<div class="slider-text-inner">
+										<h2>Lịch sự, kiên nhẫn, Hoàn hảo là phương châm của chúng tôi</h2>
+										<p>
+											<a href="studio-list.html" class="btn btn-primary btn-lg">Bắt đầu</a>
+										</p>
+									</div>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</aside>
+			<div id="fh5co-section">
+				<div class="col-half col-half-color">
+					<div class="row-half">
+						<div class="col-half-inner col-half-inner-bg">
+							<div class="desc">
+								<h3>Về chúng tôi</h3>
+								<p>Chúng tôi là một trang web giúp bạn tìm những Studio Chụp ảnh mà bạn mong muốn và bạn có thể liên hệ trực tiếp với chúng tôi, thông tin của bạn được an toàn với chúng tôi</p>
+								<p>
+									<a href="#" class="btn btn-primary btn-outline with-arrow">Đọc thêm
+										<i class="icon-arrow-right22"></i>
+									</a>
+								</p>
+							</div>
+						</div>
+						<a href="#" class="col-half-inner grid-item" style="background-image: url(images/project-1.jpg);">
+							<div class="desc2">
+								<h3>Nguyễn Thị Thanh Xuân</h3>
+								<span>Vịnh Hạ Long</span>
+							</div>
+						</a>
+					</div>
+					<div class="row-half">
+						<a href="#" class="col-half-inner grid-item" style="background-image: url(images/project-2.jpg);">
+							<div class="desc2">
+								<h3>Đặng Lí Thông</h3>
+								<span>Ảnh cưới</span>
+							</div>
+						</a>
+						<div class="col-half-inner col-half-inner-bg2">
+							<div class="desc">
+								<h3>Khách hàng nói
+									<i class="icon-quotes-right"></i>
+								</h3>
+								<blockquote>
+									<p>Dịch vụ quả là tuyệt vời, điểm 10/10 cho chất lượng.</p>
+									<span>
+										<a class="client" href="#">&mdash; Cao Lâm Vũ</a>
+									</span>
+								</blockquote>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-half col-half-2">
+					<h2>Tính năng của Studio</h2>
+					<div class="featured-inner">
+						<i class="sl-icon-chart"></i>
+						<div class="desc">
+							<h3>Thống kê hợp đồng</h3>
+							<p>Giúp bạn theo dõi hợp đồng của bạn và có thể chia sẻ nó với bạn bè mà không vi phạm hợp đồng. Bạn cũng có thể xem ảnh của riêng bạn sau khi đã chụp xong.</p>
+						</div>
+					</div>
+					<div class="featured-inner">
+						<i class="sl-icon-screen-tablet"></i>
+						<div class="desc">
+							<h3>Chế dộ xem trên điện thoại</h3>
+							<p>Bạn có thể xem ảnh qua điện thoại của mình mà không có bất kỳ hạn chế nào.</p>
+						</div>
+					</div>
+					<div class="featured-inner">
+						<i class="sl-icon-layers"></i>
+						<div class="desc">
+							<h3>Chụp ảnh ở mọi nơi</h3>
+							<p>Chúng tôi có dội ngũ ở mọi nơi trên cả nước, luôn đáp ứng mọi yêu cầu của khách hàng.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+			<div class="fh5co-parallax fh5co-parallax2" style="background-image: url(images/hero.jpg);" data-stellar-background-ratio="0.5">
+				<div class="overlay"></div>
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12 col-md-offset-0 col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0 text-center fh5co-table">
+							<div class="fh5co-intro fh5co-table-cell animate-box">
+								<h1 class="text-center">Ảnh trân thực, hoàn mỹ</h1>
+								<p>Được tạo ra bởi tình yêu của những con người tại
+									<a href="http://freehtml5.co">StudioWeb.com</a>
+								</p>
+								<p>
+									<a href="studio-list.html" class="btn btn-primary btn-lg">Bắt đầu</a>
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div id="fh5co-services-section">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-6 col-md-offset-3 text-center fh5co-heading">
+							<i class="sl-icon-paper-plane"></i>
+							<h2>Dịch vụ của chúng tôi</h2>
+							<p>Dịch vụ nhanh và chọn Gói bạn muốn. </p>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-4 text-center">
+							<div class="services">
+								<span>
+									<i class="sl-icon-graph"></i>
+								</span>
+								<h3>Dashboard</h3>
+								<p>Bạn có thế xem trực tiếp trạng thái hợp đồng mà không phải phức tập</p>
+							</div>
+						</div>
+						<div class="col-md-4 text-center">
+							<div class="services">
+								<span>
+									<i class="sl-icon-camera"></i>
+								</span>
+								<h3>Nhiếp ảnh</h3>
+								<p>Chúng tôi có những chuyên gia về chụp ảnh, đáp ứng mọi nhu cầu chụp ảnh của bạn.</p>
+							</div>
+						</div>
+						<div class="col-md-4 text-center">
+							<div class="services">
+								<span>
+									<i class="sl-icon-support"></i>
+								</span>
+								<h3>Hỗ trợ</h3>
+								<p>Chúng tôi có một dội hỗ trợ về Studio, mội thắc mắc của bạn sẽ được trả lời nhanh nhất có thể.</p>
+							</div>
+						</div>
+						<!-- <div class="col-md-4 text-center">
+						<div class="services">
+							<span><i class="sl-icon-lock"></i></span>
+							<h3>Security</h3>
+							<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
+						</div>
+					</div>
+					<div class="col-md-4 text-center">
+						<div class="services">
+							<span><i class="sl-icon-key"></i></span>
+							<h3>Key Activator</h3>
+							<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
+						</div>
+					</div>
+					<div class="col-md-4 text-center">
+						<div class="services">
+							<span><i class="sl-icon-chart"></i></span>
+							<h3>Web Development</h3>
+							<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
+						</div>
+					</div> -->
+					</div>
+				</div>
+			</div>
+			<div class="fh5co-parallax" style="background-image: url(images/hero2.jpg);" data-stellar-background-ratio="0.5">
+				<div class="overlay"></div>
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12 col-md-offset-0 col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0 text-center fh5co-table">
+							<div class="fh5co-intro fh5co-table-cell animate-box">
+								<h1 class="text-center">Chúng tôi là lựa chon tốt nhất của bạn</h1>
+								<p>Được tạo ra bởi tình yêu của những con người của
+									<a href="http://freehtml5.co">StudioWeb</a>
+								</p>
+								<p>
+									<a href="studio-list.html" class="btn btn-primary btn-lg">Bắt đầu</a>
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="fh5co-counter-section" class="fh5co-counters">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-6 col-md-offset-3 text-center fh5co-heading">
+							<i class="sl-icon-badge"></i>
+							<h2>Thành tựu</h2>
+							<p>Đã từng chụp nhiều khách hàng khó tính, có kinh nghiệm lâu năm. Được nhiều khách hàng đánh giá cao.</p>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-3 text-center">
+							<span class="fh5co-counter js-counter" data-from="0" data-to="12" data-speed="1000" data-refresh-interval="50"></span>
+							<span class="fh5co-counter-label">Studio</span>
+						</div>
+						<div class="col-md-3 text-center">
+							<span class="fh5co-counter js-counter" data-from="0" data-to="347" data-speed="5000" data-refresh-interval="50"></span>
+							<span class="fh5co-counter-label">Khách hàng</span>
+						</div>
+						<div class="col-md-3 text-center">
+							<span class="fh5co-counter js-counter" data-from="0" data-to="12457	" data-speed="5000" data-refresh-interval="50"></span>
+							<span class="fh5co-counter-label">Dự án</span>
+						</div>
+						<div class="col-md-3 text-center">
+							<span class="fh5co-counter js-counter" data-from="0" data-to="11989" data-speed="5000" data-refresh-interval="50"></span>
+							<span class="fh5co-counter-label">Dự án hoàn thành</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<footer id="footer">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-4">
+							<div class="copyright">
+								<p>
+									<small>&copy; 2016 Free HTML5
+										<a href="index.html">Energy</a>. All Rights Reserved.
+										<br> Made with
+										<i class="icon-heart3"></i> by
+										<a href="http://freehtml5.co/" target="_blank">Freehtml5.co</a> / Demo Images:
+										<a href="https://unsplash.com/" target="_blank">Unsplash </a>
+									</small>
+								</p>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="row">
+								<div class="col-md-4">
+									<h3>Company</h3>
+									<ul class="link">
+										<li>
+											<a href="#">Về chúng tôi</a>
+										</li>
+										<li>
+											<a href="#">Dịch vụ chăm sóc khac hàng</a>
+										</li>
+										<li>
+											<a href="#">Liên hệ với chúng tôi</a>
+										</li>
+									</ul>
+								</div>
+								<div class="col-md-6">
+									<h3>Theo dõi</h3>
+									<p>Trong nhiếp ảnh, hiểu con người quan trọng hơn hiểu bức ảnh</p>
+									<form action="#" id="form-subscribe">
+										<div class="form-field">
+											<input type="email" placeholder="Email Address" id="email">
+											<input type="submit" id="submit" value="Send">
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-2">
+							<ul class="social-icons">
+								<li>
+									<a href="#">
+										<i class="icon-twitter-with-circle"></i>
+									</a>
+									<a href="#">
+										<i class="icon-facebook-with-circle"></i>
+									</a>
+									<a href="#">
+										<i class="icon-instagram-with-circle"></i>
+									</a>
+									<a href="#">
+										<i class="icon-linkedin-with-circle"></i>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</footer>
+
+
+		</div>
+		<!-- END fh5co-page -->
+
+	</div>
+	<!-- END fh5co-wrapper -->
+</body>
+
 </html>

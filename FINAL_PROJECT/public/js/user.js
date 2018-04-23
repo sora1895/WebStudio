@@ -1,12 +1,13 @@
-$(document).ready(function(){
-    var showDat =$('#showDat').find('tbody');
-    var UserForm =$('#UserForm');
-    var addForm =$('#addForm')
+$(document).ready(function () {
+    var showDat = $('#showDat').find('tbody');
+    var UserForm = $('#UserForm');
+    var addForm = $('#addForm')
     var showAdd = $('#showAdd');
     var UserNum = $('#UserNum');
     var adddiv = $('#adddiv');
     var editForm = $('#editForm');
-    var showData = function(){
+    var showall = $('#showall');
+    var showData = function () {
         $.ajax({
             url: '/GetUser',
             method: 'get',
@@ -15,7 +16,10 @@ $(document).ready(function(){
             show(res);
         })
     }
-    showData();
+
+    showall[0].onclick = function(){
+        showData();
+    }
     var oldName;
     var oldPass;
     var oldRole;
@@ -79,18 +83,17 @@ $(document).ready(function(){
                     <td>${UserID}</a></td>
                     <td>${Password}</td>
                     <td>${StudioName}</td>
-                    <td>${UserRole}</td>
                 </tr>`);
-                var editButton = $(`<td><button>Edit</button></td>`);
-                var delButton = $(`<td><button>Delete</button></td>`);
+                var editButton = $(`<td><button style="color:white">Edit</button></td>`);
+                // var delButton = $(`<td><button style="color:white">Delete</button></td>`);
                 editButton.click(function (e) {
                     bindToEditForm(d);
                 });
-                delButton.click(function (e) {
-                    delRow(d);
-                })
+                // delButton.click(function (e) {
+                //     delRow(d);
+                // })
                 tr.append(editButton);
-                tr.append(delButton);
+                // tr.append(delButton);
                 showDat.append(tr);
                 count++;
             })
@@ -104,7 +107,7 @@ $(document).ready(function(){
     }
 
 
-    showAdd[0].onclick = function(){
+    showAdd[0].onclick = function () {
         editForm.hide();
         document.getElementById("addForm").style.display = 'block';
     }
@@ -149,66 +152,208 @@ $(document).ready(function(){
         }
     }
 
-    addForm.submit(function (e) {
+    /*addForm.submit(function (e) {
         e.preventDefault();
-        var newNames = addForm.find("input[name='newPName']").val();
-        var newPass = addForm.find("input[name='newPPass']").val();
-        var newRole = addForm.find("input[name='newPRole']").val();
-        var idstudio = $('#studio :selected').val();
-        console.log(newNames,newPass,newRole,idstudio);
-        e.preventDefault();
-        $.ajax({
-            url: '/AddUser',
-            method: 'post',
-            contentType: 'application/json',
-            data: JSON.stringify({
-                newNames: newNames,
-                newPass:newPass,
-                newRole: newRole,
-                idstudio: idstudio,
-            })
-        }).always(function (res) {
-            var code = res.code;
-            var success = res.success || 'Insert when wrong!';
-            window.location.href="http://localhost:5000/user.html"
-            if (code == 200) {
-                alert("Insert Successful");
-            } else {
-                alert(success);
-            }
-        })
+        
 
-    })
+    })*/
 
-    editForm.submit(function (e) {
+    /*editForm.submit(function (e) {
         e.preventDefault();
         //var newNames = editForm.find("input[name='oldName']").val();
-        var newPass = editForm.find("input[name='newPass']").val();
-        var newRole = editForm.find("input[name='newRole']").val();
-        var idstudio = $('#SelStudio :selected').val();
-        console.log(oldName,newPass,newRole,idstudio);
-        e.preventDefault();
-        $.ajax({
-            url: '/EditUser',
-            method: 'post',
-            contentType: 'application/json',
-            data: JSON.stringify({
-                newNamess: oldName,
-                newPasss:newPass,
-                newRoles: newRole,
-                idstudios: idstudio,
-            })
-        }).always(function (res) {
-            var code = res.code;
-            var success = res.success || 'Insert when wrong!';
-            window.location.href="http://localhost:5000/user.html"
-            if (code == 200) {
-                alert("Insert Successful");
+
+
+    })*/
+
+
+    var inputs = document.forms['addForm'].getElementsByTagName('input');
+    function valid1() {
+        var errors = false;
+
+        var patternss = /^[a-zA-Z0-9]+$/;
+        for (var i = 0; i < inputs.length; i++) {
+            var value = inputs[i].value;
+            var id = inputs[i].getAttribute('id');
+            // Tạo phần tử span lưu thông tin lỗi
+            var span = document.createElement('span');
+            // Nếu span đã tồn tại thì remove
+            var p = inputs[i].parentNode;
+            if (p.lastChild.nodeName == 'SPAN') { p.removeChild(p.lastChild); }
+            // Kiểm tra rỗng
+
+            if (value == '') {
+                span.innerHTML = 'Thông tin được yêu cầu';
+
             } else {
-                alert(success);
+                //check name
+                if (id == 'newPName') {
+                    console.log(value);
+                    if (patternss.test(value) == false) { span.innerHTML = 'UserName must not have special character!!'; }
+
+                    if (value.length < 6 || value.length > 32) {
+                        span.innerHTML = 'UserName must be longer 6 and lesser 32 character !!';
+                    }
+                }
+                //check password
+                if (id == 'newPPass') {
+                    if (value.length < 6) { span.innerHTML = 'Password must be longer 6 character'; }
+                    var pass = value;
+                }
+
+                // Kiểm tra số điện thoại
+                // if(id == 'newPNumber' && isNaN(value) == true ){span.innerHTML ='Số điện thoại phải là kiểu số';}
+
             }
-        })
+            // Nếu có lỗi thì chèn span vào hồ sơ, chạy onchange, submit return false, highlight border
 
-    })
+            if (span.innerHTML != '') {
 
+                inputs[i].parentNode.appendChild(span);
+
+                errors = true;
+
+                //run_onchange = true;
+
+                inputs[i].style.border = '1px solid #c6807b';
+
+                inputs[i].style.background = '#fffcf9';
+
+            }
+        }
+        if (errors == false) {
+            var newNames = addForm.find("input[name='newPName']").val();
+            var newPass = addForm.find("input[name='newPPass']").val();
+            var newRole = 'user';
+            var idstudio = $('#studio :selected').val();
+            console.log(newNames, newPass, newRole, idstudio);
+            $.ajax({
+                url: '/AddUser',
+                method: 'post',
+                contentType: 'application/json',
+                data: JSON.stringify({
+                    newNames: newNames,
+                    newPass: newPass,
+                    newRole: newRole,
+                    idstudio: idstudio,
+                })
+            }).always(function (res) {
+                var code = res.code;
+                var success = res.success || 'Insert when wrong!';
+                window.location.href = "http://localhost:5000/user.html"
+                if (code == 200) {
+                    alert("Insert Successful");
+                } else {
+                    alert(success);
+                }
+            })
+        } else {
+            return !errors;
+        }
+    }
+
+    var inputs1 = document.forms['editForm'].getElementsByTagName('input');
+    var run_onchange1 = false;
+    function valid2() {
+        var errors = false;
+
+        var patternss = /^[a-zA-Z0-9]+$/;
+        for (var i = 0; i < inputs1.length; i++) {
+            var value = inputs1[i].value;
+            var id = inputs1[i].getAttribute('id');
+            // Tạo phần tử span lưu thông tin lỗi
+            var span = document.createElement('span');
+            // Nếu span đã tồn tại thì remove
+            var p = inputs1[i].parentNode;
+            if (p.lastChild.nodeName == 'SPAN') { p.removeChild(p.lastChild); }
+            // Kiểm tra rỗng
+
+            if (value == '') {
+                span.innerHTML = 'Thông tin được yêu cầu';
+
+            } else {
+                //check name
+                if (id == 'newName') {
+                    console.log(value);
+                    if (patternss.test(value) == false) { span.innerHTML = 'UserName must not have special character!!'; }
+                    var emailss = value;
+                }
+                //check password
+                if (id == 'newPass') {
+                    if (value.length < 6) { span.innerHTML = 'Password must be longer 6 character'; }
+                    var pass = value;
+                }
+
+                // Kiểm tra số điện thoại
+                //  if(id == 'newPNumber' && isNaN(value) == true ){span.innerHTML ='Số điện thoại phải là kiểu số';}
+
+            }
+            // Nếu có lỗi thì chèn span vào hồ sơ, chạy onchange, submit return false, highlight border
+
+            if (span.innerHTML != '') {
+
+                inputs1[i].parentNode.appendChild(span);
+
+                errors = true;
+
+                //run_onchange = true;
+
+                inputs1[i].style.border = '1px solid #c6807b';
+
+                inputs1[i].style.background = '#fffcf9';
+
+            }
+        }// end for
+
+        if (errors == false) {
+
+            var newPass = editForm.find("input[name='newPass']").val();
+            var newRole = 'user';
+            var idstudio = $('#SelStudio :selected').val();
+            console.log(oldName, newPass, newRole, idstudio);
+            $.ajax({
+                url: '/EditUser',
+                method: 'post',
+                contentType: 'application/json',
+                data: JSON.stringify({
+                    newNamess: oldName,
+                    newPasss: newPass,
+                    newRoles: newRole,
+                    idstudios: idstudio,
+                })
+            }).always(function (res) {
+                var code = res.code;
+                var success = res.success || 'Insert when wrong!';
+                //window.location.href = "http://localhost:5000/user.html"
+                if (code == 200) {
+                    alert("Insert Successful");
+                } else {
+                    alert(success);
+                }
+            })
+
+
+            //  alert('Đăng ký thành công');
+        } else {
+            return !errors;
+
+        }
+
+
+
+    }
+
+    var register = document.getElementById('Add');
+    console.log(register);
+    register.onclick = function () {
+
+        return valid1();
+
+    }
+    var register2 = document.getElementById('Edit');
+    console.log(register2);
+    register2.onclick = function () {
+
+        return valid2();
+
+    }
 })

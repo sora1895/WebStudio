@@ -27,7 +27,33 @@ var connection = require('./connectDB');
 
   exports.GetPicture = function (req, res) {
     var condeid = req.query.condeid;
-    connection.query('select * from picture where condetail_ID=?',[condeid], function (error, results, fields) {
+    connection.query('select * from picture p ,contractdetail cd where cd.ConDetail_ID = p.ConDetail_ID and p.condetail_ID=?',[condeid], function (error, results, fields) {
+      if (error) {
+        res.send({
+          "code": 400,
+          "failed": "error ocurred"
+        })
+      } else {
+        if (results.length > 0) {
+          res.send({
+            "code": 200,
+            "data": results,
+          });
+        }
+        else {
+          res.send({
+            "code": 204,
+            "success": "district does not exits"
+          });
+        }
+  
+      }
+    });
+  }
+
+  exports.GetPictureById = function(req,res){
+    var id = req.query.id;
+    connection.query('select * from picture p ,contractdetail cd where cd.ConDetail_ID = p.ConDetail_ID and p.Picture_ID=?',[id], function (error, results, fields) {
       if (error) {
         res.send({
           "code": 400,
@@ -77,9 +103,10 @@ var connection = require('./connectDB');
   }
 
   exports.GetPictureByName = function (req, res) {
-    var name = req.query.name;
-    console.log(name);
-    connection.query("SELECT * FROM Picture WHERE Picture_Detail LIKE '%"+name+"%'", function (error, results, fields) {
+    var name = req.body.key;
+    var id = req.body.id;
+    console.log(name,id);
+    connection.query("SELECT * FROM Picture p, contractdetail conde WHERE conde.ConDetail_ID=p.ConDetail_ID and p.Picture_Detail LIKE '%"+name+"%' and conde.ConDetail_ID="+id, function (error, results, fields) {
       if (error) {
         res.send({
           "code": 400,
@@ -95,7 +122,7 @@ var connection = require('./connectDB');
         else {
           res.send({
             "code": 204,
-            "success": "district does not exits"
+            "success": "Picture not found"
           });
         }
   
@@ -127,8 +154,9 @@ var connection = require('./connectDB');
     var detail = req.body.detail;
     var id = req.body.id;
     var url = req.body.url;
-    console.log(detail,url);
-    connection.query('UPDATE picture SET picture_detail=?,picture_url=? where Picture_ID=?', [detail,url,id], function (error, results, fields) {
+    var conid = req.body.conid;
+    console.log(conid,id,detail,url);
+    connection.query('UPDATE picture SET picture_detail=?,picture_url=?,condetail_id=? where Picture_ID=?', [detail,url,conid,id], function (error, results, fields) {
       if (error) {
         res.send({
           "code": 400,

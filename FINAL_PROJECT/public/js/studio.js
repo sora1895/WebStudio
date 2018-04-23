@@ -6,7 +6,11 @@ $(document).ready(function(){
     var StudioNum = $('#StudioNum');
     var adddiv = $('#adddiv');
     var editForm = $('#editForm');
+    var showall = $('#showall');
 
+    showall[0].onclick = function(){
+        showData();
+    }
     var showData = function(){
         $.ajax({
             url: '/GetStudio',
@@ -16,7 +20,6 @@ $(document).ready(function(){
             show(res);
         })
     }
-    showData();
     var oldName;
     var oldAdress;
     var oldprovince;
@@ -63,7 +66,7 @@ $(document).ready(function(){
             }
             //del
             function delRow(data = {}) {
-                oldId = data.Studio_ID;
+                var oldId = data.Studio_ID;
                 console.log(oldId);
                 if (confirm('You want to delete this data?')) {
                     $.ajax({
@@ -100,7 +103,7 @@ $(document).ready(function(){
 
                 var tr = $(`<tr>
                     <td>${StudioID}</td>
-                    <td><a href="StudioDetail.html?id=${StudioID}?name=${StudioName}">${StudioName}</a></td>
+                    <td>${StudioName}</td>
                     <td>${StudioAddress}</td>
                     <td>${StudioEmail}</td>
                     <td>${StudioNumber}</td>
@@ -108,8 +111,8 @@ $(document).ready(function(){
                     <td>${ProvinceName}</td>
                     <td>${DistrictName}</td>
                 </tr>`);
-                var editButton = $(`<td><button>Edit</button></td>`);
-                var delButton = $(`<td><button>Delete</button></td>`);
+                var editButton = $(`<td><button style="color:white">Edit</button></td>`);
+                var delButton = $(`<td><button style="color:white">Delete</button></td>`);
                 editButton.click(function (e) {
                     bindToEditForm(d);
                 });
@@ -148,7 +151,7 @@ $(document).ready(function(){
         })
     });
 
-    addForm.submit(function (e) {
+    /*addForm.submit(function (e) {
         e.preventDefault();
         var newNames = addForm.find("input[name='newPName']").val();
         var newAddress = addForm.find("input[name='newPAddress']").val();
@@ -181,7 +184,7 @@ $(document).ready(function(){
             }
         })
 
-    })
+    })*/
 
     $.ajax({
         url: '/GETProvinces',//
@@ -279,7 +282,7 @@ $(document).ready(function(){
 
 
     //edit
-    editForm.submit(function (e) {
+    /*editForm.submit(function (e) {
         e.preventDefault();
         //var newNames = editForm.find("input[name='oldName']").val();
         var newName = editForm.find("input[name='newPNames']").val();
@@ -314,8 +317,289 @@ $(document).ready(function(){
             }
         })
 
-    })
+    })*/
+
+    var inputs = document.forms['addForm'].getElementsByTagName('input');
+    var run_onchange = false;
+    function valid(){
+        var errors = false;
+
+        var reg_mail = /^[A-Za-z0-9]+([_\.\-]?[A-Za-z0-9])*@[A-Za-z0-9]+([\.\-]?[A-Za-z0-9]+)*(\.[A-Za-z]+)+$/;
+        var patternss = /^[a-zA-Z0-9]+$/;
+        var coordinatesss = /[0-9.],[0-9.]+$/
+        for(var i=0; i<inputs.length; i++){
+
+            var value = inputs[i].value;
+
+            var id = inputs[i].getAttribute('id');
+
+            // Tạo phần tử span lưu thông tin lỗi
+
+            var span = document.createElement('span');
+
+            // Nếu span đã tồn tại thì remove
+
+            var p = inputs[i].parentNode;
+
+            if(p.lastChild.nodeName == 'SPAN') {p.removeChild(p.lastChild);}
+
+            // Kiểm tra rỗng
+
+            if(value == ''){
+
+                span.innerHTML ='Thông tin được yêu cầu';
+
+            }else{
+
+                // Kiểm tra các trường hợp khác
+
+                if(id == 'newPEmail'){
+
+                    if(reg_mail.test(value) == false){ span.innerHTML ='Email không hợp lệ (ví dụ: abc@gmail.com)';}
+
+                    var email =value;
+
+                }
+                if(id == 'confirm_email' && value != email){span.innerHTML ='Email nhập lại chưa đúng';}
+
+                //check name
+                if(id == 'newPName'){
+                    console.log(value);
+                    if(patternss.test(value) == false){ span.innerHTML ='StudioName không hợp lệ';}
+                    var emailss =value;
+                }
+
+                //check coordinate
+                if(id == 'newPCoordinate'){
+                    //console.log(value);
+                    if(coordinatesss.test(value) == false){ span.innerHTML ='Cooridnate không hợp lệ (theo form: XX,XX)';}
+
+                }
+
+                // Kiểm tra số điện thoại
+
+                if(id == 'newPNumber' && isNaN(value) == true ){span.innerHTML ='Số điện thoại phải là kiểu số';}
+
+            }
+            // Nếu có lỗi thì chèn span vào hồ sơ, chạy onchange, submit return false, highlight border
+
+            if(span.innerHTML != ''){
+
+                inputs[i].parentNode.appendChild(span);
+
+                errors = true;
+
+                //run_onchange = true;
+
+                inputs[i].style.border = '1px solid #c6807b';
+
+                inputs[i].style.background = '#fffcf9';
+
+            }
+        }// end for
+
+        if(errors == false){
+
+            //addForm.submit(function (e) {
+            //e.preventDefault();
+            var newNames = addForm.find("input[name='newPName']").val();
+            var newAddress = addForm.find("input[name='newPAddress']").val();
+            var newEmail = addForm.find("input[name='newPEmail']").val();
+            var newNumber = addForm.find("input[name='newPNumber']").val();
+            var newCoordinate = addForm.find("input[name='newPCoordinate']").val();
+            var idistrict = $('#district :selected').val();
+            var idprovince = $('#province :selected').val();
+            console.log(newNames,newAddress,newEmail,newNumber,newCoordinate,idistrict);
+            // e.preventDefault();
+            $.ajax({
+                url: '/AddStudio',
+                method: 'post',
+                contentType: 'application/json',
+                data: JSON.stringify({
+                    newNames: newNames,
+                    newAddress:newAddress,
+                    newEmail: newEmail,
+                    newNumber: newNumber,
+                    newCoordinate: newCoordinate,
+                    idistrict: idistrict,
+                })
+            }).always(function (res) {
+                if(idprovince=="Please Select" || idistrict == "Please Select"){
+                    alert("Province and District must be selected!");
+                } else {
+                    var code = res.code;
+                    var success = res.success || 'Insert successful!';
+                    window.location.href="http://localhost:5000/studio.html"
+                    if (code == 200) {
+                        alert("Insert fail!");
+                    } else {
+                        alert(success);
+                    }
+                }
+
+            })
+
+            // })
 
 
+            //  alert('Đăng ký thành công');
+        } else {
+            return !errors;
+
+        }
+
+
+
+    }// end valid()
+
+    // Chạy hàm kiểm tra valid()
+
+    //var register = $('#Add');
+
+    var register = document.getElementById('Add');
+    console.log(register);
+    register.onclick = function(){
+
+        return valid();
+
+    }
+
+    // Kiểm tra lỗi với sự kiện onchange -> gọi lại hàm valid()
+
+
+
+    //
+
+    //check edit
+    var inputs2 = document.forms['editForm'].getElementsByTagName('input');
+    var run_onchange2 = false;
+    function valid2(){
+        var errors = false;
+
+        var reg_mail = /^[A-Za-z0-9]+([_\.\-]?[A-Za-z0-9])*@[A-Za-z0-9]+([\.\-]?[A-Za-z0-9]+)*(\.[A-Za-z]+)+$/;
+        var patternss = /^[a-zA-Z0-9ăâơưêôÂƠĂUÔÊẢảẲẳẨẩẺẻỂểỈỉỎỏỔổỞởỦủỬửỶỷÀàẰằẦầÈèỀềÌ ìǸǹÒòỒồỜờÙùỪừẀẁỲỳÁáẮắẤấÉéẾếÍíÓóỐốỚớÚúỨứÝýẠạẶặẬậẸẹỆệỊịỌọỘộỢợỤụỰựỴỵÃãẴẵẪẫẼẽỄễĨĩÕõỖỗỠỡỮữŨũỸỹ ]+$/;
+        var coordinatesss = /[0-9.],[0-9.]+$/
+        for(var i=0; i<inputs2.length; i++){
+
+            var value = inputs2[i].value;
+
+            var id = inputs2[i].getAttribute('id');
+
+            // Tạo phần tử span lưu thông tin lỗi
+
+            var span = document.createElement('span');
+
+            // Nếu span đã tồn tại thì remove
+
+            var p = inputs2[i].parentNode;
+
+            if(p.lastChild.nodeName == 'SPAN') {p.removeChild(p.lastChild);}
+
+            // Kiểm tra rỗng
+
+            if(value == ''){
+
+                span.innerHTML ='Thông tin được yêu cầu';
+
+            }else{
+
+                // Kiểm tra các trường hợp khác
+
+                if(id == 'newPEmails'){
+
+                    if(reg_mail.test(value) == false){ span.innerHTML ='Email không hợp lệ (ví dụ: abc@gmail.com)';}
+
+                    var email =value;
+
+                }
+                if(id == 'confirm_email' && value != email){span.innerHTML ='Email nhập lại chưa đúng';}
+
+                //check coordinate
+                if(id == 'newPCoordinates'){
+                    //console.log(value);
+                    if(coordinatesss.test(value) == false){ span.innerHTML ='Cooridnate không hợp lệ (theo form: XX,XX)';}
+
+                }
+                if(id == 'newPNames'){
+                    console.log(value);
+                    if(patternss.test(value) == false){ span.innerHTML ='StudioName không hợp lệ';}
+                    var emailss =value;
+                }
+                // Kiểm tra số điện thoại
+
+                if(id == 'newPNumbers' && isNaN(value) == true ){span.innerHTML ='Số điện thoại phải là kiểu số';}
+
+            }
+            // Nếu có lỗi thì chèn span vào hồ sơ, chạy onchange, submit return false, highlight border
+
+            if(span.innerHTML != ''){
+
+                inputs2[i].parentNode.appendChild(span);
+
+                errors = true;
+
+                //run_onchange = true;
+
+                inputs2[i].style.border = '1px solid #c6807b';
+
+                inputs2[i].style.background = '#fffcf9';
+
+            }
+        }// end for
+
+        if(errors == false){
+
+            // e.preventDefault();
+            //var newNames = editForm.find("input[name='oldName']").val();
+            var newName = editForm.find("input[name='newPNames']").val();
+            var newAdre = editForm.find("input[name='newPAddresss']").val();
+            var idDistrict = $('#districts :selected').val();
+            var newEmails = editForm.find("input[name='newPEmails']").val();
+            var newNum = editForm.find("input[name='newPNumbers']").val();
+            var newCoor = editForm.find("input[name='newPCoordinates']").val();
+            console.log(oldIDs,newAdre,idDistrict,newEmails,newNum,newCoor);
+            //e.preventDefault();
+            $.ajax({
+                url: '/EditStudio',
+                method: 'post',
+                contentType: 'application/json',
+                data: JSON.stringify({
+                    ids : oldIDs,
+                    stuname: newName,
+                    address:newAdre,
+                    idistrictssss: idDistrict,
+                    email: newEmails,
+                    number: newNum,
+                    coordinate: newCoor,
+                })
+            }).always(function (res) {
+                var code = res.code;
+                var success = res.success || 'Insert Successful!';
+                window.location.href="http://localhost:5000/studio.html"
+                if (code == 200) {
+                    alert("Insert Successful");
+                } else {
+                    alert(success);
+                }
+            })
+
+            // })
+
+
+            //  alert('Đăng ký thành công');
+        } else {
+            return !errors;
+
+        }
+
+    }// end valid()
+
+    var register2 = document.getElementById('Edit');
+    console.log(register2);
+    register2.onclick = function(){
+
+        return valid2();
+
+    }
 
 })

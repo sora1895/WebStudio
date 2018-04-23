@@ -27,11 +27,22 @@ $(document).ready(function() {
             var success = res.success || 'Login when wrong!';
             var role = res.role;
             console.log(role);
+            localStorage.setItem('id',id);
             if(code == 200) {
+                
                 if(role=='admin'){
-                    location.assign('/index.html?role=admin');
+                    location.assign('/user-page.html');
+                    localStorage.setItem('Admin',1);
                 }else{
-                    location.assign('/index.html');
+                    $.ajax({
+                        url: '/GetUserByID?id='+id,
+                        method: 'post',
+                        contentType: 'application/json',
+                    }).always(function(res) {
+                        localStorage.setItem('UserStudioId',res.data[0].Studio_ID);
+                        localStorage.setItem('USER',JSON.stringify(res.data));
+                        location.assign('/user-page.html');
+                    })
                 }
                 
             } else {

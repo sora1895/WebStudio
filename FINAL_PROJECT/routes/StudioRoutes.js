@@ -169,7 +169,12 @@ exports.EditStudio = function (req, res) {
     var coordinate = req.body.coordinate;
     var idDistrict = req.body.idistrictssss;
     console.log(id, name,address,email,number,coordinate,idDistrict);
-    connection.query("update studio set District_ID = '"+idDistrict+"',Studio_Name = '"+name+"', Studio_Address = '"+address+"', Studio_Email = '"+email+"', Studio_Number = '"+number+"', Studio_Coordinate = '"+coordinate+"' where Studio_ID = '"+id+"'", function (error, results) {
+    var a = [
+        [idDistrict, name,address,email,number,id]
+    ]
+    sql = `update studio set District_ID = ${idDistrict},Studio_Name =  '${name}', Studio_Address =  '${address}', Studio_Email =  '${email}', Studio_Number =  '${number}', Studio_Coordinate = "${coordinate}" where Studio_ID =  ${id}`
+
+    connection.query(sql, function (error, results) {
         //console.log(values);
         if (error) {
             res.send({
@@ -186,6 +191,55 @@ exports.EditStudio = function (req, res) {
     });
 }
 
+exports.EditStudioProfile = function (req, res) {
+    var body = req.body;
+    var a =[]
+    body.forEach(function(d) {
+        a = [
+            d.disid,d.name,d.address,d.email,d.phone,d.coor,d.icon,d.main,d.pro1,d.pro2,d.pro3,d.pro4,d.pro5,d.pro6,d.pro7,d.quote,d.quotepic,d.about,d.aboutpic,d.id
+        ]
+        
+    console.log(a);
+    });
+    
+    var sql = `update studio set 
+    District_ID = ?,
+    Studio_Name =  ?, 
+    Studio_Address =  ?, 
+    Studio_Email =  ?, 
+    Studio_Number =  ?, 
+    Studio_Coordinate = ? ,
+    Studio_Icon = ?,
+    Studio_main_pic = ?,
+    Studio_project_1 = ?,
+    Studio_project_2 = ?,
+    Studio_project_3 = ?,
+    Studio_project_4 = ?,
+    Studio_project_5 = ?,
+    Studio_project_6 = ?,
+    Studio_project_7 = ?,
+    Studio_quote = ?,
+    Studio_quote_pic = ?,
+    Studio_About = ?,
+    Studio_about_pic = ?
+    where Studio_ID = ?`
+
+    connection.query(sql,a, function (error, results) {
+        //console.log(values);
+        if (error) {
+            res.send({
+                "code": 400,
+                "failed": "error ocurred"
+            })
+        } else {
+            console.log("Number of records edited: " + results.affectedRows);
+            res.send({
+                "code": 200,
+                "failed": "yay?"
+            })
+        }
+    });
+}
 
 //delStudio
 exports.DelStudio = function (req, res) {

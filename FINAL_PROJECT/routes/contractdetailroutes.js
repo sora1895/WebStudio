@@ -4,11 +4,11 @@ exports.GetConDetail = function (req, res) {
   var id = req.body.id;
   var pakname = req.body.pakname;
   var code = req.body.code;
-  console.log(id, pakname,code);
+  console.log(id, pakname, code);
   var sql;
   if (code == 1) {
     if (id != "") {
-      sql = "where Contract_ID = " + id + " ";
+      sql = "where Contract_ID = '" + id + "' ";
       if (pakname != null) {
         sql + "and Package_Name LIKE '%" + pakname + "%'";
       }
@@ -17,7 +17,7 @@ exports.GetConDetail = function (req, res) {
         sql = "where Package_Name LIKE '%" + pakname + "%'";
       } else sql = "";
     }
-  }else sql="";
+  } else sql = "";
 
 
   connection.query("select * from contractdetail " + sql, function (error, results, fields) {
@@ -113,4 +113,54 @@ exports.AddConDetail = function (req, res) {
       })
     }
   });
+}
+
+exports.AddMultiConDe = function (req, res) {
+  var body = req.body;
+
+  console.log(body);
+  /*for(var i=0;i<=body.length-1;i++){}
+  var a = [body[0].conid,body[0].pakid,body[0].newName,body[0].newDetail,body[0].newPrice,body[0].newNote]
+  console.log(a);*/
+  connection.query("insert into contractdetail (Contract_ID,Package_ID,Package_Name,Package_Detail,Package_Price,Package_Note) values ?", [body], function (error, results, fields) {
+    if (error) {
+      res.send({
+        "code": 400,
+        "failed": "error ocurred"
+      })
+    } else {
+      console.log("Number of records inserted: " + results.affectedRows);
+      res.send({
+        "code": 200,
+        "failed": "yay?"
+      })
+    }
+  });
+
+}
+
+exports.EditMultiConDe = function (req, res) {
+  var body = req.body
+  //console.log(body);
+  var a
+    body.forEach(function(d){
+      a = [d.ConID,d.pakid,d.newName,d.newDetail,d.numb,d.newNote,d.id]
+      console.log(a);
+    });
+      
+    connection.query('UPDATE contractdetail SET Contract_ID=?,Package_ID=?,Package_Name=?,Package_Detail=?,Package_Price=?,Package_Note=? where ConDetail_ID=?', a, function (error, results, fields) {
+      if (error) {
+        res.send({
+          "code": 400,
+          "failed": "error ocurred"
+        })
+      } else {
+        console.log("Number of records Edited: " + results.affectedRows);
+        res.send({
+          "code": 200,
+          "failed": "yay?"
+        })
+      }
+    })
+  
 }

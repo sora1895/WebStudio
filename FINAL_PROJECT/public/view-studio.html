@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="css/popup-image.css" />
+    <script type="text/javascript" src="/libs/jquery-3.2.1.min.js"></script>
+    <script src="/js/view-studio.js"></script>
+
+    <meta property="og:title" content="" />
+    <meta property="og:image" content="" />
+    <meta property="og:url" content="" />
+    <meta property="og:site_name" content="" />
+    <meta property="og:description" content="" />
+    <meta name="twitter:title" content="" />
+    <meta name="twitter:image" content="" />
+    <meta name="twitter:url" content="" />
+    <meta name="twitter:card" content="" />
+
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <link rel="shortcut icon" href="favicon.ico">
+
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="css/animate.css">
+    <!-- Icomoon Icon Fonts-->
+    <link rel="stylesheet" href="css/icomoon.css">
+    <!-- Simple Line Icons -->
+    <link rel="stylesheet" href="css/simple-line-icons.css">
+    <!-- Bootstrap  -->
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <!-- Superfish -->
+    <link rel="stylesheet" href="css/superfish.css">
+    <!-- Flexslider  -->
+    <link rel="stylesheet" href="css/flexslider.css">
+
+    <link rel="stylesheet" href="css/style.css">
+
+
+    <!-- Modernizr JS -->
+    <script src="js/modernizr-2.6.2.min.js"></script>
+</head>
+
+<body>
+    <div id="fh5co-wrapper">
+        <div id="fh5co-page">
+            <div id="fh5co-header">
+                    <header id="fh5co-header-section">
+                            <div class="container">
+                                <div class="nav-header">
+                                    <a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle">
+                                        <i></i>
+                                    </a>
+                                    <h1 id="fh5co-logo">
+                                        <a href="index.html">StudioWeb</a>
+                                    </h1>
+                                    <!-- START #fh5co-menu-wrap -->
+                                    <nav id="fh5co-menu-wrap" role="navigation">
+                                        <ul class="sf-menu" id="fh5co-primary-menu">
+                                            <li>
+                                                <a class="active" href="index.html">Trang chủ</a>
+                                            </li>
+                                            <!--<li><a href="work.html">Tour</a></li>-->
+                                            <li>
+                                                <a href="studio-list.html" class="fh5co-sub-ddown">Studio</a>
+                                                <ul class="fh5co-sub-menu">
+                                                    <li>
+                                                        <a href="studio-main.html" onclick="studioId(3);">Studio A</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="studio-main.html" onclick="studioId(4);">Studio B</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="studio-main.html" onclick="studioId(5);">Studio C</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="fh5co-sub-ddown">Album</a>
+                                                <ul class="fh5co-sub-menu">
+                                                    <li>
+                                                        <a href="left-sidebar.html">Ảnh cưới</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="right-sidebar.html">Ảnh quảng cáo</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#" class="fh5co-sub-ddown">Ảnh trẻ con</a>
+                                                        <ul class="fh5co-sub-menu">
+                                                            <li>
+                                                                <a href="http://freehtml5.co/preview/?item=build-free-html5-bootstrap-template" target="_blank">HIệu ứng đặc biệt</a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="http://freehtml5.co/preview/?item=work-free-html5-template-bootstrap" target="_blank">Ảnh tự nhiên</a>
+                                                            </li>
+                                                            <!--<li><a href="http://freehtml5.co/preview/?item=light-free-html5-template-bootstrap" target="_blank">Light</a></li>
+                                                                    <li><a href="http://freehtml5.co/preview/?item=relic-free-html5-template-using-bootstrap" target="_blank">Relic</a></li>
+                                                                    <li><a href="http://freehtml5.co/preview/?item=display-free-html5-template-using-bootstrap" target="_blank">Display</a></li>
+                                                                    <li><a href="http://freehtml5.co/preview/?item=sprint-free-html5-template-bootstrap" target="_blank">Sprint</a></li>-->
+                                                        </ul>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#">Ảnh gia đình</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#">Ảnh chân dung</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#">Ảnh chụp tự do</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <a href="view-contract.html">Hợp Đồng</a>
+                                            </li>
+        
+                                            <li>
+                                                <a id="user" href="login.html">Đăng nhập</a>
+                                                <ul id="" class="fh5co-sub-menu">
+                                                        <li id="user-btn" hidden><a href="user.html">Người dùng</a></li>
+                                                    <li id="stu-btn" hidden><a href="studio.html">Studio</a></li>
+                                                    <li id="dis-btn" hidden><a href="dismanage.html">Quận & Huyện</a></li>
+                                                    <li id="edit-profile-btn" hidden><a href="edit-studio.html">Hồ sơ</a></li>
+                                                    <li id="pack-btn" hidden><a href="package.html">Gói hàng</a></li>
+                                                    <li id="pic-btn" hidden><a href="picture.html">Ảnh</a></li>
+                                                    <li id="con-btn" hidden><a href="contract.html">Hợp đồng</a></li>
+                                                    <li id="logout-btn" hidden>
+                                                        <a id="logout" href="login.html">Đăng xuất</a></li>
+                                                        
+                                                </ul>
+                                            </li>
+        
+        
+                                            <!--<li><a href="blog.html">Blog &amp; Social</a></li>
+                                                    <li><a href="contact.html">Contact</a></li>-->
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                            
+                        </header>
+            </div>
+            <!--<aside id="fh5co-hero" class="js-fullheight">
+                <div class="flexslider js-fullheight">
+                    <ul class="slides">
+                        <li style="background-image: url(images/slide_1.jpg);">
+                            <div class="overlay-gradient"></div>
+                            <div class="container">
+                                <div class="col-md-10 col-md-offset-1 text-center js-fullheight slider-text">
+                                    <div class="slider-text-inner">
+                                        <h2>Create A Special Day for the Couple</h2>
+                                        <p>
+                                            <a href="#" class="btn btn-primary btn-lg">Get started</a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li style="background-image: url(images/slide_2.jpg);">
+                            <div class="overlay-gradient"></div>
+                            <div class="container">
+                                <div class="col-md-10 col-md-offset-1 text-center js-fullheight slider-text">
+                                    <div class="slider-text-inner">
+                                        <h2>Take Place At The Most Beautiful Place On Earth</h2>
+                                        <p>
+                                            <a href="#" class="btn btn-primary btn-lg">Get started</a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li style="background-image: url(images/slide_3.jpg);">
+                            <div class="overlay-gradient"></div>
+                            <div class="container">
+                                <div class="col-md-10 col-md-offset-1 text-center js-fullheight slider-text">
+                                    <div class="slider-text-inner">
+                                        <h2>Start Your Couple's Life With Our Services</h2>
+                                        <p>
+                                            <a href="#" class="btn btn-primary btn-lg">Get started</a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li style="background-image: url(images/slide_4.jpg);">
+                            <div class="overlay-gradient"></div>
+                            <div class="container">
+                                <div class="col-md-10 col-md-offset-1 text-center js-fullheight slider-text">
+                                    <div class="slider-text-inner">
+                                        <h2>Polite, Patience &amp; Perfect Is Our Motto</h2>
+                                        <p>
+                                            <a href="#" class="btn btn-primary btn-lg">Get started</a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </aside>-->
+            <!--<div id="fh5co-section">
+                <div class="col-half col-half-color">
+                    <div class="row-half">
+                        <div class="col-half-inner col-half-inner-bg">
+                            <div class="desc">
+                                <h3>About Us</h3>
+                                <p>We are a website that help you find your desired Photography Studio and Contact them directly
+                                    through Us, your info are safe with us</p>
+                                <p>
+                                    <a href="#" class="btn btn-primary btn-outline with-arrow">Read More
+                                        <i class="icon-arrow-right22"></i>
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                        <a href="#" class="col-half-inner grid-item" style="background-image: url(images/project-1.jpg);">
+                            <div class="desc2">
+                                <h3>Nguyen Thi Thanh Xuan</h3>
+                                <span>Ha Long bay</span>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="row-half">
+                        <a href="#" class="col-half-inner grid-item" style="background-image: url(images/project-2.jpg);">
+                            <div class="desc2">
+                                <h3>Dang Li Thong</h3>
+                                <span>Baby shoot</span>
+                            </div>
+                        </a>
+                        <div class="col-half-inner col-half-inner-bg2">
+                            <div class="desc">
+                                <h3>Client Says
+                                    <i class="icon-quotes-right"></i>
+                                </h3>
+                                <blockquote>
+                                    <p>The Services is far beyond good, 10 out of 10.</p>
+                                    <span>
+                                        <a class="client" href="#">&mdash; Cao Lam Vu</a>
+                                    </span>
+                                </blockquote>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-half col-half-2">
+                    <h2>StudioWeb Features</h2>
+                    <div class="featured-inner">
+                        <i class="sl-icon-chart"></i>
+                        <div class="desc">
+                            <h3>Contract Statistic</h3>
+                            <p>Help you keep track of your contract and even share it your friends without breaking the contract.
+                                You can also view your own photo after the pictures is ready.</p>
+                        </div>
+                    </div>
+                    <div class="featured-inner">
+                        <i class="sl-icon-screen-tablet"></i>
+                        <div class="desc">
+                            <h3>Mobile View</h3>
+                            <p>You can view your photo through your phone without any restriction.</p>
+                        </div>
+                    </div>
+                    <div class="featured-inner">
+                        <i class="sl-icon-layers"></i>
+                        <div class="desc">
+                            <h3>Printing Pictures</h3>
+                            <p>After a successful photoshoot, client can choose which picture to be print or not to be print
+                                then order us to print it.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>-->
+            
+            <div class="menu">
+                <table id="showStu">
+                    <thead>
+                        <tr>
+                            <th>Studio Info</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+
+            </div>
+
+            <div class="main">
+                <div>
+                    <table id="showDat">
+                        <tbody>
+
+                        </tbody>
+
+                    </table>
+                </div>
+            </div>
+            <div id="myModal" class="modal">
+                <span class="close">&times;</span>
+                <img class="modal-content" id="img01">
+                <div id="caption"></div>
+            </div>
+            <!--<div class="carts-container">-->
+            <div class="right">
+                <button class="btn btn-primary btn-lg" id="btn-carts">Open carts</button>
+                <div class="packages-list">
+                    <button class="btn btn-primary btn-lg" name="buy">Buy</button><p id="total" ></p>
+                </div>
+                
+            </div>
+            <div id="fh5co-contact-section">
+                <div class="container">
+                    <form action="#">
+                        <div class="row">
+                            <div class="col-md-6 col-md-push-6">
+                                <h3 class="section-title">Our Address</h3>
+                                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
+                                    there live the blind texts.</p>
+                                <ul class="contact-info">
+                                    <li>
+                                        <i class="icon-location-pin"></i>198 West 21th Street, Suite 721 New York NY 10016</li>
+                                    <li>
+                                        <i class="icon-phone2"></i>+ 1235 2355 98</li>
+                                    <li>
+                                        <i class="icon-mail"></i>
+                                        <a href="#">info@yoursite.com</a>
+                                    </li>
+                                    <li>
+                                        <i class="icon-globe2"></i>
+                                        <a href="#">www.yoursite.com</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6 col-md-pull-6">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="Name">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="Email">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <textarea name="" class="form-control" id="" cols="30" rows="7" placeholder="Message"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <input type="submit" value="Send Message" class="btn btn-primary">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div id="map" class="fh5co-map"></div>
+            <footer id="footer">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="copyright">
+                                    <p>
+                                        <small>&copy; 2016 Free HTML5
+                                            <a href="index.html">Energy</a>. All Rights Reserved.
+                                            <br> Made with
+                                            <i class="icon-heart3"></i> by
+                                            <a href="http://freehtml5.co/" target="_blank">Freehtml5.co</a> / Demo Images:
+                                            <a href="https://unsplash.com/" target="_blank">Unsplash </a>
+                                        </small>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <h3>Company</h3>
+                                        <ul class="link">
+                                            <li>
+                                                <a href="#">Về chúng tôi</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Dịch vụ chăm sóc khac hàng</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Liên hệ với chúng tôi</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h3>Theo dõi</h3>
+                                        <p>Trong nhiếp ảnh, hiểu con người quan trọng hơn hiểu bức ảnh</p>
+                                        <form action="#" id="form-subscribe">
+                                            <div class="form-field">
+                                                <input type="email" placeholder="Email Address" id="email">
+                                                <input type="submit" id="submit" value="Send">
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <ul class="social-icons">
+                                    <li>
+                                        <a href="#">
+                                            <i class="icon-twitter-with-circle"></i>
+                                        </a>
+                                        <a href="#">
+                                            <i class="icon-facebook-with-circle"></i>
+                                        </a>
+                                        <a href="#">
+                                            <i class="icon-instagram-with-circle"></i>
+                                        </a>
+                                        <a href="#">
+                                            <i class="icon-linkedin-with-circle"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+        </div>
+    </div>
+    <script src="js/jquery.min.js"></script>
+    <!-- jQuery Easing -->
+    <script src="js/jquery.easing.1.3.js"></script>
+    <!-- Bootstrap -->
+    <script src="js/bootstrap.min.js"></script>
+    <!-- Waypoints -->
+    <script src="js/jquery.waypoints.min.js"></script>
+    <!-- Superfish -->
+    <script src="js/hoverIntent.js"></script>
+    <script src="js/superfish.js"></script>
+    <!-- Flexslider -->
+    <script src="js/jquery.flexslider-min.js"></script>
+    <!-- Stellar -->
+    <script src="js/jquery.stellar.min.js"></script>
+    <!-- Counters -->
+    <script src="js/jquery.countTo.js"></script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCefOgb1ZWqYtj7raVSmN4PL2WkTrc-KyA&sensor=false"></script>
+    <script src="js/google_map.js"></script>
+
+    <!-- Main JS (Do not remove) -->
+    <script src="js/main.js"></script>
+</body>
+
+</html>

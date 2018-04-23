@@ -1,7 +1,8 @@
 var connection = require('./connectDB');
+var nodemailer = require('nodemailer');
 
 exports.GetUser = function (req, res) {
-    connection.query('SELECT * FROM studio join user on studio.Studio_ID = user.Studio_ID', function (error, results, fields) {
+    connection.query('SELECT * FROM studio join user on studio.Studio_ID = user.Studio_ID where studio.Studio_Role="user"', function (error, results, fields) {
         if (error) {
             res.send({
                 "code": 400,
@@ -20,7 +21,6 @@ exports.GetUser = function (req, res) {
                     "success": "district does not exits"
                 });
             }
-
         }
     });
 }
@@ -28,7 +28,7 @@ exports.GetUser = function (req, res) {
 exports.GetUserByName = function (req, res) {
     var name = req.query.name;
     //console.log(name);
-    connection.query("SELECT * FROM studio join user on studio.Studio_ID = user.Studio_ID WHERE User_ID like '%"+name+"%'", function (error, results, fields) {
+    connection.query("SELECT * FROM studio join user on studio.Studio_ID = user.Studio_ID WHERE User_ID like '%"+name+"%' and ", function (error, results, fields) {
         if (error) {
             res.send({
                 "code": 400,
@@ -55,7 +55,7 @@ exports.GetUserByName = function (req, res) {
 
 //getuser ByID
 exports.GetUserByID = function (req, res) {
-    var name = req.query.id;
+    var key = req.query.id;
     //console.log(name);
     connection.query("SELECT * FROM studio join user on studio.Studio_ID = user.Studio_ID where user.User_ID = '"+key+"'", function (error, results, fields) {
         if (error) {
@@ -173,6 +173,54 @@ exports.EditUser = function (req, res) {
                 "code": 200,
                 "failed": "yay?"
             })
+        }
+    });
+}
+
+exports.SendEmailPass = function (req, res) {
+
+    var passs = req.body.returnpass;
+    var emailstud = req.body.stuemail;
+    var returnid= req.body.returnid;
+    console.log(passs, emailstud);
+    const option = {
+        service: 'gmail',
+        auth: {
+            user: 'trungnhse03608@fpt.edu.vn', // email hoặc username
+            pass: 'master@95' // password
+        }
+    };
+    var transporter = nodemailer.createTransport(option);
+
+    transporter.verify(function(error, success) {
+        // Nếu có lỗi.
+        if (error) {
+            console.log(error);
+        } else { //Nếu thành công.
+            console.log('Kết nối thành công!');
+            var mail = {
+                from: 'trungnhse03608@fpt.edu.vn', // Địa chỉ email của người gửi
+                to: 'trungnhse03608@gmail.com', // Địa chỉ email của người gửi
+                subject: 'Quên mật khẩu Studio', // Tiêu đề mail
+                text: 'Bạn '+returnid+' thân mến \n' +
+                'Bạn vừa thực hiện yêu cầu lấy lại mật khẩu trên Studio.\n' +
+                '\n' +
+                '\n' +
+                'Mật khẩu của bạn là:  ' +passs+
+                '\n' +
+                '\n' +
+                '\n' +
+                'Cám ơn và chúc bạn vui vẻ.\n' +
+                'Nhóm phát triển Studio.', // Nội dung mail dạng text
+            };
+            //Tiến hành gửi email
+            transporter.sendMail(mail, function(error, info) {
+                if (error) { // nếu có lỗi
+                    console.log(error);
+                } else { //nếu thành công
+                    console.log('Email sent: ' + info.response);
+                }
+            });
         }
     });
 }

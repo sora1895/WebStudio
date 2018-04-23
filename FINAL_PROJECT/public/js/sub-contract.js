@@ -15,17 +15,16 @@ $(document).ready(function () {
 
     var x = document.URL;
     var idloc = x.search("id=");
-    var nameloc = x.search("Customer=");
-    var id1 = x.substr(idloc+3,nameloc-idloc-4 );
+    //var nameloc = x.search("Customer=");
+    var id1 = x.substr(idloc+3);
     
-    console.log(idloc,nameloc,id1);
+    console.log(idloc,id1);
     
     var id = x.substr(idloc + 3);
     title.append(id1);
 
     var showData = function () {
         
-
         $.ajax({
             url: `/GetConDetail`,
             method: 'post',
@@ -83,7 +82,7 @@ $(document).ready(function () {
     }
 
     $.ajax({
-        url: '/Getpackage',//
+        url: '/GetPakInfo?id='+localStorage.getItem('UserStudioId'),//
         method: 'get',
         contentType: 'application/json'
     }).always(function (res) {
@@ -101,15 +100,15 @@ $(document).ready(function () {
         var cDate = new Date(res.data[0].Contract_cDate);
         var date = days[cDate.getDay()]+' '+cDate.getDate()+'/'+(cDate.getMonth()+1)+'/'+cDate.getFullYear();
         var tr=$(`<tr>
-                <td>Customer:</td>
+                <th>Customer:</th>
                 <td>${res.data[0].Customer_Name}</td>
             </tr>
             <tr>
-                <td>Studio:</td>
+                <th>Studio:</th>
                 <td>${res.data[0].Studio_Name}</td>
             </tr>
             <tr>
-                <td>Create Date:</td>
+                <th>Create Date:</th>
                 <td>${date}</td>
             </tr>`);
         ConDe.append(tr);
@@ -181,9 +180,9 @@ $(document).ready(function () {
                     <td>${PackageNote}</td>
                 </tr>`);
 
-                var editButton = $(`<td><button>Edit</button></td>`);
-                var delButton = $(`<td><button>Delete</button></td>`);
-                var viewButton = $(`<td><button>View Picture</button></td>`);
+                var editButton = $(`<td><button style="color:white">Edit</button></td>`);
+                var delButton = $(`<td><button style="color:white">Delete</button></td>`);
+                var viewButton = $(`<td><button style="color:white">View Picture</button></td>`);
                 editButton.click(function (e) {
                     bindToEditForm(d);
                 });
@@ -209,13 +208,22 @@ $(document).ready(function () {
         }
     }
 
-    addform.submit(function (e) {
+    /*addform.submit(function (e) {
         var pakid = addform.find("select[id='SelPak']").val();
         var newName = addform.find("input[name='newPName']").val();
         var newDetail = addform.find("input[name='newPDetail']").val();
         var newPrice = addform.find("input[name='newPPrice']").val();
         var newNote = addform.find("input[name='newNote']").val();
         console.log(id1,pakid,newName, newDetail,newPrice, newNote);
+
+        var element = {
+            cusid: id1,
+            stuid: pakid,
+            newCDes: newName,
+            sdate: newDetail,
+            edate: newPrice,
+            cdate: newNote,
+        };
         e.preventDefault();
             $.ajax({
                 url: '/AddConDetail',
@@ -241,9 +249,9 @@ $(document).ready(function () {
                 }
             })
         
-    })
+    })*/
 
-    editForm.submit(function (e) {
+    /*editForm.submit(function (e) {
 
         var conid = editForm.find("input[name='SelECon']").val();
         var pakid = editForm.find("select[id='SelEPack']").val();
@@ -278,5 +286,253 @@ $(document).ready(function () {
         })
 
 
-    })
+    })*/
+    var inputs = document.forms['editForm'].getElementsByTagName('input');
+    var run_onchange = false;
+    function valid1(){
+        var errors = false;
+
+        var patternss = /^[a-zA-Z0-9]+$/;
+        for(var i=0; i<inputs.length; i++){
+            var value = inputs[i].value;
+            var id = inputs[i].getAttribute('id');
+            // Tạo phần tử span lưu thông tin lỗi
+            var span = document.createElement('span');
+            // Nếu span đã tồn tại thì remove
+            var p = inputs[i].parentNode;
+            if(p.lastChild.nodeName == 'SPAN') {p.removeChild(p.lastChild);}
+            // Kiểm tra rỗng
+
+            if(value == ''){
+                span.innerHTML ='Thông tin được yêu cầu';
+
+            }else{
+                //check name
+
+
+                // Kiểm tra số điện thoại
+                 if(id == 'newEPrice' ){
+
+                     if(isNaN(value) == true || parseFloat(value) < 1) {
+                         span.innerHTML ='price must be number!!';
+                     }
+                    // var val;
+                     //if( val.parseFloat(value) <= 0){
+                    //     span.innerHTML ='price must be > 0';
+                   //  }
+
+                     }
+
+            }
+            // Nếu có lỗi thì chèn span vào hồ sơ, chạy onchange, submit return false, highlight border
+
+            if(span.innerHTML != ''){
+
+                inputs[i].parentNode.appendChild(span);
+
+                errors = true;
+
+                //run_onchange = true;
+
+                inputs[i].style.border = '1px solid #c6807b';
+
+                inputs[i].style.background = '#fffcf9';
+
+            }
+        }// end for
+
+        if(errors == false){
+
+            //  e.preventDefault();
+            var pakid = addform.find("select[id='SelPak']").val();
+        var newName = addform.find("input[name='newPName']").val();
+        var newDetail = addform.find("textarea[name='newPDetail']").val();
+        var newPrice = addform.find("input[name='newPPrice']").val();
+        var newNote = addform.find("input[name='newNote']").val();
+        console.log(id1,pakid,newName, newDetail,newPrice, newNote);
+
+        var element = {
+            cusid: id1,
+            stuid: pakid,
+            newCDes: newName,
+            sdate: newDetail,
+            edate: newPrice,
+            cdate: newNote,
+        };
+        e.preventDefault();
+            $.ajax({
+                url: '/AddConDetail',
+                method: 'post',
+                contentType: 'application/json', 
+                data: JSON.stringify({
+                    cusid:id1,
+                    stuid:pakid,
+                    newCDes: newName,
+                    sdate: newPrice,
+                    edate: newNote,
+                    cdate: newDetail,
+                })
+            }).always(function (res) {
+                var code = res.code;
+                var success = res.success || 'Insert when wrong!';
+
+                if (code == 200) {
+                    alert("Insert Successful");
+                    window.location.reload();
+                } else {
+                    alert(success);
+                }
+            })
+        
+            // })
+
+
+            //  alert('Đăng ký thành công');
+        } else {
+            return !errors;
+
+        }
+
+
+
+    }// end valid()
+
+    // Chạy hàm kiểm tra valid()
+
+    //var register = $('#Add');
+
+    var register = document.getElementById('Add');
+    console.log(register);
+    register.onclick = function(){
+
+        return valid1();
+
+    }
+
+    var inputs2 = document.forms['editForm'].getElementsByTagName('input');
+    var run_onchange2 = false;
+    function valid2(){
+        var errors = false;
+
+        var reg_mail = /^[A-Za-z0-9]+([_\.\-]?[A-Za-z0-9])*@[A-Za-z0-9]+([\.\-]?[A-Za-z0-9]+)*(\.[A-Za-z]+)+$/;
+        var patternss = /^[a-zA-Z0-9 ăâơưêôÂƠĂUÔÊẢảẲẳẨẩẺẻỂểỈỉỎỏỔổỞởỦủỬửỶỷÀàẰằẦầÈèỀềÌ ìǸǹÒòỒồỜờÙùỪừẀẁỲỳÁáẮắẤấÉéẾếÍíÓóỐốỚớÚúỨứÝýẠạẶặẬậẸẹỆệỊịỌọỘộỢợỤụỰựỴỵÃãẴẵẪẫẼẽỄễĨĩÕõỖỗỠỡỮữŨũỸỹ]+$/;
+        var coordinatesss = /[0-9.],[0-9.]+$/
+        for(var i=0; i<inputs2.length; i++){
+
+            var value = inputs2[i].value;
+
+            var id = inputs2[i].getAttribute('id');
+
+            // Tạo phần tử span lưu thông tin lỗi
+
+            var span = document.createElement('span');
+
+            // Nếu span đã tồn tại thì remove
+
+            var p = inputs2[i].parentNode;
+
+            if(p.lastChild.nodeName == 'SPAN') {p.removeChild(p.lastChild);}
+
+            // Kiểm tra rỗng
+
+            if(value == ''){
+
+                span.innerHTML ='Thông tin được yêu cầu';
+
+            }else{
+
+                // Kiểm tra các trường hợp khác
+
+                if(id == 'newPEmails'){
+
+                    if(reg_mail.test(value) == false){ span.innerHTML ='Email không hợp lệ (ví dụ: abc@gmail.com)';}
+
+                    var email =value;
+
+                }
+                if(id == 'confirm_email' && value != email){span.innerHTML ='Email nhập lại chưa đúng';}
+
+                //check coordinate
+                if(id == 'newPCoordinates'){
+                    //console.log(value);
+                    if(coordinatesss.test(value) == false){ span.innerHTML ='Cooridnate không hợp lệ (theo form: XX,XX)';}
+
+                }
+                if(id == 'newPNames'){
+                    console.log(value);
+                    if(patternss.test(value) == false){ span.innerHTML ='StudioName không hợp lệ';}
+                    var emailss =value;
+                }
+                // Kiểm tra số điện thoại
+
+                if(id == 'newPNumbers' && isNaN(value) == true ){span.innerHTML ='Số điện thoại phải là kiểu số';}
+
+            }
+            // Nếu có lỗi thì chèn span vào hồ sơ, chạy onchange, submit return false, highlight border
+
+            if(span.innerHTML != ''){
+
+                inputs2[i].parentNode.appendChild(span);
+
+                errors = true;
+
+                //run_onchange = true;
+
+                inputs2[i].style.border = '1px solid #c6807b';
+
+                inputs2[i].style.background = '#fffcf9';
+
+            }
+        }// end for
+
+        if(errors == false){
+
+        var pakid = editForm.find("select[id='SelEPack']").val();
+        var newName = editForm.find("input[name='newEName']").val();
+        var newDetail = editForm.find("textarea[name='newEDetail']").val();
+        var newPrice = editForm.find("input[name='newEPrice']").val();
+        var newNote = editForm.find("input[name='newENote']").val();
+        console.log(conid,pakid,newName, newDetail,newPrice, newNote);
+        
+        $.ajax({
+            url: `/EditConDetail`,
+            method: 'post',
+            contentType: 'application/json',
+            data: JSON.stringify({
+                conid: ConDeId,
+                cusid: id1,
+                stuid: pakid,
+                newCDes: newName,
+                sdate: newPrice,
+                edate: newNote,
+                cdate: newDetail,
+            })
+        }).always(function (res) {
+            var code = res.code;
+            var success = res.success || 'Edit when wrong!';
+            if (code == 200) {
+                alert("Successful");
+                window.location.reload();
+            } else {
+                alert(success);
+            }
+        })
+            // })
+
+
+            //  alert('Đăng ký thành công');
+        } else {
+            return !errors;
+
+        }
+
+    }// end valid()
+
+    var register2 = document.getElementById('Edit');
+    console.log(register2);
+    register2.onclick = function(){
+
+        return valid2();
+
+    }
 })

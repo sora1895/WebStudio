@@ -3,10 +3,10 @@ $(document).ready(function () {
     var pakname = $('#pakname');
     var PakDetail = $('#PakDetail');
     var PakPrice = $('#PakPrice');
-    var MainName = $('#MainName');
+    //var MainName = $('#MainName');
     var delForm = $('#packDel');
     PakName.empty();
-    MainName.empty();
+    //MainName.empty();
     var form = $('#packdetail');
 
     var x = document.URL;
@@ -20,7 +20,7 @@ $(document).ready(function () {
     console.log(id);
     console.log(name);
     PakName.append(name);
-    MainName.append(name);
+    //MainName.append(name);
     pakname.append(name);
 
     delForm.submit(function (e) {
@@ -46,11 +46,11 @@ $(document).ready(function () {
     })
 
     $.ajax({
-        url: '/GetPackByName',
+        url: '/GetPackByPakId',
         method: 'post',
         contentType: 'application/json',
         data: JSON.stringify({
-            PackName: name,
+            id: id1,
         })
     }).always(function (res) {
         PakDetail.empty();

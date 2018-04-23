@@ -7,19 +7,18 @@ $(document).ready(function () {
     PicDet.empty();
     MainName.empty();
     var form = $('#picturedetail');
+    var href = $('#href');
     PicConDe.empty();
     var x = document.URL;
     var idloc = x.search("id=");
     var nameloc = x.search("name=");
 
     var id = x.substr(idloc + 3);
-    var id1 = x.substr(idloc + 3, nameloc - idloc - 4);
-    var name = decodeURIComponent(x.substr(nameloc + 5));
+    var id1 = x.substr(idloc + 3);
     console.log(id1);
     console.log(id);
-    console.log(name);
-    PicDet.append(name);
-    MainName.append(name);
+    var name=localStorage.getItem('picname');
+    
 
     $.ajax({
         url: '/GetConDetail',
@@ -44,13 +43,20 @@ $(document).ready(function () {
     }
 
     $.ajax({
-        url: `/GetPictureByName?name=${name}`,
+        url: '/GetPictureByName',
         method: 'post',
         contentType: 'application/json',
+        data: JSON.stringify({
+            key: name,
+            id: id1,
+        })
     }).always(function (res) {
-
-        PicConDe.append(res.data[0].ConDetail_ID);
+        console.log(res)
+        PicDet.append(name);
+        MainName.append(name);
+        PicConDe.append(id1);
         document.getElementById("PicUrl").src = res.data[0].Picture_Url;
+        document.getElementById("href").href = res.data[0].Picture_Url;
         form.find('#url').val(res.data[0].Picture_Url);
         form.find('#detail').val(res.data[0].Picture_Detail);
     })
@@ -62,7 +68,7 @@ $(document).ready(function () {
                 method: 'post',
                 contentType: 'application/json',
                 data: JSON.stringify({
-                    id: id1,
+                    id: localStorage.getItem('picid'),
                 })
             }).always(function (res) {
                 var code = res.code;
@@ -89,17 +95,17 @@ $(document).ready(function () {
             method: 'post',
             contentType: 'application/json',
             data: JSON.stringify({
-                id: conid,
+                id: localStorage.getItem('picid'),
                 detail: detail,
                 url: url,
-                id: id1
+                conid:conid,
             })
         }).always(function (res) {
             var code = res.code;
             var success = res.success || 'Edit when wrong!';
             if (code == 200) {
                 alert("Successful");
-                window.location.href = "http://localhost:5000/picdetail.html?id=" + id1 + "?name=" + detail + "";
+                //window.location.href = "http://localhost:5000/picdetail.html?id=" + id1 + "?name=" + detail + "";
             } else {
                 alert(success);
             }

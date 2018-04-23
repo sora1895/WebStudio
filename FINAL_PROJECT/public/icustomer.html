@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Studio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="/libs/jquery-3.2.1.min.js"></script>
+    <script src="js/icustomer.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="css/main.css" />
+
+</head>
+<body style="font-family:Verdana">
+<div style="background-color:#f1f1f1;padding:15px;">
+    <h1>Studio</h1>
+</div>
+<div class="menu">
+    <div id="adddiv">
+        <form id="IcustomerForm">
+            <table>
+                <tr>
+                    <th colspan="2">Search:</th>
+                </tr>
+                <tr>
+                    <td><input type="text" name="icustomers"></td>
+                    <td><input type="submit" value="Search"></td>
+                </tr>
+            </table>
+
+        </form>
+        <div class="menuitem">
+            <a href="#" id="showAdd">Add Studio</a>
+        </div>
+        <br>
+        <form id="addForm" hidden>
+            <table>
+                <tr>
+                    <th colspan="2">Add new Customer</th>
+                </tr>
+                <tr>
+                    <td style="text-align: right">Customer Name:</td>
+                    <td>
+                        <input type="text" name="newCName" id="newCName" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: right">Customer Gender:</td>
+                    <td>
+                        <input type="text" name="newCGender" id="newCGender" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: right">Customer Address:</td>
+                    <td>
+                        <input type="text" name="newCAddress" id="newCAddress" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: right">Customer Email:</td>
+                    <td>
+                        <input type="text" name="newCEmail" id="newCEmail" required>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td style="text-align: right">Customer Number:</td>
+                    <td>
+                        <input type="text" name="newCNumber" id="newCNumber" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: right">Customer Other:</td>
+                    <td>
+                        <input type="text" name="newCOther" id="newCOther">
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: right">Customer Note:</td>
+                    <td>
+                        <input type="text" name="newCNote" id="newCNote">
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: right">
+                        <button type="reset">Reset</button>
+                    </td>
+                    <td>
+                        <input type="submit" name="Add" id="Add" value="Add">
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <div>
+        <form id="editForm" hidden>
+            <table>
+                <tr>
+                    <th colspan="2">Edit Customer</th>
+                </tr>
+                <tr>
+                    <td style="text-align: right">Customer ID:</td>
+                    <td><p id="newIDSTu"></p></td>
+                </tr>
+                <tr>
+                    <td style="text-align: right">Customer Name:</td>
+                    <td>
+
+                        <input type="text" name="newCNames" id="newCNames" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: right">Customer Gender:</td>
+                    <td>
+
+                        <input type="text" name="newCGenders" id="newCGenders" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: right">Customer Address:</td>
+                    <td>
+                        <input type="text" name="newCAddresss" id="newCAddresss" required>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td style="text-align: right">Customer Email:</td>
+                    <td>
+                        <input type="text" name="newCEmails" id="newCEmails" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: right">Customer Number:</td>
+                    <td>
+                        <input type="text" name="newCNumbers" id="newCNumbers" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: right">Customer Other:</td>
+                    <td>
+                        <textarea name="newCOther" id="newCOther"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: right">Customer Note:</td>
+                    <td>
+                        <input type="text" name="newCNotes" id="newCNotes">
+                    </td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                    <td>
+                        <input type="submit" name="Edit" id="Edit" value="Edit">
+                    </td>
+                </tr>
+            </table>
+
+        </form>
+    </div>
+</div>
+
+<div class="main">
+    <p id="IcustomerNum"></p>
+    <table id="showDat" border="1" cellpadding="7" cellspacing="1">
+        <thead>
+        <tr>
+            <td>Customer ID</td>
+            <td>Customer Name</td>
+            <td>Customer Gender</td>
+            <td>Customer Address</td>
+            <td>Customer Email</td>
+            <td>Customer Number</td>
+            <td>Customer Note</td>
+        </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+</div>
+
+
+
+
+</body>
+
+</html>

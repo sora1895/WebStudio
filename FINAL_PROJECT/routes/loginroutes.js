@@ -70,14 +70,14 @@ exports.login = function (req, res) {
           console.log('Password: ' + password);
           res.send({
             "code": 204,
-            "success": "Email and password does not match"
+            "success": "User ID and password does not match"
           });
         }
       }
       else {
         res.send({
           "code": 204,
-          "success": "Email does not exits"
+          "success": "User ID does not exits"
         });
       }
     }

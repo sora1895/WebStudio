@@ -27,7 +27,10 @@ exports.GetCustomer = function (req, res) {
 
   exports.GetCustomerByName = function (req, res) {
     var name = req.query.name;
-    connection.query("select * from customer where Customer_Name LIKE '%"+name+"%'", function (error, results, fields) {
+    var phone = req.query.phone;
+    var sql=""
+    if(phone){sql=" and Customer_Number ='"+phone+"'"}
+    connection.query("select * from customer where Customer_Name LIKE '%"+name+"%'"+sql, function (error, results, fields) {
       if (error) {
         res.send({
           "code": 400,
