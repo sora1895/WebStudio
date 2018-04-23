@@ -2,7 +2,7 @@ var connection = require('./connectDB');
 var nodemailer = require('nodemailer');
 
 exports.GetUser = function (req, res) {
-    connection.query('SELECT * FROM studio join user on studio.Studio_ID = user.Studio_ID where studio.Studio_Role="user"', function (error, results, fields) {
+    connection.query('SELECT * FROM studio join user on studio.Studio_ID = user.Studio_ID where user.User_Role="user"', function (error, results, fields) {
         if (error) {
             res.send({
                 "code": 400,
@@ -28,7 +28,7 @@ exports.GetUser = function (req, res) {
 exports.GetUserByName = function (req, res) {
     var name = req.query.name;
     //console.log(name);
-    connection.query("SELECT * FROM studio join user on studio.Studio_ID = user.Studio_ID WHERE User_ID like '%"+name+"%' and ", function (error, results, fields) {
+    connection.query("SELECT * FROM studio join user on studio.Studio_ID = user.Studio_ID WHERE User_ID like '%"+name+"%' and User_Role='user'", function (error, results, fields) {
         if (error) {
             res.send({
                 "code": 400,

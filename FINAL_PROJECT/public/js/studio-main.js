@@ -76,18 +76,37 @@ $(document).ready(function () {
     }
     //
 
+    var getPic = function(){
+        $.ajax({
+            url: '/GetStudioByID?id='+localStorage.getItem('stuid'),//
+            method: 'get',
+            contentType: 'application/json'
+        }).always(function (res) {
+            showPic(res);
+        })
+    }
+    getPic();
+    var showPic = function(res){
+        console.log(res);
+        if (res && res.data && res.data instanceof Array) {
+            res.data.forEach(function (d, i) {
+                $('#fh5co-hero .slides li[style="background-image: url(images/hero3.jpg);"]').attr('background-image','url('+d.Studio_main_pic+')')
+            })
+        }
+    }
+
     var showData = function () {
         $.ajax({
             url: '/GetTop3?id='+localStorage.getItem('stuid'),
             method: 'get',
             contentType: 'application/json',
         }).always(function (res) {
-            show(res);
+            showPackage(res);
         })
     }
     showData();
 
-    var show = function (res, type) {
+    var showPackage = function (res, type) {
         console.log(res);
 
         var StudioName = res.data[0].Studio_Name;

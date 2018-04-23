@@ -102,7 +102,7 @@ $(document).ready(function () {
             //ProNum.append("Districts found: " + ProCount);
         }
         else {
-            alert("????")
+            alert("Tài khoản này không tồn tại!")
         }
     }
 
