@@ -10,7 +10,7 @@ $(document).ready(function () {
 
 
     //check userid
-    function validate2() {
+    function validate() {
         var $result = $("#resultemail");
         var email = $("#emailstudio").val();
         $result.text("");
@@ -40,7 +40,7 @@ $(document).ready(function () {
         return false;
     }
 
-    $("#resets").bind("click", validate2);
+    $("#resets").bind("click", validate);
 
 
 

@@ -5,7 +5,12 @@ function init() {
     // Basic options for a simple Google Map
     // For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
     // var myLatlng = new google.maps.LatLng(40.71751, -73.990922);
-    var myLatlng = new google.maps.LatLng(21.030659, 105.852467);
+    console.log(localStorage.getItem('coor'));
+    var x = localStorage.getItem('coor').search(', ')
+    var a = localStorage.getItem('coor').substr(x+2)
+    var b = localStorage.getItem('coor').substr(0,x)
+    console.log(b,a);
+    var myLatlng = new google.maps.LatLng(b, a);
     // 39.399872
     // -8.224454
     

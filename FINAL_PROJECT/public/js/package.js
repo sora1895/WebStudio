@@ -134,7 +134,7 @@ $(document).ready(function () {
             PackNum.append("Number of Packages found: " + count);
         }
         else {
-            alert("You don't have any Package yet")
+            alert("Gói hàng này không tồn tại")
         }
     }
 

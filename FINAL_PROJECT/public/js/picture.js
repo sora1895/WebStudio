@@ -87,7 +87,7 @@ $(document).ready(function () {
                 var tr = $(`<tr>
                         <td>${count + 1}</td>
                         `+ bonuscol + `
-                        <td><a href="contractdetail.html?id=${ContractID}">${ContractID}</a></td>
+                        <td>${ContractID}</td>
                         <td>${ConDetailID}</td>
                     </tr>`);
                 var viewButton = $(`<td><button style="color:white">View Picture</button></td>`);

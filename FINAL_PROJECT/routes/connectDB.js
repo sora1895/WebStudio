@@ -3,6 +3,6 @@ var mysql = require('mysql');
 module.exports = mysql.createConnection({
   host: 'localhost',
   user: 'root',
-  password: 'admin',
+  password: '12345',
   database: 'studioweb'
 });

@@ -11,6 +11,8 @@
     <script type="text/javascript" src="/js/studio-main.js"></script>
 
     <link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" />
+    
+    <link rel="stylesheet" type="text/css" media="screen" href="css/popup-image.css" />
 
     <link rel="stylesheet" href="css/animate.css">
     <!-- Icomoon Icon Fonts-->
@@ -136,7 +138,7 @@
             <aside id="fh5co-hero" class="js-fullheight">
                 <div class="flexslider js-fullheight">
                     <ul class="slides">
-                        <li style="background-image: url(images/hero3.jpg);">
+                        <li id="mainpic" style="background-image: url(images/hero3.jpg);">
                             <div class="overlay-gradient"></div>
                             <div class="container">
                                 <div class="col-md-10 col-md-offset-1 text-center js-fullheight slider-text">
@@ -155,8 +157,8 @@
                 
             </aside>
             <div id="fh5co-portfolio-section">
-                <div class="portfolio-row-half">
-                    <div class="portfolio-grid-item-color">
+                
+                    <!-- <div class="portfolio-grid-item-color">
                         <div class="desc">
                             <h2>Dự án của chúng tôi</h2>
                             <p>Đây là tất cả các dự án của chúng tôi</p>
@@ -167,82 +169,74 @@
                             </p>
                         </div>
                     </div>
-                    <a href="#" class="portfolio-grid-item" style="background-image: url(images/project-2.jpg);">
+                    <a class="portfolio-grid-item" style="background-image: url(images/project-2.jpg);">
                         <div class="desc2">
                             <h3>Shoes</h3>
                             <span>Travel</span>
                             <i class="sl-icon-heart"></i>
                         </div>
                     </a>
-                    <a href="#" class="portfolio-grid-item" style="background-image: url(images/project-3.jpg);">
+                    <a class="portfolio-grid-item" style="background-image: url(images/project-3.jpg);">
                         <div class="desc2">
                             <h3>Shoes</h3>
                             <span>Travel</span>
                             <i class="sl-icon-heart"></i>
                         </div>
                     </a>
-                    <a href="#" class="portfolio-grid-item" style="background-image: url(images/project-4.jpg);">
+                    <a class="portfolio-grid-item" style="background-image: url(images/project-4.jpg);">
                         <div class="desc2">
                             <h3>Shoes</h3>
                             <span>Travel</span>
                             <i class="sl-icon-heart"></i>
                         </div>
                     </a>
-                    <a href="#" class="portfolio-grid-item" style="background-image: url(images/project-5.jpg);">
+                    <a class="portfolio-grid-item" style="background-image: url(images/project-5.jpg);">
                         <div class="desc2">
                             <h3>Shoes</h3>
                             <span>Travel</span>
                             <i class="sl-icon-heart"></i>
                         </div>
                     </a>
-                    <a href="#" class="portfolio-grid-item" style="background-image: url(images/project-6.jpg);">
+                    <a class="portfolio-grid-item" style="background-image: url(images/project-6.jpg);">
                         <div class="desc2">
                             <h3>Shoes</h3>
                             <span>Travel</span>
                             <i class="sl-icon-heart"></i>
                         </div>
                     </a>
-                    <a href="#" class="portfolio-grid-item" style="background-image: url(images/project-7.jpg);">
+                    <a class="portfolio-grid-item" style="background-image: url(images/project-7.jpg);">
                         <div class="desc2">
                             <h3>Shoes</h3>
                             <span>Travel</span>
                             <i class="sl-icon-heart"></i>
                         </div>
                     </a>
-                    <a href="#" class="portfolio-grid-item" style="background-image: url(images/project-1.jpg);">
+                    <a class="portfolio-grid-item" style="background-image: url(images/project-1.jpg);">
                         <div class="desc2">
                             <h3>Shoes</h3>
                             <span>Travel</span>
                             <i class="sl-icon-heart"></i>
                         </div>
-                    </a>
+                    </a> -->
                 </div>
             </div>
-            <div class="fh5co-parallax fh5co-parallax2" style="background-image: url(images/hero.jpg);" data-stellar-background-ratio="0.5">
+            <div class="fh5co-parallax fh5co-parallax2" id="about" style="background-image: url(images/hero.jpg);" data-stellar-background-ratio="0.5">
                 <div class="overlay"></div>
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12 col-md-offset-0 col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0 text-center fh5co-table">
                             <div class="fh5co-intro animate-box">
                                 <div class="row">
-                                    <div class="col-md-6 text-center">
+                                    <div class="col-md-12 text-center">
                                         <div class="testimony">
                                             <span class="quote"><i class="icon-quotes-right"></i></span>
                                             <blockquote>
-                                                <p>Những bức ảnh được chụp hôm đấy như một phép màu vậy. Tôi không ngờ nó có thể đẹp đến thế. Đây thực sự là một trong những kỷ niệm đáng nhớ nhất của đời tôi.</p>
-                                                <span>Athan Smith, via <a href="#" class="icon-twitter3 twitter-color"></a></span>
+                                                <p id="About">Những bức ảnh được chụp hôm đấy như một phép màu vậy. Tôi không ngờ nó có thể đẹp đến thế. Đây thực sự là một trong những kỷ niệm đáng nhớ nhất của đời tôi.</p>
+                                                <span id="abstu">Athan Smith, via <a href="#" class="icon-twitter3 twitter-color"></a></span>
                                             </blockquote>
                                         </div>
                                     </div>
-                                    <div class="col-md-6 text-center">
-                                        <div class="testimony">
-                                            <span class="quote"><i class="icon-quotes-right"></i></span>
-                                            <blockquote>
-                                                <p>Người chú rể ra, thứ tôi trân trọng nhất lại là những bức ảnh từ Cộng Studio. Họ chụp những thứ vô tưởng và mãn nhãn.</p>
-                                                <span>Athan Smith, via <a href="#" class="icon-google-plus googleplus-color"></a></span>
-                                            </blockquote>
-                                        </div>
-                                    </div>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -413,14 +407,14 @@
                         </div>
                     </div>
                 </div> -->
-                <div class="fh5co-parallax" style="background-image: url(images/hero2.jpg);" data-stellar-background-ratio="0.5">
+                <div class="fh5co-parallax" id="quote" style="background-image: url(images/hero2.jpg);" data-stellar-background-ratio="0.5">
                     <div class="overlay"></div>
                     <div class="container">
                         <div class="row">
                             <div class="col-md-12 col-md-offset-0 col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0 text-center fh5co-table">
                                 <div class="fh5co-intro fh5co-table-cell animate-box">
-                                    <h1 class="text-center">We Treasure The Best Time Of Your Life</h1>
-                                    <p>Made with love by the fine folks at <a href="http://freehtml5.co">StudioWeb</a></p>
+                                    <h1 id="Quote" class="text-center" style="font-size: 50px">We Treasure The Best Time Of Your Life</h1>
+                                    <p>Thiết kế bởi của những người tài năng tại <a href="localhost:5000">StudioWeb</a></p>
                                     <p></p>
                                 </div>
                             </div>
@@ -431,7 +425,13 @@
                 <div class="container">
                     <form action="#">
                         <div class="row">
-                            <div class="col-md-6 col-md-push-6">
+                            <div class="col-md-9">
+                                
+                                <div class="row">
+                                    <div id="map" class="fh5co-map"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
                                 <h3 class="section-title">Địa chỉ của chúng tôi</h3>
                                 <p >Hãy liên lạc chúng tôi nếu có thể.</p>
                                 <ul class="contact-info">
@@ -447,37 +447,17 @@
                                         <i class="icon-globe2"></i>
                                         <a id="con-coor" href="#"></a>
                                     </li>
-                                </ul>
-                            </div>
-                            <div class="col-md-6 col-md-pull-6">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="Name">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="Email">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <textarea name="" class="form-control" id="" cols="30" rows="7" placeholder="Message"></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <input type="submit" value="Send Message" class="btn btn-primary">
-                                        </div>
-                                    </div>
-                                </div>
+                                </ul>   
                             </div>
                         </div>
                     </form>
                 </div>
             </div>
-            <div id="map" class="fh5co-map"></div>
+            <div id="myModal" class="modal">
+                <span class="close" style="font-size: 50px;color:white">&times;</span>
+                <img class="modal-content" id="img01">
+                <div id="caption"></div>
+            </div>
             <footer id="footer">
                     <div class="container">
                         <div class="row">

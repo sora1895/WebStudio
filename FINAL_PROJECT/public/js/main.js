@@ -48,16 +48,106 @@
 
 	// Main Menu Superfish
 	var init = function() {
+		$('#fh5co-header-section').empty();
+		$('#fh5co-header-section').append($(`<div class="container">
+		<div class="nav-header">
+			<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle">
+				<i></i>
+			</a>
+			<h1 id="fh5co-logo">
+				<a href="index.html">StudioWeb</a>
+			</h1>
+			<!-- START #fh5co-menu-wrap -->
+			<nav id="fh5co-menu-wrap" role="navigation">
+				<ul class="sf-menu" id="fh5co-primary-menu">
+					<li>
+						<a class="active" href="index.html">Trang chủ</a>
+					</li>
+					<!--<li><a href="work.html">Tour</a></li>-->
+					<li>
+						<a href="studio-list.html" class="fh5co-sub-ddown">Studio</a>
+						<ul id="list-studio" class="fh5co-sub-menu">
+							<li>
+								<a href="studio-main.html" onclick="studioId(3);">Studio A</a>
+							</li>
+							<li>
+								<a href="studio-main.html" onclick="studioId(4);">Studio B</a>
+							</li>
+							<li>
+								<a href="studio-main.html" onclick="studioId(5);">Studio C</a>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<a href="#" class="fh5co-sub-ddown">Album</a>
+						<ul class="fh5co-sub-menu">
+							<li>
+								<a href="left-sidebar.html">Ảnh cưới</a>
+							</li>
+							<li>
+								<a href="right-sidebar.html">Ảnh quảng cáo</a>
+							</li>
+							<li>
+								<a href="#" class="fh5co-sub-ddown">Ảnh trẻ con</a>
+								<ul class="fh5co-sub-menu">
+									<li>
+										<a href="http://freehtml5.co/preview/?item=build-free-html5-bootstrap-template" target="_blank">HIệu ứng đặc biệt</a>
+									</li>
+									<li>
+										<a href="http://freehtml5.co/preview/?item=work-free-html5-template-bootstrap" target="_blank">Ảnh tự nhiên</a>
+									</li>
+									<!--<li><a href="http://freehtml5.co/preview/?item=light-free-html5-template-bootstrap" target="_blank">Light</a></li>
+											<li><a href="http://freehtml5.co/preview/?item=relic-free-html5-template-using-bootstrap" target="_blank">Relic</a></li>
+											<li><a href="http://freehtml5.co/preview/?item=display-free-html5-template-using-bootstrap" target="_blank">Display</a></li>
+											<li><a href="http://freehtml5.co/preview/?item=sprint-free-html5-template-bootstrap" target="_blank">Sprint</a></li>-->
+								</ul>
+							</li>
+							<li>
+								<a href="#">Ảnh gia đình</a>
+							</li>
+							<li>
+								<a href="#">Ảnh chân dung</a>
+							</li>
+							<li>
+								<a href="#">Ảnh chụp tự do</a>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<a href="view-contract.html">Hợp Đồng</a>
+					</li>
+
+					<li>
+						<a id="user" href="login.html">Đăng nhập</a>
+						<ul id="user-option" class="fh5co-sub-menu">
+								<li id="user-btn" hidden><a href="user.html">Người dùng</a></li>
+							<li id="stu-btn" hidden><a href="studio.html">Studio</a></li>
+							<li id="dis-btn" hidden><a href="dismanage.html">Quận & Huyện</a></li>
+							<li id="edit-profile-btn" hidden><a href="edit-studio.html">Hồ sơ</a></li>
+							<li id="pack-btn" hidden><a href="package.html">Gói hàng</a></li>
+							<li id="pic-btn" hidden><a href="picture.html">Ảnh</a></li>
+							<li id="con-btn" hidden><a href="contract.html">Hợp đồng</a></li>
+							<li id="change-btn" hidden><a >Đổi mật khẩu</a></li>
+							<li id="logout-btn" hidden><a id="logout" href="login.html">Đăng xuất</a></li>
+						</ul>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>`));
+
 		
+
 		var admin = localStorage.getItem('Admin');
 		var stuStr = localStorage.getItem('USER');
 		if(admin!=0){
 			$("#user").html('Admin');
-				$("#user").attr('href', "user-page.html");
+				$("#user").attr('href', "index.html");
 				$('#logout-btn').show();
 				$('#user-btn').show();
                 $('#stu-btn').show();
-                $('#dis-btn').show();
+				$('#dis-btn').show();
+				$('#change-btn').show();
 		}
 		else if(stuStr!=0){
 			var stu = JSON.parse(stuStr)[0];
@@ -67,12 +157,16 @@
 				$('#pack-btn').show();
 				console.log(stu)
 				$("#user").html(stu.Studio_Name);
-				$("#user").attr('href', "user-page.html");
+				$("#user").attr('href', "index.html");
 				$('#logout-btn').show();
+				$('#change-btn').show();
 			
 			
 		}
-	
+		
+
+
+
 		$('#logout-btn').click(function(){
 			localStorage.setItem('UserStudioId',0);
 			localStorage.setItem('USER',0);
@@ -81,6 +175,14 @@
 			}
 
 
+		})
+
+		$.ajax({
+			url: '/GetStudioByID?id='+localStorage.getItem('stuid'),
+			method: 'post',
+			contentType: 'application/json',
+		}).always(function (res) {
+			localStorage.setItem('coor',res.data[0].Studio_Coordinate)
 		})
 	}
 

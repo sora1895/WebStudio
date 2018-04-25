@@ -97,7 +97,7 @@ $(document).ready(function () {
                 showDat.append(tr);
                 count++;
             })
-            UserNum.append("Number of Packages found: " + count);
+            UserNum.append("Number of Users found: " + count);
             //var ProCount = count;
             //ProNum.append("Districts found: " + ProCount);
         }
@@ -239,7 +239,7 @@ $(document).ready(function () {
             }).always(function (res) {
                 var code = res.code;
                 var success = res.success || 'Insert when wrong!';
-                window.location.href = "http://localhost:5000/user.html"
+                // window.location.href = "http://localhost:5000/user.html"
                 if (code == 200) {
                     alert("Insert Successful");
                 } else {

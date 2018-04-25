@@ -224,3 +224,24 @@ exports.SendEmailPass = function (req, res) {
         }
     });
 }
+
+exports.Changepass = function (req, res) {
+    var name = req.body.newNames;
+    var newPass = req.body.newPass;
+    console.log(name,newPass);
+    connection.query("update user set User_Password = '"+newPass+"' where User_ID = '"+name+"'", function (error, results) {
+      //console.log(values);
+      if (error) {
+        res.send({
+          "code": 400,
+          "failed": "error ocurred"
+        })
+      } else {
+        console.log("Number of records inserted: " + results.affectedRows);
+        res.send({
+          "code": 200,
+          "failed": "yay?"
+        })
+      }
+    });
+  }

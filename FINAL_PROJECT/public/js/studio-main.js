@@ -1,16 +1,22 @@
 $(document).ready(function () {
-
+    var modal = document.getElementById('myModal');
+    var img = document.getElementById('myImg');
+    var modalImg = document.getElementById("img01");
+    var captionText = document.getElementById("caption");
+    var span = document.getElementsByClassName("close")[0];
     //var nodemailer = require('nodemailer');
 
     var showDat = $('#showDat').find('tbody');
     var pricing_section = $(`#fh5co-pricing-section`);
     var showStu = $('#showStu').find('tbody');
     var total = $('#total');
-    if(localStorage.getItem("items")!=[]||localStorage.getItem("items")!=''){
+    if (localStorage.getItem("items") != [] || localStorage.getItem("items") != '') {
         var items = JSON.parse(localStorage.getItem("items"));
     }
 
-    
+    span.onclick = function () {
+        modal.style.display = "none";
+    }
 
     var totalPrice = 0
     //shopping carts
@@ -18,10 +24,10 @@ $(document).ready(function () {
     var packagesListDom = $(".packages-list");
     var packagesBtn = $('.packages-btn');
     var packagesList = [];
-    if(items!=[]){
-        
+    if (items != []) {
+
         items.forEach(function (d) {
-            if(localStorage.getItem('stuid')==d.Studio_ID){
+            if (localStorage.getItem('stuid') == d.Studio_ID) {
                 totalPrice += d.Package_Price
                 var element = $(`
                 <div class="package-element" id="${d.Package_ID}">
@@ -39,10 +45,10 @@ $(document).ready(function () {
                 })
                 packagesListDom.append(element);
                 packagesList = items;
-            }else{
+            } else {
 
             }
-            
+
         })
         total.append(totalPrice.toLocaleString('en-US') + " vnđ");
     }
@@ -76,9 +82,9 @@ $(document).ready(function () {
     }
     //
 
-    var getPic = function(){
+    var getPic = function () {
         $.ajax({
-            url: '/GetStudioByID?id='+localStorage.getItem('stuid'),//
+            url: '/GetStudioByID?id=' + localStorage.getItem('stuid'),//
             method: 'get',
             contentType: 'application/json'
         }).always(function (res) {
@@ -86,18 +92,102 @@ $(document).ready(function () {
         })
     }
     getPic();
-    var showPic = function(res){
+    var showPic = function (res) {
         console.log(res);
         if (res && res.data && res.data instanceof Array) {
             res.data.forEach(function (d, i) {
-                $('#fh5co-hero .slides li[style="background-image: url(images/hero3.jpg);"]').attr('background-image','url('+d.Studio_main_pic+')')
+
+                $('#quote').css('background-image', 'url(' + d.Studio_quote_pic + ')')
+                $('#mainpic').css('background-image', 'url(' + d.Studio_main_pic + ')')
+                $('#about').css('background-image', 'url(' + d.Studio_about_pic + ')')
+                $('#About').empty();
+                $('#About').append(d.Studio_About);
+                $('#abstu').empty();
+                $('#abstu').append(d.Studio_Name + ' <a href="#" class="icon-twitter3 twitter-color"></a>');
+                $('#Quote').empty();
+                $('#Quote').append(d.Studio_quote);
+                var tr = $(`
+                <div class="portfolio-row-half">
+                    <div class="portfolio-grid-item-color">
+                        <div class="desc">
+                            <h2>Dự án của chúng tôi</h2>
+                            <p>Đây là tất cả các dự án của chúng tôi</p>
+                            <p>
+                                <a href="#" class="btn btn-primary btn-outline with-arrow">Xem tất cả các dự án
+                                    <i class="icon-arrow-right22"></i>
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                    <a class="portfolio-grid-item" style="background-image: url(${d.Studio_project_1});">
+                        <div class="desc2">
+                            <h3>${d.Studio_Name}</h3>
+                            <span>Travel</span>
+                            <i class="sl-icon-heart"></i>
+                        </div>
+                    </a>
+                    <a class="portfolio-grid-item" style="background-image: url(${d.Studio_project_2});">
+                        <div class="desc2">
+                            <h3>${d.Studio_Name}</h3>
+                            <span>Travel</span>
+                            <i class="sl-icon-heart"></i>
+                        </div>
+                    </a>
+                    <a class="portfolio-grid-item" style="background-image: url(${d.Studio_project_3});">
+                        <div class="desc2">
+                            <h3>${d.Studio_Name}</h3>
+                            <span>Travel</span>
+                            <i class="sl-icon-heart"></i>
+                        </div>
+                    </a>
+                    <a class="portfolio-grid-item" style="background-image: url(${d.Studio_project_4});">
+                        <div class="desc2">
+                            <h3>${d.Studio_Name}</h3>
+                            <span>Travel</span>
+                            <i class="sl-icon-heart"></i>
+                        </div>
+                    </a>
+                    <a class="portfolio-grid-item" style="background-image: url(${d.Studio_project_5});">
+                        <div class="desc2">
+                            <h3>${d.Studio_Name}</h3>
+                            <span>Travel</span>
+                            <i class="sl-icon-heart"></i>
+                        </div>
+                    </a>
+                    <a class="portfolio-grid-item" style="background-image: url(${d.Studio_project_6});">
+                        <div class="desc2">
+                            <h3>${d.Studio_Name}</h3>
+                            <span>Travel</span>
+                            <i class="sl-icon-heart"></i>
+                        </div>
+                    </a>
+                    <a class="portfolio-grid-item" style="background-image: url(${d.Studio_project_7});">
+                        <div class="desc2">
+                            <h3>${d.Studio_Name}</h3>
+                            <span>Travel</span>
+                            <i class="sl-icon-heart"></i>
+                        </div>
+                    </a>
+                    </div>`)
+                    $('#fh5co-portfolio-section').append(tr);
+                    console.log(tr.find(`a`))
+                    tr.find(`a`).click(function(e){
+                        var urlUnformatted = $(this).css('background-image');
+                        var urlFormatted = urlUnformatted.substr(5, urlUnformatted.length - 7);
+                        console.log(urlFormatted)
+                        modal.style.display = "block";
+                        modalImg.src = urlFormatted;
+                        captionText.innerHTML = d.Studio_Name;
+                    }
+                )
+                
             })
         }
     }
 
     var showData = function () {
         $.ajax({
-            url: '/GetTop3?id='+localStorage.getItem('stuid'),
+            url: '/GetTop3?id=' + localStorage.getItem('stuid'),
             method: 'get',
             contentType: 'application/json',
         }).always(function (res) {
@@ -161,13 +251,13 @@ $(document).ready(function () {
                     <div class="price-box to-animate">
                         <h2 class="pricing-plan">Gói ${count}</h2>
                         <div class="price">
-                            ${PackagePrice.toLocaleString( 'en-US')}
+                            ${PackagePrice.toLocaleString('en-US')}
                             <small>vnđ</small>
                         </div>
                         <p>${PackageName}</p>
                         <hr>
                         <ul class="pricing-info">
-                            <li>${PackageDetail.substr(0,200)+" ..."}</li>
+                            <li>${PackageDetail.substr(0, 200) + " ..."}</li>
                         </ul>
                         <p>
                             <a id="cart"><img src="/picture/38919-200.png" width='50px'></a><br>
@@ -181,9 +271,9 @@ $(document).ready(function () {
                     bindPackageToCarts(d);
                     packagesListDom.show();
                     packagesBtn.show();
-                    
+
                 })
-                
+
                 /*var viewpic = $(pic);
                 viewpic.click(function (e) {
                     modal.style.display = "block";
@@ -193,12 +283,12 @@ $(document).ready(function () {
                 //tr.append(viewpic);
                 a.append(tr);
 
-                
+
             })
             //var ProCount = count;
             //ProNum.append("Districts found: " + ProCount);
             var btn = $('<div style="text-align:right"><a href="package-list.html"><button class="btn btn-primary">Hiện thêm gói hàng .... </button></a></div>');
-            
+
             container.append(a);
 
             pricing_section.append(container);
@@ -227,8 +317,8 @@ $(document).ready(function () {
             console.log(res);
  
         })*/
-        var id =localStorage.getItem('stuid');
-        localStorage.setItem("selectedStudio",id)
+        var id = localStorage.getItem('stuid');
+        localStorage.setItem("selectedStudio", id)
         localStorage.setItem("items", JSON.stringify(packagesList));
 
         window.location.href = "checkout.html"
