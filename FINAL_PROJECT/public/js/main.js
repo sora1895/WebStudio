@@ -127,7 +127,7 @@
 							<li id="pack-btn" hidden><a href="package.html">Gói hàng</a></li>
 							<li id="pic-btn" hidden><a href="picture.html">Ảnh</a></li>
 							<li id="con-btn" hidden><a href="contract.html">Hợp đồng</a></li>
-							<li id="change-btn" hidden><a >Đổi mật khẩu</a></li>
+							<li id="change-btn" hidden><a href="changepass.html">Đổi mật khẩu</a></li>
 							<li id="logout-btn" hidden><a id="logout" href="login.html">Đăng xuất</a></li>
 						</ul>
 					</li>
@@ -142,7 +142,7 @@
 		var stuStr = localStorage.getItem('USER');
 		if(admin!=0){
 			$("#user").html('Admin');
-				$("#user").attr('href', "index.html");
+				$("#user").attr('href', "user-page.html");
 				$('#logout-btn').show();
 				$('#user-btn').show();
                 $('#stu-btn').show();
@@ -157,7 +157,7 @@
 				$('#pack-btn').show();
 				console.log(stu)
 				$("#user").html(stu.Studio_Name);
-				$("#user").attr('href', "index.html");
+				$("#user").attr('href', "user-page.html");
 				$('#logout-btn').show();
 				$('#change-btn').show();
 			

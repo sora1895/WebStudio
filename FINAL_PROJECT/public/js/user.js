@@ -85,15 +85,15 @@ $(document).ready(function () {
                     <td>${StudioName}</td>
                 </tr>`);
                 var editButton = $(`<td><button style="color:white">Edit</button></td>`);
-                // var delButton = $(`<td><button style="color:white">Delete</button></td>`);
+                var delButton = $(`<td><button style="color:white">Delete</button></td>`);
                 editButton.click(function (e) {
                     bindToEditForm(d);
                 });
-                // delButton.click(function (e) {
-                //     delRow(d);
-                // })
+                delButton.click(function (e) {
+                    delRow(d);
+                })
                 tr.append(editButton);
-                // tr.append(delButton);
+                tr.append(delButton);
                 showDat.append(tr);
                 count++;
             })

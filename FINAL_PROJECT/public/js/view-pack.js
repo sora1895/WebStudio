@@ -5,7 +5,6 @@ $(document).ready(function () {
     var PakDetail = $('#PakDetail');
     var PakPrice = $('#PakPrice');
     var MainName = $('#MainName');
-    var delForm = $('#packDel');
     PakName.empty();
     MainName.empty();
     var form = $('#packdetail');

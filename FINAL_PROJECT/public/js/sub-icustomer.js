@@ -5,7 +5,7 @@ $(document).ready(function () {
     var cusaddresss = $('#addresss');
 
     var cusemails = $('#emails');
-    var cusnumbers = $('#numbers');
+    var cusnumbers = $('#phone');
     var cusnotes = $('#notes');
 
     var CusDetail = $('#CusDetail');
@@ -48,6 +48,7 @@ $(document).ready(function () {
                 var CustomerAddress = d.Customer_Address;
                 var CustomerEmail = d.Customer_Email;
                 var CustomerNumber = d.Customer_Number;
+                var other = d.Customer_Other
                 var CustomerNote = d.Customer_Note;
 
 
@@ -58,6 +59,7 @@ $(document).ready(function () {
                 cusemails.append(CustomerEmail);
                 cusnumbers.append(CustomerNumber);
                 cusnotes.append(CustomerNote);
+                $('#other').append(other);
 
                 count++;
             }

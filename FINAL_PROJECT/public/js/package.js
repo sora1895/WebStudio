@@ -40,10 +40,6 @@ $(document).ready(function () {
         })
     });
     var oldID;
-    var oldName;
-    var oldDetail;
-    var oldPrice;
-    var oldAvalable;
 
     var show = function (res) {
         console.log(res);
@@ -58,14 +54,9 @@ $(document).ready(function () {
                 editForm.find('#newid').text(data.Package_ID);
                 oldID = data.Package_ID;
                 editForm.find('#newName').val(data.Package_Name);
-                oldName = data.Package_Name;
                 editForm.find('#newDetail').val(data.Package_Detail);
-                oldDetail = data.Package_Detail;
                 editForm.find('#newPrice').val(data.Package_Price);
-                oldPrice = data.Package_Price;
                 editForm.find('#checkAvail').val(data.Package_available);
-                oldAvalable = data.Package_available;
-                console.log(oldID, oldName, oldDetail, oldPrice, oldAvalable);
             }
 
             //del
