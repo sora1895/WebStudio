@@ -50,12 +50,10 @@ $(document).ready(function () {
                         <td>${date}</td>
                         `+sql+`
                     </tr>`);
-                var viewButton = $(`<td><button style="color:white">view</button></td>`);
                 // viewButton.click(function (e) {
                 //     localStorage.setItem('condeid',ConDetailID);
                 //     window.location.href = `viewpicture.html?condeid=${ConDetailID}`;
                 // });
-                tr.append(viewButton);
                 showDat.append(tr);
 
             })

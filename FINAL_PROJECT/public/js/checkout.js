@@ -131,7 +131,7 @@ $(document).ready(function () {
         var newCDes = info;
         
 
-        
+        text="";
         var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
       
         for (var i = 0; i < 5; i++){text += possible.charAt(Math.floor(Math.random() * possible.length));}
@@ -223,6 +223,7 @@ $(document).ready(function () {
         }).always(function (res) {
             var code = res.code;
             var success = res.success || 'Insert when wrong!';
+            showinfo.empty();
 
             if (code == 200) {
                 var tr =$(`<tr>
@@ -244,6 +245,7 @@ $(document).ready(function () {
                 </tr>
                 `)
                 showinfo.append(tr);
+                $('#guide').empty();
                 $('#guide').append('Đơn hàng của bạn đã được tạo mời bạn bấm vào <a href="view-contract.html">đây</a> và điền "'+conid+'" vào ô trống');
                 //window.location.reload();
                 $.ajax({
@@ -258,6 +260,8 @@ $(document).ready(function () {
                 }).always(function (res) {
                     console.log(res);
                 })
+
+                $('#buttonshow').hide();
             } else {
                 alert(success);
             }

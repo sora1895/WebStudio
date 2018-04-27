@@ -169,101 +169,104 @@
                         </script>
                     </div>
 
-            <table style="width: 100%">
-                <tr>
-                    <td style="width: 30%">
-                    </td>
-                    <td style="width: 40%">
-                        <form id="ConSearch">
-                            <input id="id" style="text-align-last: center" type="text">
-                        </form>
-                    </td>
-                    <td style="width: 30%">
-                    </td>
-                </tr>
-            </table>
-
-
-            <div style="background-image: url(images/hero.jpg)  " >
+            
+            <div class="fh5co-parallax fh5co-parallax2" style="background-image: url(images/hero.jpg);padding-bottom: 4em" data-stellar-background-ratio="0.5">
                 
-            <table id="showDat" style="    position: relative;transform: translate(-50%, 0%);left: 50%;">
-                <thead>
-                    <tr>
-                        <th colspan="4"><lable style="color: white" id="conid">CONTRACT</lable>
-                        <lable style="color: white" id="status"></lable></th>
-                    </tr>
-                    <tr>
-                        <td>Họ và Tên:</td>
-                        <td colspan="3">
-                            <input placeholder="Enter Name here ....." type="text" name="newCusName" readonly>
-                        </td>
-                    </tr>
-                    <tr  style="background-color: snow;"   >
-                        <td colspan="3">
-                            <label>Địa chỉ khách hàng</label>
-                            <textarea name="newCusAdd" id="newCusAdd" placeholder="Enter Address here ....." readonly></textarea>
-                        </td>
-                        <td>Giới tính:
-                            <input type="radio" id="gender" name="gender" value="male" readonly> Male
-                            <input type="radio" id="gender" name="gender" value="female" readonly> Female</td>
-                    </tr>
-                    <tr >
-                        <td colspan="2">
-                            <p> Số điện thoại:</p>
-                            <input name="newCusPhone" id="newCusPhone" placeholder="Enter phone number..." type="text" readonly>
-                        </td>
-                        <td colspan="2">
-                            <p>Email:</p>
-                            <input name="newCusEmail" id="newCusEmail" placeholder="Enter email ....." type="text" readonly>
-                        </td>
-                    </tr >
-                    <tr style="background-color: snow;"  >
-                        <td colspan="4">
-                            <label>Ghi chú về khách hàng</label>
-                            <input type="text" name="newCusNote" id="newCusNote" placeholder="Enter note about Customer here ....." readonly>
-                        </td>
-                    </tr>
-                    <tr >
-                        <td>Studio làm việc:</td>
-                        <td colspan="3">
-                        <input type="text" id="SelNStu">
-                        </td>
-                    </tr>
+                <div class="container">
+                        <table style="position: relative;transform: translate(-50%, 0%);left: 50%;width:50%">
+                                <td>
+                                    <form id="ConSearch">
+                                        <input id="id" placeholder="Nhập mã hợp đồng vào đây và bấm enter ..... " style="text-align-last: center" type="text">
+                                        <input type="submit" value="Tìm">
+                                    </form>
+                                </td>
+                            </tr>
+                        </table>
+                        <br>
+                        <table id="showDat" style="    position: relative;transform: translate(-50%, 0%);left: 50%;">
+                                <thead>
+                                    <tr>
+                                        <th colspan="2" style="text-align: right"><lable style="color: white" id="conid">CONTRACT</lable>
+                                        <td colspan="2"><lable id="status"></lable></th></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Họ và Tên:</td>
+                                        <td colspan="3">
+                                            <input placeholder="Enter Name here ....." type="text" name="newCusName" readonly>
+                                        </td>
+                                    </tr>
+                                    <tr  style="background-color: snow;"   >
+                                        <td colspan="3">
+                                            <label>Địa chỉ khách hàng</label>
+                                            <textarea name="newCusAdd" id="newCusAdd" placeholder="Enter Address here ....." readonly></textarea>
+                                        </td>
+                                        <td>Giới tính:
+                                            <input type="radio" id="gender" name="gender" value="male" readonly> Male
+                                            <input type="radio" id="gender" name="gender" value="female" readonly> Female</td>
+                                    </tr>
+                                    <tr >
+                                        <td colspan="2">
+                                            <p> Số điện thoại:</p>
+                                            <input name="newCusPhone" id="newCusPhone" placeholder="Enter phone number..." type="text" readonly>
+                                        </td>
+                                        <td colspan="2">
+                                            <p>Email:</p>
+                                            <input name="newCusEmail" id="newCusEmail" placeholder="Enter email ....." type="text" readonly>
+                                        </td>
+                                    </tr >
+                                    <tr style="background-color: snow;"  >
+                                        <td colspan="4">
+                                            <label>Ghi chú về khách hàng</label>
+                                            <input type="text" name="newCusNote" id="newCusNote" placeholder="Enter note about Customer here ....." readonly>
+                                        </td>
+                                    </tr>
+                                    <tr >
+                                        <td>Studio làm việc:</td>
+                                        <td colspan="3">
+                                        <input type="text" id="SelNStu">
+                                        </td>
+                                    </tr>
+                
+                                </thead>
+                                <tbody>
+                
+                
+                                </tbody>
+                                <tfoot>
+                
+                                    <tr style="background-color: snow;" >
+                                        <td colspan="4" >
+                                            <label>Chi tiết Hợp đồng</label>
+                                            <textarea rows="5" placeholder="Enter Contract detail ....." style="width: 100%" name="newCDes" required></textarea>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Ngày lập nên Hợp đồng:</td>
+                                        <td>
+                                            <input type="date" name="newCdate" required>
+                                        </td>
+                                        <td>Ngày bắt đầu làm việc</td>
+                                        <td>
+                                            <input type="date" name="newSdate" required>
+                                        </td>
+                                    </tr>
+                                    <tr style="background-color: snow;" >
+                                        <td>Ngày kết thúc (theo dự đoán):</td>
+                                        <td>
+                                            <input type="date" name="newEdate" required>
+                                        </td>
+                                        <td colspan="2"></td>
+                                    </tr>
+                
+                
+                                </tfoot>
+                            </table>
+                    </div>
+                    </div>
 
-                </thead>
-                <tbody>
-
-
-                </tbody>
-                <tfoot>
-
-                    <tr style="background-color: snow;" >
-                        <td colspan="4" >
-                            <label>Chi tiết Hợp đồng</label>
-                            <textarea rows="5" placeholder="Enter Contract detail ....." style="width: 100%" name="newCDes" required></textarea>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Ngày lập nên Hợp đồng:</td>
-                        <td>
-                            <input type="date" name="newCdate" required>
-                        </td>
-                        <td>Ngày bắt đầu làm việc</td>
-                        <td>
-                            <input type="date" name="newSdate" required>
-                        </td>
-                    </tr>
-                    <tr style="background-color: snow;" >
-                        <td>Ngày kết thúc (theo dự đoán):</td>
-                        <td>
-                            <input type="date" name="newEdate" required>
-                        </td>
-                        <td colspan="2"></td>
-                    </tr>
-
-
-                </tfoot>
-            </table>
+            <!-- <div style="background-image: url(images/hero.jpg)  " > -->
+                
+            
         </div>
             <div class="contractPic">
                 <!--<div id="fh5co-portfolio-section" class="fh5co-portfolio-section">

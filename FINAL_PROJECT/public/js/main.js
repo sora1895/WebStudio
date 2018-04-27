@@ -49,7 +49,7 @@
 	// Main Menu Superfish
 	var init = function() {
 		$('#fh5co-header-section').empty();
-		$('#fh5co-header-section').append($(`<div class="container">
+		var header = $(`<div class="container">
 		<div class="nav-header">
 			<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle">
 				<i></i>
@@ -61,7 +61,7 @@
 			<nav id="fh5co-menu-wrap" role="navigation">
 				<ul class="sf-menu" id="fh5co-primary-menu">
 					<li>
-						<a class="active" href="index.html">Trang chủ</a>
+						<a href="index.html">Trang chủ</a>
 					</li>
 					<!--<li><a href="work.html">Tour</a></li>-->
 					<li>
@@ -79,7 +79,7 @@
 						</ul>
 					</li>
 					<li>
-						<a href="#" class="fh5co-sub-ddown">Album</a>
+						<a href="album.html" class="fh5co-sub-ddown">Album</a>
 						<ul class="fh5co-sub-menu">
 							<li>
 								<a href="left-sidebar.html">Ảnh cưới</a>
@@ -116,9 +116,9 @@
 					<li>
 						<a href="view-contract.html">Hợp Đồng</a>
 					</li>
-
+					<li><img id="icon" width="90px" hidden></li>
 					<li>
-						<a id="user" href="login.html">Đăng nhập</a>
+						<a id="user" href="login.html"> Đăng nhập</a>
 						<ul id="user-option" class="fh5co-sub-menu">
 								<li id="user-btn" hidden><a href="user.html">Quản lý nhân viên</a></li>
 							<li id="stu-btn" hidden><a href="studio.html">Quản lý Studio</a></li>
@@ -131,10 +131,12 @@
 							<li id="logout-btn" hidden><a id="logout" href="login.html">Đăng xuất</a></li>
 						</ul>
 					</li>
+					
 				</ul>
 			</nav>
 		</div>
-	</div>`));
+	</div>`)
+		$('#fh5co-header-section').append(header);
 
 		
 
@@ -158,13 +160,37 @@
 				console.log(stu)
 				$("#user").html(stu.Studio_Name);
 				$("#user").attr('href', "user-page.html");
+				$('#icon').show();
+				$('#icon').attr('src',stu.Studio_Icon)
 				$('#logout-btn').show();
 				$('#change-btn').show();
 			
-			
+		}
+
+		var active = function(url){
+			var x = document.URL.search(url)
+			return x;
+		}
+
+		if(active('index.html')>0){
+			$('a[href="index.html"]').addClass("active")
+		}
+		else if(active('studio-main.html')>0 || active('studio-list.html')>0||active('package-list.html')>0||active('view-pack.html')>0||active('checkout.html')>0){
+			// console.log(active('studio-main.html'))
+			$('a[href="studio-list.html"]').addClass("active")
+		}else if(active('view-contract.html')>0){
+			$('a[href="view-contract.html"]').addClass("active")
+		}else if(active('login.html')>0||active('user-page.html')>0||active('contract.html')>0||active('package.html')>0||active('picture.html')>0||active('viewpicture.html')>0||active('changepass.html')>0||active('contractdetail.html')>0||active('disdetail.html')>0||active('dismanage.html')>0||active('edit-studio.html')>0||active('Forgotpassword.html')>0||active('icustomerdetail.html')>0||active('packdetail.html')>0||active('studio.html')>0||active('user.html')>0){
+			$('a#user').addClass("active")
+		}else if(active('album.html')){
+			$('a[href="album.html"]').addClass("active")
 		}
 		
-
+		if(active('user.html')>0||active('disdetail.html')||active('dismanage.html')||active('studio.html')){
+			if(localStorage.getItem('Admin')==10){
+				window.location.href = "login.html";
+			}
+		}
 
 
 		$('#logout-btn').click(function(){
@@ -183,6 +209,23 @@
 			contentType: 'application/json',
 		}).always(function (res) {
 			localStorage.setItem('coor',res.data[0].Studio_Coordinate)
+		})
+
+		$.ajax({
+			url: '/GetStudio',
+			method: 'get',
+			contentType: 'application/json',
+		}).always(function (res) {
+			$('ul#list-studio').empty();
+			if (res && res.data && res.data instanceof Array) {
+				res.data.forEach(function (d, i) {
+
+					var studio = $(`<li>
+					<a href="studio-main.html" onclick="studioId(${d.Studio_ID});">${d.Studio_Name}</a>
+				</li>`)
+				$('ul#list-studio').append(studio);
+					})
+				}
 		})
 	}
 

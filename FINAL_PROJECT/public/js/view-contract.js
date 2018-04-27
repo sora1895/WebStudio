@@ -105,9 +105,18 @@ $(document).ready(function () {
                 var EndDate = "" + eDate.getFullYear() + "-" + EndMonth + "-" + EnDate + "";
                 console.log(State);
                 $('#conid').empty();
-                $('#conid').append('CONTRACT '+ContractID+' || ');
+                $('#conid').append('CONTRACT '+ContractID+' | ');
                 $('#status').empty();
-                $('#status').append(State);
+                if(State=='Chưa thanh toán'){
+                    $('#status').css('color','red');
+                }else if(State=='Đã thanh toán'){
+                    $('#status').css('color','green');
+                }else if(State=='Đợi ảnh'){
+                    $('#status').css('color','#5bc0de');
+                }else if(State=='Hoàn thành'){
+                    $('#status').css('color','green');
+                }
+                $('#status').append('| '+State);
                 showDat.find("input[name='newCusName']").val(Customername);
                 showDat.find("textarea[name='newCusAdd']").val(CustomerAddress);
                 showDat.find("input[name='newCusPhone']").val(CustomerPhone);
@@ -123,7 +132,7 @@ $(document).ready(function () {
 
         }
         else {
-            alert("????")
+            alert("Hợp đồng này không tồn tại!")
         }
     }
 
