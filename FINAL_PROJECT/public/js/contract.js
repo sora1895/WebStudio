@@ -726,124 +726,177 @@ $(document).ready(function () {
         
     })
 
-    //check
-    var inputs = document.forms['addForm'].getElementsByTagName('input');
-    function valid1(){
-        var errors = false;
+
+
+    // Chạy hàm kiểm tra valid()
+
+    //var register = $('#Add');
+
+
+
+
+    function validate() {
         var reg_mail = /^[A-Za-z0-9]+([_\.\-]?[A-Za-z0-9])*@[A-Za-z0-9]+([\.\-]?[A-Za-z0-9]+)*(\.[A-Za-z]+)+$/;
-        var names = /^[a-zA-Z0-9 ăâơưêôÂƠĂUÔÊẢảẲẳẨẩẺẻỂểỈỉỎỏỔổỞởỦủỬửỶỷÀàẰằẦầÈèỀềÌ ìǸǹÒòỒồỜờÙùỪừẀẁỲỳÁáẮắẤấÉéẾếÍíÓóỐốỚớÚúỨứÝýẠạẶặẬậẸẹỆệỊịỌọỘộỢợỤụỰựỴỵÃãẴẵẪẫẼẽỄễĨĩÕõỖỗỠỡỮữŨũỸỹ]+$/;
-        for(var i=0; i<inputs.length; i++){
-            var value = inputs[i].value;
-            var id = inputs[i].getAttribute('id');
-            // Tạo phần tử span lưu thông tin lỗi
-            var span = document.createElement('span');
-            // Nếu span đã tồn tại thì remove
-            var p = inputs[i].parentNode;
-            if(p.lastChild.nodeName == 'SPAN') {p.removeChild(p.lastChild);}
-            // Kiểm tra rỗng
-
-            if(value == ''){
-                span.innerHTML ='Thông tin được yêu cầu';
-
-            }else{
-                //check email
-                if(id == 'newCusEmail'){
-
-                    if(reg_mail.test(value) == false){ span.innerHTML ='Email không hợp lệ (ví dụ: abc@gmail.com)';}
-
-                    var email =value;
-
-                }
-
-                //check name
-                if(id == 'newCusName'){
-                    console.log(value);
-                    if(names.test(value) == false){ span.innerHTML ='UserName must not have special character!!';}
-                    //var emailss =value;
-                }
-                //check password
-                //if(id == 'newCusAdd'){
-               //     if(value.length <6){span.innerHTML ='Password must be longer 6 character';}
-              //      var pass =value;
-               // }
-
-                // Kiểm tra số điện thoại
-                 if(id == 'newCusPhone' && isNaN(value) == true ){span.innerHTML ='Phone must be digit!!';}
-
-            }
-            // Nếu có lỗi thì chèn span vào hồ sơ, chạy onchange, submit return false, highlight border
-
-            if(span.innerHTML != ''){
-
-                inputs[i].parentNode.appendChild(span);
-
-                errors = true;
-
-                //run_onchange = true;
-
-                inputs[i].style.border = '1px solid #c6807b';
-
-                inputs[i].style.background = '#fffcf9';
-
-            }
-        }// end for
-
-        if(errors == false){
-           // 
-
-           if (type == 'add') {
-            if (document.getElementById("exist").checked == true) {
-                var cusname = addform.find("input[name='newCusName']").val();
-                var phone = addform.find("input[name='newCusPhone']").val();
-                $.ajax({
-                    url: `/GetCustomerByName?name=${cusname}&number=${phone}`,
-                    method: 'get',
-                    contentType: 'application/json',
-                }).always(function (res) {
-                    console.log(res);
-                    var cusid = res.data[0].Customer_ID;
-                    AddCon(res.data, addform);
-                    //ADD Contract
-                })
-            } else {
-                var newNames = addform.find("input[name='newCusName']").val();
-                var newGender = addform.find("input[name='gender']").val();
-                var newAddress = addform.find("textarea[name='newCusAdd']").val();
-                var newEmail = addform.find("input[name='newCusEmail']").val();
-                var newNumber = addform.find("input[name='newCusPhone']").val();
-                var newNote = addform.find("input[name='newCusNote']").val();
-
-                console.log(newNames,newGender,newAddress,newEmail,newNumber,newNote);
-                //e.preventDefault();
-                $.ajax({
-                    url: '/AddIcustomer',
-                    method: 'post',
-                    contentType: 'application/json',
-                    data: JSON.stringify({
-                        newNames: newNames,
-                        newGender: newGender,
-                        newAddress:newAddress,
-                        newEmail: newEmail,
-                        newNumber: newNumber,
-                        newNote: newNote,
-
-                    })
-                }).always(function (res) {
-
-                    var code = res.code;
-                    var success = res.success || 'Insert when wrong!';
-                    //window.location.href="http://localhost:5000/icustomer.html"
-                    if (code == 200) {
-                        alert("Insert Successful");
+        var checkname = /^[a-zA-Z0-9 ăâơưêôÂƠĂUÔÊẢảẲẳẨẩẺẻỂểỈỉỎỏỔổỞởỦủỬửỶỷÀàẰằẦầÈèỀềÌ ìǸǹÒòỒồỜờÙùỪừẀẁỲỳÁáẮắẤấÉéẾếÍíÓóỐốỚớÚúỨứÝýẠạẶặẬậẸẹỆệỊịỌọỘộỢợỤụỰựỴỵÃãẴẵẪẫẼẽỄễĨĩÕõỖỗỠỡỮữŨũỸỹ]+$/;
+        var resultname = $("#resultname");
+        var name = $("#newCusName").val();
+        resultname.text("");
+        var resultphone = $("#resultphone");
+        var phone = $("#newCusPhone").val();
+        resultphone.text("");
+        var resultemail = $("#resultemail");
+        var email = $("#newCusEmail").val();
+        resultemail.text("");
+        var $resultcre = $("#resultcreDate");
+        var credate = $("#newCdate").val();
+        $resultcre.text("");
+        var $resultsdate = $("#resultSDate");
+        var sdate = $("#newSdate").val();
+        $resultsdate.text("");
+        var $resultedate = $("#resultEDate");
+        var edate = $("#newEdate").val();
+        $resultedate.text("");
+        var datecre = Date.parse(credate);
+        var datesdat = Date.parse(sdate);
+        var dateedate = Date.parse(edate);
+        var check1,check2,check3,check4,check5,check6,check7,check8,check9,check10,check11,check12,check13,check14,check15,check16,check17,check18,check19,check20;
+        var total = 20;
+        var selStudio = $('#SelNStu :selected').val();
+        console.log(datecre,dateedate,datesdat);
+        if(selStudio == 'Please select a Studio .....'){
+            alert("Hãy chọn Studio");
+        }else {check20 =1;}
+        if(name == ''){
+            resultname.text("Không được để trống");
+            resultname.css("color", "red");
+        }else {check1=1;}
+        if(phone == ''){
+            resultphone.text("Không được để trống");
+            resultphone.css("color", "red");
+        }else {check2=1;}
+        if(email == ''){
+            resultemail.text("Không được để trống");
+            resultemail.css("color", "red");
+        }else {check3=1}
+        if(credate==''){
+            $resultcre.text("Không được để trống");
+            $resultcre.css("color", "red");
+        }else {check4=1}
+        if(sdate==''){
+            $resultsdate.text("Không được để trống");
+            $resultsdate.css("color", "red");
+        }else {check5=1;}
+        if(edate==''){
+            $resultedate.text("Không được để trống");
+            $resultedate.css("color", "red");
+        }else {check6=1;}
+        if(checkname.test(name) == false){
+            resultname.text("Tên không được có ký tự đặc biệt");
+            resultname.css("color", "red");
+        }else {check7=1;}
+        if(reg_mail.test(email) == false){
+            resultemail.text("Email không hợp lệ (ví dụ: abc@gmail.com)");
+            resultemail.css("color", "red");
+        }else {check8=1;}
+        if(isNaN(phone) == true && phone != ''){
+            resultphone.text("Số Điện Thoại phải là số");
+            resultphone.css("color", "red");
+        }else {check9=1;}
+        if(isNaN(phone) == false && (phone.length < 8 || phone.length > 12)){
+            resultphone.text("Số Điện Thoại phải từ 8 đến 12 số");
+            resultphone.css("color", "red");
+        }else {check10=1;}
+        if(datecre > datesdat && datecre < dateedate){
+            $resultcre.text("Ngày lập nên phải nhỏ hơn hoặc bằng ngày bắt đầu");
+            $resultcre.css("color", "red");
+            }else {check11=1;}
+        if(datecre > dateedate && datecre < datecre){
+            $resultcre.text("Ngày lập nên phải nhỏ hơn ngày kết thúc");
+            $resultcre.css("color", "red");
+        }else {check12=1;}
+        if(datecre > dateedate && datecre > datecre){
+            $resultcre.text("Ngày lập nên phải nhỏ hơn ngày bắt đầu và kết thúc ");
+            $resultcre.css("color", "red");
+        }else {check13=1;}
+        if(datesdat < datecre && datesdat < dateedate){
+            $resultsdate.text("Ngày bắt đầu phải lớn hơn hoặc bằng ngày lập nên");
+            $resultsdate.css("color", "red");
+        }else {check14=1;}
+        if(datesdat > dateedate && datesdat > datecre){
+            $resultsdate.text("Ngày bắt đầu phải nhỏ hơn ngày kết thúc");
+            $resultsdate.css("color", "red");
+        }else {check15=1;}
+        if(datesdat > dateedate && datesdat < datecre){
+            $resultsdate.text("Ngày bắt đầu phải lớn hơn ngày tạo và nhỏ hơn ngày kết thúc");
+            $resultsdate.css("color", "red");
+        }else {check16=1;}
+        if(dateedate < datecre && dateedate > datesdat){
+            $resultedate.text("Ngày kết thúc phải lớn hơn ngày lập nên");
+            $resultedate.css("color", "red");
+        }else {check17=1;}
+        if(dateedate < datesdat && dateedate > datecre){
+            $resultedate.text("Ngày kết thúc phải lớn hơn ngày bắt đầu");
+            $resultedate.css("color", "red");
+        }else {check18=1;}
+        if(dateedate < datesdat && dateedate < datecre){
+            $resultedate.text("Ngày kết thúc phải lớn hơn ngày bắt đầu và lập nên");
+            $resultedate.css("color", "red");
+        }else {check19=1;}
+        if(total==(check1+check2+check3+check4+check5+check6+check7+check8+check9+check10+check11+check12+check13+check14+check15+check16+check17+check18+check19+check20)){
+            //valid1();
+            if (type == 'add') {
+                if (document.getElementById("exist").checked == true) {
+                    var cusname = addform.find("input[name='newCusName']").val();
+                    var phone = addform.find("input[name='newCusPhone']").val();
+                    $.ajax({
+                        url: `/GetCustomerByName?name=${cusname}&number=${phone}`,
+                        method: 'get',
+                        contentType: 'application/json',
+                    }).always(function (res) {
+                        console.log(res);
+                        var cusid = res.data[0].Customer_ID;
                         AddCon(res.data, addform);
-                    } else {
-                        alert(success);
-                    }
-                })
-                //ADD new customer --> ADD new Contract --> ADD new ConDetail
-            }
-        } else if (type == 'edit') {
-            document.getElementById("exist").style.display == 'none'
+                        //ADD Contract
+                    })
+                } else {
+                    var newNames = addform.find("input[name='newCusName']").val();
+                    var newGender = addform.find("input[name='gender']").val();
+                    var newAddress = addform.find("textarea[name='newCusAdd']").val();
+                    var newEmail = addform.find("input[name='newCusEmail']").val();
+                    var newNumber = addform.find("input[name='newCusPhone']").val();
+                    var newNote = addform.find("input[name='newCusNote']").val();
+
+                    console.log(newNames,newGender,newAddress,newEmail,newNumber,newNote);
+                    //e.preventDefault();
+                    $.ajax({
+                        url: '/AddIcustomer',
+                        method: 'post',
+                        contentType: 'application/json',
+                        data: JSON.stringify({
+                            newNames: newNames,
+                            newGender: newGender,
+                            newAddress:newAddress,
+                            newEmail: newEmail,
+                            newNumber: newNumber,
+                            newNote: newNote,
+
+                        })
+                    }).always(function (res) {
+
+                        var code = res.code;
+                        var success = res.success || 'Thêm khách hàng lỗi!';
+                        //window.location.href="http://localhost:5000/icustomer.html"
+                        if (code == 200) {
+                            alert("Thêm khách hàng thành công");
+                            AddCon(res.data, addform);
+                        } else {
+                            alert(success);
+                        }
+                    })
+                    //ADD new customer --> ADD new Contract --> ADD new ConDetail
+                }
+            } else if (type == 'edit') {
+                document.getElementById("exist").style.display == 'none'
                 var newName = addform.find("input[name='newCusName']").val();
                 var newGende = addform.find("input[name='gender']").val();
                 var newAdre = addform.find("textarea[name='newCusAdd']").val();
@@ -869,10 +922,10 @@ $(document).ready(function () {
                     })
                 }).always(function (res) {
                     var code = res.code;
-                    var success = res.success || 'Insert when wrong!';
+                    var success = res.success || 'Chỉnh Sửa khách hàng lỗi!';
                     //window.location.href="http://localhost:5000/icustomer.html"
                     if (code == 200) {
-                        alert("Edit Customer Successful");
+                        alert("Chỉnh Sửa khách hàng thành công");
                         EditCon(CusID);
                     } else {
                         alert(success);
@@ -880,89 +933,17 @@ $(document).ready(function () {
                 })
                 //EDIT Customer --> EDIT Contract --> EDIT ConDetail
             }
-        
-            // })
-
-
-            //  alert('Đăng ký thành công');
-        } else {
-            return !errors;
-
-        }
-
-
-
-    }// end valid()
-
-    // Chạy hàm kiểm tra valid()
-
-    //var register = $('#Add');
-
-    var register = document.getElementById('btn-Add');
-    console.log(register);
-    register.onclick = function(){
-
-        return valid1();
-
-    }
-
-
-    function validate() {
-        var $resultcre = $("#resultcreDate");
-        var credate = $("#newCdate").val();
-        $resultcre.text("");
-        var $resultsdate = $("#resultSDate");
-        var sdate = $("#newSdate").val();
-        $resultsdate.text("");
-        var $resultedate = $("#resultEDate");
-        var edate = $("#newEdate").val();
-        $resultedate.text("");
-        var datecre = Date.parse(credate);
-        var datesdat = Date.parse(sdate);
-        var dateedate = Date.parse(edate);
-        if(datecre > datesdat && datecre < dateedate){
-            $resultcre.text("Ngày lập nên phải nhỏ hơn hoặc bằng ngày bắt đầu");
-            $resultcre.css("color", "red");
-            }
-        if(datecre > dateedate && datecre < datecre){
-            $resultcre.text("Ngày lập nên phải nhỏ hơn ngày kết thúc");
-            $resultcre.css("color", "red");
-        }
-        if(datecre > dateedate && datecre > datecre){
-            $resultcre.text("Ngày lập nên phải nhỏ hơn ngày bắt đầu và kết thúc ");
-            $resultcre.css("color", "red");
-        }
-        if(datesdat < datecre && datesdat < dateedate){
-            $resultsdate.text("Ngày bắt đầu phải lớn hơn hoặc bằng ngày lập nên");
-            $resultsdate.css("color", "red");
-        }
-        if(datesdat > dateedate && datesdat > datecre){
-            $resultsdate.text("Ngày bắt đầu phải nhỏ hơn ngày kết thúc");
-            $resultsdate.css("color", "red");
-        }
-        if(datesdat > dateedate && datesdat < datecre){
-            $resultsdate.text("Ngày bắt đầu phải lớn hơn ngày tạo và nhỏ hơn ngày kết thúc");
-            $resultsdate.css("color", "red");
-        }
-        if(dateedate < datecre && dateedate > datesdat){
-            $resultedate.text("Ngày kết thúc phải lớn hơn ngày lập nên");
-            $resultedate.css("color", "red");
-        }
-        if(dateedate < datesdat && dateedate > datecre){
-            $resultedate.text("Ngày kết thúc phải lớn hơn ngày bắt đầu");
-            $resultedate.css("color", "red");
-        }
-        if(dateedate < datesdat && dateedate < datecre){
-            $resultedate.text("Ngày kết thúc phải lớn hơn ngày bắt đầu và lập nên");
-            $resultedate.css("color", "red");
-        }
-        if(datecre < datesdat <dateedate){
-            valid1();
         }
 
         return false;
     }
 
-    $("#btn-Add").bind("click", validate);
+    var register = document.getElementById('btn-Add');
+    console.log(register);
+    register.onclick = function(){
+
+        return validate();
+
+    }
 
 })

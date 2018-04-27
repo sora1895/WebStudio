@@ -108,81 +108,26 @@ $(document).ready(function () {
 
     
 
-    /*addform.submit(function (e) {
+    // Chạy hàm kiểm tra valid()
 
-        var province = addform.find("select[name='nprovince']").val();
-        var district = addform.find("input[name='district']").val();
-        console.log(district, province);
-        $.ajax({
-            url: '/addDis',
-            method: 'post',
-            contentType: 'application/json',
-            data: JSON.stringify({
-                district: district,
-                province_id: province,
-            })
-            
-        }).always(function (res) {
-            var code = res.code;
-            var success = res.success || 'Insert when wrong!';
-            window.location.href="http://localhost:5000/dismanage.html";
-            if (code == 200) {
-                alert("Successful");
-            } else {
-                alert(success);
-            }
-        })
-    })*/
-    var inputs = document.forms['addDis'].getElementsByTagName('input');
-    var run_onchange = false;
-    function valid1(){
-        var errors = false;
+    //var register = $('#Add');
 
+
+    //check
+    function valid() {
         var patternss = /^[a-zA-Z0-9 ăâơưêôÂƠĂUÔÊẢảẲẳẨẩẺẻỂểỈỉỎỏỔổỞởỦủỬửỶỷÀàẰằẦầÈèỀềÌ ìǸǹÒòỒồỜờÙùỪừẀẁỲỳÁáẮắẤấÉéẾếÍíÓóỐốỚớÚúỨứÝýẠạẶặẬậẸẹỆệỊịỌọỘộỢợỤụỰựỴỵÃãẴẵẪẫẼẽỄễĨĩÕõỖỗỠỡỮữŨũỸỹ]+$/;
-        for(var i=0; i<inputs.length; i++){
-            var value = inputs[i].value;
-            var id = inputs[i].getAttribute('id');
-            // Tạo phần tử span lưu thông tin lỗi
-            var span = document.createElement('span');
-            // Nếu span đã tồn tại thì remove
-            var p = inputs[i].parentNode;
-            if(p.lastChild.nodeName == 'SPAN') {p.removeChild(p.lastChild);}
-            // Kiểm tra rỗng
-
-            if(value == ''){
-                span.innerHTML ='Thông tin được yêu cầu';
-
-            }else{
-                //check name
-                if(id == 'district'){
-                    console.log(value);
-                    if(patternss.test(value) == false){ span.innerHTML ='District must not have special character!!';}
-                    var emailss =value;
-                }
-
-                // Kiểm tra số điện thoại
-                // if(id == 'newPNumber' && isNaN(value) == true ){span.innerHTML ='Số điện thoại phải là kiểu số';}
-
-            }
-            // Nếu có lỗi thì chèn span vào hồ sơ, chạy onchange, submit return false, highlight border
-
-            if(span.innerHTML != ''){
-
-                inputs[i].parentNode.appendChild(span);
-
-                errors = true;
-
-                //run_onchange = true;
-
-                inputs[i].style.border = '1px solid #c6807b';
-
-                inputs[i].style.background = '#fffcf9';
-
-            }
-        }// end for
-
-        if(errors == false){
-
+        var resultdistrict = $("#resultdistrict");
+        var district = $("#district").val();
+        resultdistrict.text("");
+        if(district == ''){
+            resultdistrict.text("Chưa nhập Quận/Huyện");
+            resultdistrict.css("color", "red");
+        }
+        if (patternss.test(district) == false && district != ''){
+            resultdistrict.text("Quận/Huyện không hhợp lệ");
+            resultdistrict.css("color", "red");
+        }
+        if(patternss.test(district) == true && district != ''){
             var province = addform.find("select[name='nprovince']").val();
             var district = addform.find("input[name='district']").val();
             console.log(district, province);
@@ -197,37 +142,33 @@ $(document).ready(function () {
 
             }).always(function (res) {
                 var code = res.code;
-                var success = res.success || 'Successful';
+                var success = res.success || 'Thêm bị lỗi';
                 if (code == 200) {
-                    alert("Insert when wrong!");
+                    alert("Thêm thành công!");
                 } else {
                     alert(success);
-                    window.location.href="http://localhost:5000/dismanage.html";
+
                 }
             })
 
 
-            //  alert('Đăng ký thành công');
-        } else {
-            return !errors;
-
         }
+        //console.log(param);
+
+        return false;
+    }
 
 
-
-    }// end valid()
-
-    // Chạy hàm kiểm tra valid()
-
-    //var register = $('#Add');
 
     var register = document.getElementById('Add');
     console.log(register);
     register.onclick = function(){
 
-        return valid1();
+        return valid();
 
     }
+
+
 
 
 })

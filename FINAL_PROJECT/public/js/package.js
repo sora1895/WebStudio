@@ -63,7 +63,7 @@ $(document).ready(function () {
             function delRow(data = {}) {
                 oldId = data.Package_ID;
                 console.log(oldId);
-                if (confirm('You want to delete this data?')) {
+                if (confirm('Bạn có muốn xóa?')) {
                     $.ajax({
                         url: `/delPack`,
                         method: 'post',
@@ -73,9 +73,9 @@ $(document).ready(function () {
                         })
                     }).always(function (res) {
                         var code = res.code;
-                        var success = res.success || 'Delete when wrong!';
+                        var success = res.success || 'Xóa bị lỗi!';
                         if (code == 200) {
-                            alert("Successful");
+                            alert("Xóa thành công");
                             window.location.href = "http://localhost:5000/package.html";
                         } else {
                             alert(success);
@@ -109,8 +109,8 @@ $(document).ready(function () {
                     <td>${yesno}</td>
                     <td><img width=400px src=${PackPic}></td>
                 </tr>`);
-                var editButton = $(`<td><button style="color:white">Edit</button></td>`);
-                var delButton = $(`<td><button style="color:white">Delete</button></td>`);
+                var editButton = $(`<td><button style="color:white">Chỉnh Sửa</button></td>`);
+                var delButton = $(`<td><button style="color:white">Xóa</button></td>`);
                 editButton.click(function (e) {
                     bindToEditForm(d);
                 });

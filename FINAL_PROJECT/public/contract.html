@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Page Title</title>
+    <title>Hợp Đồng</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" />
 
@@ -336,8 +336,10 @@ input[type=submit] {
                     <tr>
                         <td>Họ và Tên:</td>
                         <td colspan="3">
-                            <input placeholder="Enter Name here ....." type="text" name="newCusName" required>
+                            <input placeholder="Enter Name here ....." type="text" name="newCusName" id="newCusName" required>
+
                             <input type="checkbox" id="exist" value="exist" onclick="check()"> Khách hàng cũ?
+                            <a id="resultname"></a>
                         </td>
                     </tr>
                     <tr>
@@ -353,10 +355,12 @@ input[type=submit] {
                         <td colspan="2">
                             <p> Số điện thoại:</p>
                             <input name="newCusPhone" id="newCusPhone" placeholder="Enter phone number..." type="text" required>
+                            <p id="resultphone" ></p>
                         </td>
                         <td colspan="2">
                             <p>Email:</p>
                             <input name="newCusEmail" id="newCusEmail" placeholder="Enter email ....." type="text" required>
+                            <p id="resultemail" ></p>
                         </td>
                     </tr>
                     <tr>
@@ -366,11 +370,12 @@ input[type=submit] {
                         </td>
                     </tr>
                     <tr>
-                        <td>Studio làm việc:</td>
+                        <td>Studio làm việc:
                         <td colspan="3">
                             <select id="SelNStu" required>
                                 <option>Please select a Studio .....</option>
                             </select>
+
                         </td>
                     </tr>
                 </thead>
@@ -420,19 +425,19 @@ input[type=submit] {
                     <tr>
                         <td>Ngày lập nên Hợp đồng:</td>
                         <td>
-                            <input type="date" name="newCdate" required>
+                            <input type="date" name="newCdate" id="newCdate" required>
                             <p id="resultcreDate" style="font-size: 12px"></p>
                         </td>
                         <td>Ngày bắt đầu làm việc</td>
                         <td>
-                            <input type="date" name="newSdate" required>
+                            <input type="date" name="newSdate" id="newSdate" required>
                             <p id="resultSDate" style="font-size: 12px"></p>
                         </td>
                     </tr>
                     <tr>
                         <td>Ngày kết thúc (theo dự đoán):</td>
                         <td>
-                            <input type="date" name="newEdate" required>
+                            <input type="date" name="newEdate" id="newEdate" required>
                             <p id="resultEDate" style="font-size: 12px"></p>
                         </td>
                     </tr>

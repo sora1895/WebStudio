@@ -51,7 +51,7 @@ $(document).ready(function () {
             function delRow(data = {}) {
                 oldId = data.User_ID;
                 console.log(oldId);
-                if (confirm('You want to delete this data?')) {
+                if (confirm('Bạn có muốn xóa?')) {
                     $.ajax({
                         url: `/DelUser`,
                         method: 'post',
@@ -61,9 +61,9 @@ $(document).ready(function () {
                         })
                     }).always(function (res) {
                         var code = res.code;
-                        var success = res.success || 'Delete when wrong!';
+                        var success = res.success || 'Xóa bị lỗi do đẫ có bảng khác nối!';
                         if (code == 200) {
-                            alert("Successful");
+                            alert("Xóa thành công");
                             window.location.href = "http://localhost:5000/user.html";
                         } else {
                             alert(success);
@@ -84,8 +84,8 @@ $(document).ready(function () {
                     <td>${Password}</td>
                     <td>${StudioName}</td>
                 </tr>`);
-                var editButton = $(`<td><button style="color:white">Edit</button></td>`);
-                var delButton = $(`<td><button style="color:white">Delete</button></td>`);
+                var editButton = $(`<td><button style="color:white">Chỉnh Sửa</button></td>`);
+                var delButton = $(`<td><button style="color:white">Xóa</button></td>`);
                 editButton.click(function (e) {
                     bindToEditForm(d);
                 });
@@ -97,7 +97,7 @@ $(document).ready(function () {
                 showDat.append(tr);
                 count++;
             })
-            UserNum.append("Number of Users found: " + count);
+            UserNum.append("Số tài khoản được tìm thấy: " + count);
             //var ProCount = count;
             //ProNum.append("Districts found: " + ProCount);
         }
@@ -166,61 +166,41 @@ $(document).ready(function () {
     })*/
 
 
-    var inputs = document.forms['addForm'].getElementsByTagName('input');
-    function valid1() {
-        var errors = false;
 
+    //check add
+    function validadd() {
         var patternss = /^[a-zA-Z0-9]+$/;
-        for (var i = 0; i < inputs.length; i++) {
-            var value = inputs[i].value;
-            var id = inputs[i].getAttribute('id');
-            // Tạo phần tử span lưu thông tin lỗi
-            var span = document.createElement('span');
-            // Nếu span đã tồn tại thì remove
-            var p = inputs[i].parentNode;
-            if (p.lastChild.nodeName == 'SPAN') { p.removeChild(p.lastChild); }
-            // Kiểm tra rỗng
-
-            if (value == '') {
-                span.innerHTML = 'Thông tin được yêu cầu';
-
-            } else {
-                //check name
-                if (id == 'newPName') {
-                    console.log(value);
-                    if (patternss.test(value) == false) { span.innerHTML = 'UserName must not have special character!!'; }
-
-                    if (value.length < 6 || value.length > 32) {
-                        span.innerHTML = 'UserName must be longer 6 and lesser 32 character !!';
-                    }
-                }
-                //check password
-                if (id == 'newPPass') {
-                    if (value.length < 6) { span.innerHTML = 'Password must be longer 6 character'; }
-                    var pass = value;
-                }
-
-                // Kiểm tra số điện thoại
-                // if(id == 'newPNumber' && isNaN(value) == true ){span.innerHTML ='Số điện thoại phải là kiểu số';}
-
-            }
-            // Nếu có lỗi thì chèn span vào hồ sơ, chạy onchange, submit return false, highlight border
-
-            if (span.innerHTML != '') {
-
-                inputs[i].parentNode.appendChild(span);
-
-                errors = true;
-
-                //run_onchange = true;
-
-                inputs[i].style.border = '1px solid #c6807b';
-
-                inputs[i].style.background = '#fffcf9';
-
-            }
+        var resultname = $("#resultname");
+        var name = $("#newPName").val();
+        resultname.text("");
+        var resultpass = $("#resultpass");
+        var pass = $("#newPPass").val();
+        resultpass.text("");
+        var resultstudio = $("#resultstudio");
+        var studio = $('#studio :selected').val();
+        if(name == ''){
+            resultname.text("Chưa nhập Tài khoản");
+            resultname.css("color", "red");
         }
-        if (errors == false) {
+        if(pass == ''){
+            resultpass.text("Chưa nhập mật khẩu");
+            resultpass.css("color", "red");
+        }
+        if (patternss.test(name) == false && name != ''){
+            resultname.text("Tài khoản không được có ký tự dặc biệt");
+            resultname.css("color", "red");
+        }
+        if(name.length <6 || name.length > 32){
+            resultname.text("Tài khoản phải từ 6 đến 32 ký tự");
+            resultname.css("color", "red");
+        }
+        if (pass.length < 6){
+            resultpass.text("Mật khẩu phải từ 6 ký tự trở lên");
+            resultpass.css("color", "red");
+        }
+        if(studio == 'Please Select'){
+            alert("Chưa chọn Studio");
+        } else if(patternss.test(name) == true && name.length<=32 && pass.length >= 6 && name.length >= 6){
             var newNames = addForm.find("input[name='newPName']").val();
             var newPass = addForm.find("input[name='newPPass']").val();
             var newRole = 'user';
@@ -238,74 +218,48 @@ $(document).ready(function () {
                 })
             }).always(function (res) {
                 var code = res.code;
-                var success = res.success || 'Insert when wrong!';
-                // window.location.href = "http://localhost:5000/user.html"
+                var success = res.success || 'Thêm bị lỗi!';
                 if (code == 200) {
-                    alert("Insert Successful");
+                    alert("Thêm thành công");
+                    window.location.href = "http://localhost:5000/user.html"
                 } else {
                     alert(success);
                 }
             })
-        } else {
-            return !errors;
+
         }
+        //console.log(param);
+
+        return false;
     }
 
-    var inputs1 = document.forms['editForm'].getElementsByTagName('input');
-    var run_onchange1 = false;
-    function valid2() {
-        var errors = false;
+    //$("#changepass").bind("click", validate(old));
+    //$("#Add").bind("click", validadd());
+    var register = document.getElementById('Add');
+    console.log(register);
+    register.onclick = function () {
 
-        var patternss = /^[a-zA-Z0-9]+$/;
-        for (var i = 0; i < inputs1.length; i++) {
-            var value = inputs1[i].value;
-            var id = inputs1[i].getAttribute('id');
-            // Tạo phần tử span lưu thông tin lỗi
-            var span = document.createElement('span');
-            // Nếu span đã tồn tại thì remove
-            var p = inputs1[i].parentNode;
-            if (p.lastChild.nodeName == 'SPAN') { p.removeChild(p.lastChild); }
-            // Kiểm tra rỗng
+        return validadd();
 
-            if (value == '') {
-                span.innerHTML = 'Thông tin được yêu cầu';
+    }
 
-            } else {
-                //check name
-                if (id == 'newName') {
-                    console.log(value);
-                    if (patternss.test(value) == false) { span.innerHTML = 'UserName must not have special character!!'; }
-                    var emailss = value;
-                }
-                //check password
-                if (id == 'newPass') {
-                    if (value.length < 6) { span.innerHTML = 'Password must be longer 6 character'; }
-                    var pass = value;
-                }
-
-                // Kiểm tra số điện thoại
-                //  if(id == 'newPNumber' && isNaN(value) == true ){span.innerHTML ='Số điện thoại phải là kiểu số';}
-
-            }
-            // Nếu có lỗi thì chèn span vào hồ sơ, chạy onchange, submit return false, highlight border
-
-            if (span.innerHTML != '') {
-
-                inputs1[i].parentNode.appendChild(span);
-
-                errors = true;
-
-                //run_onchange = true;
-
-                inputs1[i].style.border = '1px solid #c6807b';
-
-                inputs1[i].style.background = '#fffcf9';
-
-            }
-        }// end for
-
-        if (errors == false) {
-
+    //check edit
+    function validedit() {
+        var resultpass = $("#resultpassedit");
+        var pass = $("#newPass").val();
+        resultpass.text("");
+        var studio = $('#SelStudio :selected').val();
+        if(pass == ''){
+            resultpass.text("Chưa nhập mật khẩu");
+            resultpass.css("color", "red");
+        }
+        if (pass.length < 6){
+            resultpass.text("Mật khẩu phải từ 6 ký tự trở lên");
+            resultpass.css("color", "red");
+        }
+        if(studio == 'Please Select'){
+            alert("Chưa chọn Studio");
+        } else if(pass.length >= 6){
             var newPass = editForm.find("input[name='newPass']").val();
             var newRole = 'user';
             var idstudio = $('#SelStudio :selected').val();
@@ -322,38 +276,26 @@ $(document).ready(function () {
                 })
             }).always(function (res) {
                 var code = res.code;
-                var success = res.success || 'Insert when wrong!';
-                //window.location.href = "http://localhost:5000/user.html"
+                var success = res.success || 'Chỉnh sửa bị lỗi!';
                 if (code == 200) {
-                    alert("Insert Successful");
+                    alert("Chỉnh sửa thành công");
+                    window.location.href = "http://localhost:5000/user.html"
                 } else {
                     alert(success);
                 }
             })
 
-
-            //  alert('Đăng ký thành công');
-        } else {
-            return !errors;
-
         }
+        //console.log(param);
 
-
-
-    }
-
-    var register = document.getElementById('Add');
-    console.log(register);
-    register.onclick = function () {
-
-        return valid1();
-
+        return false;
     }
     var register2 = document.getElementById('Edit');
     console.log(register2);
     register2.onclick = function () {
 
-        return valid2();
+        return validedit();
 
     }
+
 })

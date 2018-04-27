@@ -90,7 +90,7 @@ $(document).ready(function () {
                         <td>${ContractID}</td>
                         <td>${ConDetailID}</td>
                     </tr>`);
-                var viewButton = $(`<td><button style="color:white">View Picture</button></td>`);
+                var viewButton = $(`<td><button style="color:white">Xem ảnh</button></td>`);
                 viewButton.click(function (e) {
                     localStorage.setItem('condeid',ConDetailID);
                     window.location.href = `viewpicture.html?condeid=${ConDetailID}`;
@@ -100,10 +100,10 @@ $(document).ready(function () {
                 count++;
 
             })
-            PicNum.append("Number of Contract found: " + count);
+            PicNum.append("Số hợp đồng tìm đươc ảnh: " + count);
         } else {
-            PicNum.append("Number of Contract found: " + count);
-            alert("????")
+            PicNum.append("Số hợp đồng tìm đươc ảnh: " + count);
+            alert("Không tìm thấy");
         }
 
     }

@@ -28,6 +28,7 @@ $(document).ready(function() {
             var role = res.role;
             console.log(role);
             localStorage.setItem('id',id);
+            sessionStorage.setItem('pass',password);
             if(code == 200) {
                 
                 if(role=='admin'){

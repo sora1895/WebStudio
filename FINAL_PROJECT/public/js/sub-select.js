@@ -56,10 +56,10 @@ $(document).ready(function () {
                 count++;
             }
             var StuCount = count;
-            StuNum.append("Studios found: " + StuCount);
+            StuNum.append("Các Studio tìm thấy trong khu vực: " + StuCount);
         }
         else {
-            alert("????")
+            alert("Không có Studio nào trong khu vực này")
         }
     })
 
@@ -90,7 +90,7 @@ $(document).ready(function () {
     })
 
     $('#del').click(function () {
-        if (confirm('You want to delete this data?')) {
+        if (confirm('Bạn có muốn xóa Quận/Huyện này?')) {
             $.ajax({
                 url: '/delDis',
                 method: 'post',
@@ -100,10 +100,10 @@ $(document).ready(function () {
                 })
             }).always(function (res) {
                 var code = res.code;
-                var success = res.success || 'Delete when wrong!';
+                var success = res.success || 'Xóa bị lỗi!';
                 //listA[0].onclick();
                 if (code == 200) {
-                    alert("Successful");
+                    alert("Xóa thành công");
                 } else {
                     alert(success);
                 }
