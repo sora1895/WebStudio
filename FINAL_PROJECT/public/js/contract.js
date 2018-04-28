@@ -483,7 +483,7 @@ $(document).ready(function () {
                     `+sql+`
                 </tr>`);
 
-                var editButton = $(`<td><button>Edit</button></td>`);
+                var editButton = $(`<td><button>Chỉnh Sửa</button></td>`);
                 //var delButton = $(`<td><button>Delete</button></td>`);
                 editButton.click(function (e) {
                     bindToEditForm(d);

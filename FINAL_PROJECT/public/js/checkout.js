@@ -7,9 +7,9 @@ $(document).ready(function () {
     //console.log(items);
     var count =0;
     var thead = $(`<tr>
-        <th>No</th>
-        <th>Selected Package</th>
-        <th>Price</th>
+        <th>STT</th>
+        <th>Gói hàng đã chọn</th>
+        <th>Giá</th>
     </tr>`)
     showDathead.append(thead);
     var AllPrice=0;

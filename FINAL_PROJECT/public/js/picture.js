@@ -58,10 +58,10 @@ $(document).ready(function () {
         }
 
         var thead = $(`<tr>
-                        <th>No</th>
+                        <th>STT</th>
                         `+ theadbonus + `
-                        <th>Contract ID</th>
-                        <th>Contract Detail ID</th>
+                        <th>ID hợp đồng</th>
+                        <th>ID chi tiết hợp đồng</th>
                     </tr>`);
         showDatHead.append(thead);
         if (res && res.data && res.data instanceof Array) {
