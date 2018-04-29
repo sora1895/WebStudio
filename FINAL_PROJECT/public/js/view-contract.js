@@ -105,7 +105,7 @@ $(document).ready(function () {
                 var EndDate = "" + eDate.getFullYear() + "-" + EndMonth + "-" + EnDate + "";
                 console.log(State);
                 $('#conid').empty();
-                $('#conid').append('CONTRACT '+ContractID+' | ');
+                $('#conid').append('HỢP ĐỒNG '+ContractID+' | ');
                 $('#status').empty();
                 if(State=='Chưa thanh toán'){
                     $('#status').css('color','red');

@@ -198,7 +198,8 @@ $(document).ready(function () {
 
     var showPackage = function (res, type) {
         console.log(res);
-
+        $('title').empty();
+        $('title').append(res.data[0].Studio_Name)
         var StudioName = res.data[0].Studio_Name;
         var StudioNumber = res.data[0].Studio_Number;
         var StudioEmail = res.data[0].Studio_Email;
@@ -261,7 +262,7 @@ $(document).ready(function () {
                         </ul>
                         <p>
                             <a id="cart"><img src="/picture/38919-200.png" width='50px'></a><br>
-                            <a href="view-pack.html?id=${StudioID}&name=${PackageName}" class="btn btn-primary">Read More</a>
+                            <a href="view-pack.html?id=${StudioID}&name=${PackageName}" class="btn btn-primary">Đọc thêm</a>
                         </p>
                         </div>
                         </div>

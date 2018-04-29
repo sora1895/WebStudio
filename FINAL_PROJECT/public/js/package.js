@@ -114,15 +114,15 @@ $(document).ready(function () {
                 editButton.click(function (e) {
                     bindToEditForm(d);
                 });
-                delButton.click(function (e) {
-                    delRow(d);
-                })
+                // delButton.click(function (e) {
+                //     delRow(d);
+                // })
                 tr.append(editButton);
-                tr.append(delButton);
+                // tr.append(delButton);
                 showDat.append(tr);
                 count++;
             })
-            PackNum.append("Number of Packages found: " + count);
+            PackNum.append("Sô gói hàng tìm được: " + count);
         }
         else {
             alert("Gói hàng này không tồn tại")

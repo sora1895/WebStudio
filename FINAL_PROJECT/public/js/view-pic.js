@@ -98,7 +98,7 @@ $(document).ready(function () {
                         <i class="sl-icon-briefcase"></i>
                         <h2>${res.data[0].Package_Name}</h2>
                         <p>${res.data[0].Package_Detail}.</p>
-                        <p>Number of Pictures found: ${count}</p>
+                        <p>Số Ảnh tìm được: ${count}</p>
                     </div>
                 </div>
             </div>`);

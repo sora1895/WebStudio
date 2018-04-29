@@ -124,7 +124,7 @@ $(document).ready(function(){
                 showDat.append(tr);
                 count++;
             })
-            StudioNum.append("Số Studo tìm được: " + count);
+            StudioNum.append("Số Studio tìm được: " + count);
             //var ProCount = count;
             //ProNum.append("Districts found: " + ProCount);
         }

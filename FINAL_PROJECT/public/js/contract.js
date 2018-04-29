@@ -497,12 +497,12 @@ $(document).ready(function () {
                 showDat.append(tr);
                 count++;
             })
-            ConNum.append("Number of Contract found: " + count);
+            ConNum.append("Số Hợp đồng tìm được: " + count);
 
         }
         else {
             alert("Not found!");
-            ConNum.append("Number of Contract found: 0");
+            ConNum.append("Số Hợp đồng tìm được: 0");
         }
     }
 
