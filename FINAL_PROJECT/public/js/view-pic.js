@@ -106,7 +106,7 @@ $(document).ready(function () {
             contractPic.append(thead);
         }
         else {
-            alert("????")
+            alert("Không tìm thấy ảnh nào")
         }
     }
 

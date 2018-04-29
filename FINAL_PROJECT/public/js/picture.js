@@ -31,7 +31,7 @@ $(document).ready(function () {
         }).always(function (res) {
             var code = res.code;
             if(code!=200){
-                alert('Không tìm th?y ?nh nào')
+                alert('KhÃ´ng tÃ¬m tháº¥y');
             }
             if (res.data[0].Contract_ID != null || res.data[0].PrintOrder_ID != null || res.data[0].Customer_Name != null || res.data[0].Studio_Name != null) {
                 show(res, type);
