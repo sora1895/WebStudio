@@ -99,6 +99,7 @@ $(document).ready(function () {
                         <h2>${res.data[0].Package_Name}</h2>
                         <p>${res.data[0].Package_Detail}.</p>
                         <p>Số Ảnh tìm được: ${count}</p>
+                        <p style="color:red">Hãy bấm vào ảnh để xem chi tiết ảnh</p>
                     </div>
                 </div>
             </div>`);

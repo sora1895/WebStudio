@@ -53,7 +53,7 @@ $(document).ready(function () {
                 <td>Tên sản phẩm:</td>
                 <td colspan="3">
                     <select id="SelNPak" name="SelNPak" required>
-                        <option>Please select a Package ..... </option>
+                        <option>Xin hãy chọn một gói hàng .... </option>
                     </select>
                         <button type="button" name="addPak" class="w3-button w3-green">Add more</button>
                 </td>
@@ -72,7 +72,7 @@ $(document).ready(function () {
             <tr>
                 <td colspan="4">
                     <label>Ghi chú:</label>
-                    <input placeholder="Enter note ....." type="text" name="newCNote" width="100%">
+                    <input placeholder="Nhập ghi chú ... " type="text" name="newCNote" width="100%">
                 </td>
             </tr>`);
 
@@ -153,7 +153,7 @@ $(document).ready(function () {
 
     var renderPackage = function (options, selectTag) {
         selectTag.empty();
-        selectTag.append($(`<option>Please select a Package ..... </option>`));
+        selectTag.append($(`<option>Xin hãy chọn một gói hàng .... </option>`));
         if (options instanceof Array) {
             for (var i = 0; i < options.length; i++) {
                 var id = options[i].Package_ID;
@@ -184,11 +184,11 @@ $(document).ready(function () {
     $('body').on('click', `button[name='addPak']`, function () {
         var tr = $(`<tr><th colspan="2">Gói #${pakcount}</th></tr>`
             +'<tr><td>Tên sản phẩm:</td><td colspan="3">'
-            + '<select id="SelNPak" name="SelNPak"><option>Please select a Package ..... </option> </select>'
+            + '<select id="SelNPak" name="SelNPak"><option>Xin hãy chọn một gói hàng .... </option> </select>'
             + '<p><button type="button" name="addPak" class="w3-button w3-green">Add more</button></p></td></tr>'
             + '<tr><td colspan="4">'
             + '<label>Chi tiết sản phẩm</label>'
-            + '<textarea rows="5" placeholder="Enter Package detail ....." style="width: 100%" id="newCDDetail" name="newCDDetail" required></textarea>'
+            + '<textarea rows="5" placeholder="Hãy nhập chi tiết gói hàng ... " style="width: 100%" id="newCDDetail" name="newCDDetail" required></textarea>'
             + '</td></tr>'
             + '<tr><td colspan="4" style="text-align: right">'
             + '<p id="PakPrice">Giá trước VAT: Giá sản phẩm</p>'
@@ -196,7 +196,7 @@ $(document).ready(function () {
             + '<tr>'
             + '<td colspan="4">'
             + '<label>Ghi chú:</label>'
-            + '<input placeholder="Enter note ....." type="text" name="newCNote" width="100%">'
+            + '<input placeholder="Nhập ghi chú ... " type="text" name="newCNote" width="100%">'
             + '</td>'
             + '</tr>');
 
@@ -250,7 +250,7 @@ $(document).ready(function () {
 
     SelNStu.change(function () {
         SelNPak.empty();
-        var tr = "<option>Please select a Package ..... </option>";
+        var tr = "<option>Xin hãy chọn một gói hàng .... </option>";
         SelNPak.append(tr);
         console.log(SelNStu.val());
         $.ajax({
@@ -313,7 +313,7 @@ $(document).ready(function () {
                 <tr>
                     <td colspan="4">
                         <label>Chi tiết sản phẩm</label>
-                        <textarea rows="5" placeholder="Enter Package detail ....." style="width: 100%" id="newCDDetail" name="newCDDetail" required>${PackageDetail}</textarea>
+                        <textarea rows="5" placeholder="Hãy nhập chi tiết gói hàng ... " style="width: 100%" id="newCDDetail" name="newCDDetail" required>${PackageDetail}</textarea>
                     </td>
                 </tr>
                 <tr>
@@ -324,7 +324,7 @@ $(document).ready(function () {
                 <tr>
                     <td colspan="4">
                         <label>Ghi chú:</label>
-                        <input placeholder="Enter note ....." type="text" name="newCNote" value="${PackageNote}" width="100%">
+                        <input placeholder="Nhập ghi chú ... " type="text" name="newCNote" value="${PackageNote}" width="100%">
                    </td>
                 </tr>`);
 
@@ -763,7 +763,7 @@ $(document).ready(function () {
         var total = 20;
         var selStudio = $('#SelNStu :selected').val();
         console.log(datecre,dateedate,datesdat);
-        if(selStudio == 'Please select a Studio .....'){
+        if(selStudio == 'Xin hãy chọn một studio .....'){
             alert("Hãy chọn Studio");
         }else {check20 =1;}
         if(name == ''){
