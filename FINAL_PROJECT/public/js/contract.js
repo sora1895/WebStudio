@@ -38,7 +38,6 @@ $(document).ready(function () {
     }
 
     showAdd[0].onclick = function () {
-
         document.getElementById("exist").style.display == 'blocked'
         //addform.show();
         //ConDeItem.show();
@@ -149,6 +148,8 @@ $(document).ready(function () {
             selectTag.append(optionTag);
             selectTag2.append(optionTag2);
         }
+        $("#SelNStu").val(localStorage.getItem('UserStudioId'))
+        studioEV($("#SelNStu").val());
     }
 
     var renderPackage = function (options, selectTag) {
@@ -248,13 +249,13 @@ $(document).ready(function () {
 
 
 
-    SelNStu.change(function () {
+    var studioEV = function(id){
         SelNPak.empty();
         var tr = "<option>Xin hãy chọn một gói hàng .... </option>";
         SelNPak.append(tr);
-        console.log(SelNStu.val());
+        console.log(id);
         $.ajax({
-            url: `/GetPackByStuId?id=${SelNStu.val()}`,//
+            url: `/GetPackByStuId?id=${id}`,//
             method: 'get',
             contentType: 'application/json'
         }).always(function (res) {
@@ -264,7 +265,9 @@ $(document).ready(function () {
             var selectTag = $("select[name='SelNPak']");
             renderPackage(packageOptions, selectTag);
         })
-    })
+    }
+        
+    
 
     SelNPak.change(function () {
 
@@ -295,7 +298,10 @@ $(document).ready(function () {
                 var vat = PackagePrice * 0.1;
                 var total = PackagePrice + vat;
 
-
+                var option=``;
+                packageOptions.forEach(function(d,i){
+                    option += `<option value=${d.Package_ID}>${d.Package_Name}</option>`;
+                })
                 var tr = $(`
                 <tr>
                     <th colspan="3"><p id="condeid" style="color:white">Contract Detail #${ConDetailID}</p></th>
@@ -304,9 +310,9 @@ $(document).ready(function () {
                 <tr>
                     <td>Tên sản phẩm:</td>
                     <td colspan="3">
-                        <select id="SelNPak" name="SelNPak">
-                           <option>${PackageName}</option>
-                        </select>
+                        <select id="SelNPak" name="SelNPak">`+
+                           option
+                        +`</select>
                         <p><button type="button" name="addPak" class="w3-button w3-green">Add more</button></p>
                     </td>
             </tr>

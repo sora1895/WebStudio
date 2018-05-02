@@ -73,7 +73,7 @@ $(document).ready(function () {
             }).always(function (res) {
                 var code = res.code;
                 var success = res.success || 'Delete when wrong!';
-                window.location.href = "http://localhost:5000/picture.html";
+                window.location.href = "http://localhost:5000/viewpicture.html?condeid="+id;
                 if (code == 200) {
                     alert("Delete Successful");
                 } else {

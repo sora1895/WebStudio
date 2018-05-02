@@ -173,9 +173,9 @@ $(document).ready(function () {
                 var tr = $(`<tr>
                     <td>${ConDetailID}</td>
                     <td>${ContractID}</td>
-                    <td>${PackageID}</td>
+                    <td><a href="view-pack.html?id=${localStorage.getItem('UserStudioId')}&name=${PackageName}">${PackageID}</a></td>
                     <td>${PackageName}</td>
-                    <td>${PackageDetail}</td>
+                    <td>${PackageDetail.substr(0,100)} ....</td>
                     <td>${PackagePrice.toLocaleString( 'en-US')}</td>
                     <td>${PackageNote}</td>
                 </tr>`);
