@@ -55,10 +55,10 @@ $(document).ready(function () {
       }).always(function (res) {
         var code = res.code;
         var success = res.success || 'Đổi mật khẩu bị lỗi!';
-
+        window.location.href = "user-page.html"
         if (code == 200) {
           alert('Mật khẩu của bạn đã đổi thành công');
-          //window.location.href = "http://localhost:5000/user-page.html"
+          
         } else {
           alert(success);
         }

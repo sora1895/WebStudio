@@ -178,6 +178,7 @@ $(document).ready(function () {
         $('.progress-bar').text('0%');
         $('.progress-bar').width('0%');
     });
+var html;
 
     $('#upload-input').on('change', function () {
 
@@ -195,7 +196,6 @@ $(document).ready(function () {
                 // add the files to formData object for the data payload
                 formData.append('uploads[]', file, file.name);
             }
-
             $.ajax({
                 url: '/upload?id=' + id1,
                 type: 'POST',
@@ -208,7 +208,6 @@ $(document).ready(function () {
                 xhr: function () {
                     // create an XMLHttpRequest
                     var xhr = new XMLHttpRequest();
-
                     // listen to the 'progress' event
                     xhr.upload.addEventListener('progress', function (evt) {
 
@@ -224,16 +223,26 @@ $(document).ready(function () {
                             // once the upload reaches 100%, set the progress bar text to done
                             if (percentComplete === 100) {
                                 $('.progress-bar').html('Done');
+                                setTimeout(function(){
+                                    alert('Upload Complete!');
+                                    window.location.href="viewpicture.html?condeid="+id1
+                                }, 1000);
+                                
                             }
 
                         }
-
+                    
                     }, false);
 
                     return xhr;
+                    
                 }
             });
 
         }
+        
     });
+
+    
+    
 })

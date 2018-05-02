@@ -72,14 +72,14 @@ $(document).ready(function () {
                 contentType: 'application/json',
                 data: JSON.stringify({
                     id: localStorage.getItem('picid'),
+                    url: $('input[name="url"]').val()
                 })
             }).always(function (res) {
                 var code = res.code;
                 var success = res.success || 'Delete when wrong!';
-                window.location.href = "http://localhost:5000/viewpicture.html?condeid="+id;
+                window.location.href = "viewpicture.html?condeid="+id;
                 if (code == 200) {
                     alert("Xóa thành công");
-                    window.location.href = "viewpicture.html?condeid="+id+"";
                 } else {
                     alert(success);
                 }
