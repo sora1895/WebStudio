@@ -15,6 +15,8 @@ $(document).ready(function () {
 
     var id = x.substr(idloc + 3);
     var id1 = x.substr(idloc + 3);
+    var id2 = x.substr(idloc + 3, nameloc - idloc - 4);
+    var name = decodeURIComponent(x.substr(nameloc + 5));
     console.log(id1);
     console.log(id);
     var name=localStorage.getItem('picname');
@@ -62,7 +64,8 @@ $(document).ready(function () {
     })
 
     delForm.submit(function (e) {
-        if (confirm('You want to delete this data?')) {
+
+        if (confirm('Bạn có muốn xóa?')) {
             $.ajax({
                 url: '/delPicture',
                 method: 'post',
@@ -75,7 +78,8 @@ $(document).ready(function () {
                 var success = res.success || 'Delete when wrong!';
                 window.location.href = "http://localhost:5000/viewpicture.html?condeid="+id;
                 if (code == 200) {
-                    alert("Delete Successful");
+                    alert("Xóa thành công");
+                    window.location.href = "viewpicture.html?condeid="+id+"";
                 } else {
                     alert(success);
                 }
@@ -102,10 +106,10 @@ $(document).ready(function () {
             })
         }).always(function (res) {
             var code = res.code;
-            var success = res.success || 'Edit when wrong!';
+            var success = res.success || 'Cập nhật bị lỗi!';
             if (code == 200) {
-                alert("Successful");
-                //window.location.href = "http://localhost:5000/picdetail.html?id=" + id1 + "?name=" + detail + "";
+                alert("Cập nhật thành công");
+                window.location.href = "viewpicture.html?condeid="+id+"";
             } else {
                 alert(success);
             }

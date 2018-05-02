@@ -54,7 +54,7 @@ $(document).ready(function () {
                     <select id="SelNPak" name="SelNPak" required>
                         <option>Xin hãy chọn một gói hàng .... </option>
                     </select>
-                        <button type="button" name="addPak" class="w3-button w3-green">Add more</button>
+                        <button type="button" name="addPak" class="w3-button w3-green">Thêm</button>
                 </td>
             </tr>
             <tr>
@@ -304,8 +304,8 @@ $(document).ready(function () {
                 })
                 var tr = $(`
                 <tr>
-                    <th colspan="3"><p id="condeid" style="color:white">Contract Detail #${ConDetailID}</p></th>
-                    <td><a href="contractdetail.html?id=${ContractID}">View Detail</a></td>
+                    <th colspan="3"><p id="condeid" style="color:white">Chi tiết hợp đồng #${ConDetailID}</p></th>
+                    <td><a href="contractdetail.html?id=${ContractID}">Xem chi tiết</a></td>
                 </tr>
                 <tr>
                     <td>Tên sản phẩm:</td>
@@ -507,7 +507,7 @@ $(document).ready(function () {
 
         }
         else {
-            alert("Not found!");
+            alert("Không tìm thấy hợp đồng");
             ConNum.append("Số Hợp đồng tìm được: 0");
         }
     }
@@ -766,7 +766,7 @@ $(document).ready(function () {
         var datesdat = Date.parse(sdate);
         var dateedate = Date.parse(edate);
         var check1,check2,check3,check4,check5,check6,check7,check8,check9,check10,check11,check12,check13,check14,check15,check16,check17,check18,check19,check20;
-        var total = 20;
+        var total = 19;
         var selStudio = $('#SelNStu :selected').val();
         console.log(datecre,dateedate,datesdat);
         if(selStudio == 'Xin hãy chọn một studio .....'){
@@ -780,10 +780,7 @@ $(document).ready(function () {
             resultphone.text("Không được để trống");
             resultphone.css("color", "red");
         }else {check2=1;}
-        if(email == ''){
-            resultemail.text("Không được để trống");
-            resultemail.css("color", "red");
-        }else {check3=1}
+
         if(credate==''){
             $resultcre.text("Không được để trống");
             $resultcre.css("color", "red");
@@ -800,7 +797,7 @@ $(document).ready(function () {
             resultname.text("Tên không được có ký tự đặc biệt");
             resultname.css("color", "red");
         }else {check7=1;}
-        if(reg_mail.test(email) == false){
+        if(reg_mail.test(email) == false && email != ''){
             resultemail.text("Email không hợp lệ (ví dụ: abc@gmail.com)");
             resultemail.css("color", "red");
         }else {check8=1;}
@@ -848,7 +845,7 @@ $(document).ready(function () {
             $resultedate.text("Ngày kết thúc phải lớn hơn ngày bắt đầu và lập nên");
             $resultedate.css("color", "red");
         }else {check19=1;}
-        if(total==(check1+check2+check3+check4+check5+check6+check7+check8+check9+check10+check11+check12+check13+check14+check15+check16+check17+check18+check19+check20)){
+        if(total==(check1+check2+check4+check5+check6+check7+check8+check9+check10+check11+check12+check13+check14+check15+check16+check17+check18+check19+check20)){
             //valid1();
             if (type == 'add') {
                 if (document.getElementById("exist").checked == true) {

@@ -132,7 +132,7 @@
                             <a href="./package.html">Quản lý gói hàng</a></div>
         
                             <div class="menuitem">
-                            <a href="./picture.html">Ảnh</a></div>
+                            <a href="./picture.html">Quản lý Ảnh</a></div>
                             <div class="menuitem">
                             <a href="./contract.html">Hợp đồng</a>
                             </div>
@@ -144,33 +144,44 @@
                     <table>
                         <tr>
                             <th>Tên Studio: </th>
-                            <td><input type="text" id="stuname"></td>
-                            <td><input type="text" id="Icon" placeholder="Điền địa chỉ icon studio ..... "></td>
+                            <td><input type="text" id="stuname">
+                                <p id="resultname"></p></td>
+                            <td><input type="text" id="Icon" placeholder="Điền địa chỉ icon studio ..... ">
+                                <p></p></td>
                             <td><img id="icon" width="200px"></td>
                         </tr>
                         <tr>
-                            <td colspan="4"><lable>Địa chỉ</lable><input type="text" id="address"></td>
+                            <td colspan="4"><lable>Địa chỉ</lable><input type="text" id="address">
+                                <p id="resultadress"></p></td>
+
+
                         </tr>
                         <tr>
                             <td colspan="2">Tỉnh:
                             
                                 <select id="province">
                             </select>
+                                <p></p>
                         </td>
                         <td colspan="2"><lable>Email: </lable>
-                        <input type="email" id="email"></td>
+                        <input type="email" id="email">
+                            <p id="resultemail"></p></td>
                         </tr>
                         <tr>
                             
                             <td colspan="2"><label>Huyện/Quận: </label>
                                 <select id="district">
-                                </select></td>
+                                </select>
+                                <p></p></td>
                             <td colspan="2"><lable>Số ĐT: </lable>
-                            <input type="text" id="phone"></td>
+                            <input type="text" id="phone">
+                                <p id="resultphone"></p></td>
                         </tr>
                         <tr>
-                            <td><label>Tọa độ Studio</label><input type="text" id="coor"></td>
-                            <td><label>Ảnh nền chính</label><input type="text" id="main" placeholder="Hãy điền địa chỉ ảnh vào đây .... "></td>
+                            <td><label>Tọa độ Studio</label><input type="text" id="coor">
+                                <p id="resultcoor"></p></td>
+                            <td><label>Ảnh nền chính</label><input type="text" id="main" placeholder="Hãy điền địa chỉ ảnh vào đây .... ">
+                                <p></p></td>
                             <td colspan="2"><img id="mainpic" width="500px"></td>
                         </tr>
                         <tr>

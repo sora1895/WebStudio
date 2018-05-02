@@ -50,11 +50,11 @@ $(document).ready(function () {
         var theadbonus;
         var bonuscol;
         if (type == 'Customer Name') {
-            theadbonus = "<td>Customer Name</td>"
+            theadbonus = "<th>Tên khách hàng</th>"
         } else if (type == 'Studio Name') {
-            theadbonus = "<td>Studio Name</td>"
+            theadbonus = "<th>Tên Studio</th>"
         } else if (type == 'Print Order ID') {
-            theadbonus = "<td>Print Order ID</td>"
+            theadbonus = "<th></th>"
         }
 
         var thead = $(`<tr>

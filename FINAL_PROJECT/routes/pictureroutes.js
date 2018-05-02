@@ -135,18 +135,18 @@ var connection = require('./connectDB');
     console.log(id);
     connection.query('DELETE FROM Picture WHERE Picture_ID=?', [id], function (error, results) {
       //console.log(values);
-      if (error) {
-        res.send({
-          "code": 400,
-          "failed": "error ocurred"
-        })
-      } else {
-        console.log("Number of records Deleted: " + results.affectedRows);
-        res.send({
-          "code": 200,
-          "failed": "yay?"
-        })
-      }
+        if (error) {
+            res.send({
+                "code": 400,
+                "failed": "error ocurred"
+            })
+        } else {
+            console.log("Number of records Delete: " + results.affectedRows);
+            res.send({
+                "code": 200,
+                "failed": "yay?"
+            })
+        }
     });
   }
   
