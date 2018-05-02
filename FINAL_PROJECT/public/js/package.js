@@ -122,7 +122,7 @@ $(document).ready(function () {
                 showDat.append(tr);
                 count++;
             })
-            PackNum.append("Sô gói hàng tìm được: " + count);
+            PackNum.append("Số gói hàng tìm được: " + count);
         }
         else {
             alert("Gói hàng này không tồn tại")

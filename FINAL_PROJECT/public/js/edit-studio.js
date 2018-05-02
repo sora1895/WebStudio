@@ -18,7 +18,7 @@ $(document).ready(function () {
     var renderOptions = function (options) {
         console.log("ok");
         var selectTag = $("#province");
-        var tr = $(`<option>Xin hãy chọn một quận .... </option>`)
+        var tr = $(`<option>Xin hãy chọn một Tỉnh/Huyện .... </option>`)
         selectTag.append(tr);  
         for (var i = 0; i < options.length; i++) {
             var name = options[i].Province_Name;
@@ -29,6 +29,10 @@ $(document).ready(function () {
 
             selectTag.append(optionTag);
         }
+    }
+    function changeoption(dis) {
+
+        editForm.find('#province').val(dis);
     }
 
     $("#province").change(function(){
@@ -68,7 +72,8 @@ $(document).ready(function () {
         console.log(res);
         res.data.forEach(function(d){
             var selectTag = $("#district");
-            var option = $(`<option value=${d.District_ID}>${d.District_Name}</option>`)
+            var option = $(`<option value=${d.District_ID}>${d.District_Name}</option>`);
+            changeoption(d.Province_ID);
             selectTag.append(option);
 
             $('#stuname').val(d.Studio_Name);
@@ -109,14 +114,14 @@ $(document).ready(function () {
         })
     })
 
-    var inputs2 = document.forms['editForm'].getElementsByTagName('input');
+/*    var inputs2 = document.forms['editForm'].getElementsByTagName('input');
     var run_onchange2 = false;
     function valid2(){
         var errors = false;
 
         var reg_mail = /^[A-Za-z0-9]+([_\.\-]?[A-Za-z0-9])*@[A-Za-z0-9]+([\.\-]?[A-Za-z0-9]+)*(\.[A-Za-z]+)+$/;
         var patternss = /^[a-zA-Z0-9 ăâơưêôÂƠĂUÔÊẢảẲẳẨẩẺẻỂểỈỉỎỏỔổỞởỦủỬửỶỷÀàẰằẦầÈèỀềÌ ìǸǹÒòỒồỜờÙùỪừẀẁỲỳÁáẮắẤấÉéẾếÍíÓóỐốỚớÚúỨứÝýẠạẶặẬậẸẹỆệỊịỌọỘộỢợỤụỰựỴỵÃãẴẵẪẫẼẽỄễĨĩÕõỖỗỠỡỮữŨũỸỹ]+$/;
-        var coordinatesss = /[0-9.],[0-9.]+$/
+        var coordinatesss = /[0-9.], [0-9.]+$/
         for(var i=0; i<inputs2.length; i++){
 
             var value = inputs2[i].value;
@@ -143,7 +148,7 @@ $(document).ready(function () {
 
                 // Kiểm tra các trường hợp khác
 
-                if(id == 'newPEmails'){
+                if(id == 'email'){
 
                     if(reg_mail.test(value) == false){ span.innerHTML ='Email không hợp lệ (ví dụ: abc@gmail.com)';}
 
@@ -153,19 +158,19 @@ $(document).ready(function () {
                 if(id == 'confirm_email' && value != email){span.innerHTML ='Email nhập lại chưa đúng';}
 
                 //check coordinate
-                if(id == 'newPCoordinates'){
+                if(id == 'coor'){
                     //console.log(value);
-                    if(coordinatesss.test(value) == false){ span.innerHTML ='Cooridnate không hợp lệ (theo form: XX,XX)';}
+                    if(coordinatesss.test(value) == false){ span.innerHTML ='Cooridnate không hợp lệ (theo form: XX, XX)';}
 
                 }
-                if(id == 'newPNames'){
+                if(id == 'stuname'){
                     console.log(value);
                     if(patternss.test(value) == false){ span.innerHTML ='StudioName không hợp lệ';}
                     var emailss =value;
                 }
                 // Kiểm tra số điện thoại
 
-                if(id == 'newPNumbers' && isNaN(value) == true ){span.innerHTML ='Số điện thoại phải là kiểu số';}
+                if(id == 'phone' && isNaN(value) == true ){span.innerHTML ='Số điện thoại phải là kiểu số';}
 
             }
             // Nếu có lỗi thì chèn span vào hồ sơ, chạy onchange, submit return false, highlight border
@@ -271,12 +276,162 @@ $(document).ready(function () {
         }
 
     }// end valid()
+  */
+    //check
+    function validedit() {
+        var reg_mail = /^[A-Za-z0-9]+([_\.\-]?[A-Za-z0-9])*@[A-Za-z0-9]+([\.\-]?[A-Za-z0-9]+)*(\.[A-Za-z]+)+$/;
+        var patternss = /^[a-zA-Z0-9ăâơưêôÂƠĂUÔÊẢảẲẳẨẩẺẻỂểỈỉỎỏỔổỞởỦủỬửỶỷÀàẰằẦầÈèỀềÌ ìǸǹÒòỒồỜờÙùỪừẀẁỲỳÁáẮắẤấÉéẾếÍíÓóỐốỚớÚúỨứÝýẠạẶặẬậẸẹỆệỊịỌọỘộỢợỤụỰựỴỵÃãẴẵẪẫẼẽỄễĨĩÕõỖỗỠỡỮữŨũỸỹ ]+$/;
+        var coordinatesss = /[0-9.], [0-9.]+$/;
+        var check1,check2,check3,check4,check5,check6,check7,check8,check9,check10;
+        var total = 10;
+        var resultname = $("#resultname");
+        var name = $("#stuname").val();
+        resultname.text("");
+        var resultaddress = $("#resultadress");
+        var address = $("#address").val();
+        resultaddress.text("");
+        var resultemail = $("#resultemail");
+        var email = $("#email").val();
+        resultemail.text("");
+        var resultphone = $("#resultphone");
+        var phone = $("#phone").val();
+        resultphone.text("");
+        var resultcoor = $("#resultcoor");
+        var coor = $("#coor").val();
+        resultcoor.text("");
+        if(name == ''){
+            resultname.text("Chưa nhập Tên Studio");
+            resultname.css("color", "red");
+        }else {check10 =1;}
+        if(address == ''){
+            resultaddress.text("Chưa nhập địa chỉ Studio");
+            resultaddress.css("color", "red");
+        }else {check6 = 1;}
+        if(email == ''){
+            resultemail.text("Chưa nhập Email");
+            resultemail.css("color", "red");
+        }else {check7 =1;}
+        if(phone == ''){
+            resultphone.text("Chưa nhập Số Điện Thoại");
+            resultphone.css("color", "red");
+        }else {check8 =1;}
+        if(coor == ''){
+            resultcoor.text("Chưa nhập tọa dộ Studio");
+            resultcoor.css("color", "red");
+        }else {check9 =1;}
+        if(reg_mail.test(email) == false && email != ''){
+            resultemail.text("Email không hợp lệ (ví dụ: abc@gmail.com)");
+            resultemail.css("color", "red");
+        } else { check1=1; }
+        if(coordinatesss.test(coor) == false && coor != ''){
+            resultcoor.text("Cooridnate không hợp lệ (theo form: XX, XX với XX là số nguyên)");
+            resultcoor.css("color", "red");
+        } else { check2=1;}
+        if(patternss.test(name) == false && name != ''){
+            resultname.text("StudioName không hợp lệ");
+            resultname.css("color", "red");
+        } else {check3=1;}
+        if(isNaN(phone) == true && phone != ''){
+            resultphone.text("Số điện thoại phải là kiểu số");
+            resultphone.css("color", "red");
+        } else {check4=1;}
+        if(isNaN(phone) == false &&(phone.length < 8 || phone.length > 12) && phone != ''){
+            resultphone.text("Số điện thoại phải từ 8 đến 12 số");
+            resultphone.css("color", "red");
+        }else {check5=1;}
+        if(province == 'Please Select'){
+            alert("Chưa chọn Tỉnh/Thành phố");
+        } else if(total==(check1+check2+check3+check4+check5+check6+check7+check8+check9+check10)){
+            var profile =[]
+            // e.preventDefault();
+            //var newNames = editForm.find("input[name='oldName']").val();
+
+            var idDistrict = editForm.find("select[id='district'] option:selected").val();
+            if(idDistrict!=null){
+                var oldIDs = localStorage.getItem('UserStudioId');
+                var newName = editForm.find("input[id='stuname']").val();
+                var newAdre = editForm.find("input[id='address']").val();
+                var newEmails = editForm.find("input[id='email']").val();
+                var newNum = editForm.find("input[id='phone']").val();
+                var newCoor = editForm.find("input[id='coor']").val();
+                var icon = $('#Icon').val();
+                var main = $('#main').val();
+                var pro1 = $('#project1').val();
+                var pro2 = $('#project2').val();
+                var pro3 = $('#project3').val();
+                var pro4 = $('#project4').val();
+                var pro5 = $('#project5').val();
+                var pro6 = $('#project6').val();
+                var pro7 = $('#project7').val();
+                var about = $('#about').val();
+                var aboutpic = $('#aboutpic').val();
+                var quote = $('#quote').val();
+                var quotepic = $('#quotepic').val();
+                var list ={
+                    disid:idDistrict,
+                    name:newName,
+                    address:newAdre,
+                    email:newEmails,
+                    phone:newNum,
+                    coor:newCoor,
+                    icon:icon,
+                    main:main,
+                    pro1:pro1,
+                    pro2:pro2,
+                    pro3:pro3,
+                    pro4:pro4,
+                    pro5:pro5,
+                    pro6:pro6,
+                    pro7:pro7,
+                    quote:quote,
+                    quotepic:quotepic,
+                    about:about,
+                    aboutpic:aboutpic,
+                    id:oldIDs,
+                }
+
+
+                profile.push(list);
+                console.log(profile);
+                //e.preventDefault();
+                $.ajax({
+                    url: '/EditStudioProfile',
+                    method: 'post',
+                    contentType: 'application/json',
+                    data: JSON.stringify(profile)
+                }).always(function (res) {
+                    var code = res.code;
+                    var success = res.success || 'Chỉnh Sửa bị lỗi!';
+                    //window.location.href="http://localhost:5000/studio.html"
+                    if (code == 200) {
+                        alert("Chỉnh Sửa thành công");
+                        window.location.href="http://localhost:5000/edit-studio.html";
+                    } else {
+                        alert(success);
+                    }
+                })
+            }else{
+
+                var idDistrict = editForm.find("select[id='district'] option:selected").val();
+                console.log(idDistrict)
+                alert('Bạn chưa chọn Huyện của bạn !!!')
+            }
+
+        }
+        //console.log(param);
+
+        return false;
+    }
+
+
+
+
 
     var register2 = document.getElementById('Edit');
     console.log(register2);
     register2.onclick = function(){
 
-        return valid2();
+        return validedit();
 
     }
 
