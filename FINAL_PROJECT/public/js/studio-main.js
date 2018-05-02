@@ -288,7 +288,7 @@ $(document).ready(function () {
             })
             //var ProCount = count;
             //ProNum.append("Districts found: " + ProCount);
-            var btn = $('<div style="text-align:right"><a href="package-list.html"><button class="btn btn-primary">Hiện thêm gói hàng .... </button></a></div>');
+            var btn = $('<div style="text-align:right"><a href="package-list.html"><button class="btn btn-primary">Hiện thêm gói dịch vụ .... </button></a></div>');
 
             container.append(a);
 

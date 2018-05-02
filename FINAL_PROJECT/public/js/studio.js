@@ -337,7 +337,7 @@ $(document).ready(function(){
     function validadd() {
         var reg_mail = /^[A-Za-z0-9]+([_\.\-]?[A-Za-z0-9])*@[A-Za-z0-9]+([\.\-]?[A-Za-z0-9]+)*(\.[A-Za-z]+)+$/;
         var patternss = /^[a-zA-Z0-9ăâơưêôÂƠĂUÔÊẢảẲẳẨẩẺẻỂểỈỉỎỏỔổỞởỦủỬửỶỷÀàẰằẦầÈèỀềÌ ìǸǹÒòỒồỜờÙùỪừẀẁỲỳÁáẮắẤấÉéẾếÍíÓóỐốỚớÚúỨứÝýẠạẶặẬậẸẹỆệỊịỌọỘộỢợỤụỰựỴỵÃãẴẵẪẫẼẽỄễĨĩÕõỖỗỠỡỮữŨũỸỹ ]+$/;
-        var coordinatesss = /[0-9.],[0-9.]+$/;
+        var coordinatesss = /[0-9.], [0-9.]+$/;
         var check1,check2,check3,check4,check5,check6,check7,check8,check9,check10;
         var total = 10;
         var province = $('#province :selected').val();
@@ -456,7 +456,7 @@ $(document).ready(function(){
     function validedit() {
         var reg_mail = /^[A-Za-z0-9]+([_\.\-]?[A-Za-z0-9])*@[A-Za-z0-9]+([\.\-]?[A-Za-z0-9]+)*(\.[A-Za-z]+)+$/;
         var patternss = /^[a-zA-Z0-9ăâơưêôÂƠĂUÔÊẢảẲẳẨẩẺẻỂểỈỉỎỏỔổỞởỦủỬửỶỷÀàẰằẦầÈèỀềÌ ìǸǹÒòỒồỜờÙùỪừẀẁỲỳÁáẮắẤấÉéẾếÍíÓóỐốỚớÚúỨứÝýẠạẶặẬậẸẹỆệỊịỌọỘộỢợỤụỰựỴỵÃãẴẵẪẫẼẽỄễĨĩÕõỖỗỠỡỮữŨũỸỹ ]+$/;
-        var coordinatesss = /[0-9.],[0-9.]+$/;
+        var coordinatesss = /[0-9.], [0-9.]+$/;
         var check1,check2,check3,check4,check5,check6,check7,check8,check9,check10;
         var total = 10;
         var province = $('#provinces :selected').val();

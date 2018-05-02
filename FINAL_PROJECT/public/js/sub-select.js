@@ -79,9 +79,9 @@ $(document).ready(function () {
             })
         }).always(function (res) {
             var code = res.code;
-            var success = res.success || 'Edit when wrong!';
+            var success = res.success || 'Sửa không thành công!';
             if (code == 200) {
-                alert("Successful");
+                alert("Sửa thành công");
                 window.location.href = "http://localhost:5000/disdetail.html?districtId=" + id1 + "?districtName=" + district + "";
             } else {
                 alert(success);

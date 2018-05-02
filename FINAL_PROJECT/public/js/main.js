@@ -55,7 +55,8 @@
 				<i></i>
 			</a>
 			<h1 id="fh5co-logo">
-				<a href="index.html">StudioWeb</a>
+				<img src="ICON.png" style="width:100px">
+				<a href="index.html">PSM</a>
 			</h1>
 			<!-- START #fh5co-menu-wrap -->
 			<nav id="fh5co-menu-wrap" role="navigation">

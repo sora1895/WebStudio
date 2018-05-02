@@ -5,7 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- <script type="text/javascript" src="/libs/jquery-1.12.4.js"></script>
+    <script type="text/javascript" src="/libs/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="/libs/dataTables.bootstrap.min.js"></script> -->
     <script type="text/javascript" src="/libs/jquery-3.2.1.min.js"></script>
+    <link rel="shortcut icon" href="favicon.ico">
     <title>Login</title>
     <script src="/js/usermain.js"></script>
     <link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" />
@@ -22,6 +26,15 @@
     <link rel="stylesheet" href="css/flexslider.css">
 
     <link rel="stylesheet" href="css/style.css">
+
+    
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css"> -->
+    <script>
+    $(document).ready(function() {
+    $('#showDat').DataTable();
+    });
+</script>
 </head>
 
 <body>
@@ -149,7 +162,7 @@
                 </div>
             </div>
             <div class="main">
-                <table id="showDat">
+                <table id="showDat" class="table table-striped table-bordered">
                     <tr>
                         <th>ID Hợp đồng</th>
                         <th>Tên khách hàng</th>
