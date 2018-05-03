@@ -10,8 +10,8 @@ $(document).ready(function () {
 
     var CusDetail = $('#CusDetail');
     //var MatPrice = $('#MatPrice');
-    var MainName =$('#MainName');
-    var delform =$('#delform');
+    var MainName = $('#MainName');
+    var delform = $('#delform');
     CusDetail.empty();
     var form = $('#customerdetail');
 
@@ -20,7 +20,7 @@ $(document).ready(function () {
     var nameloc = x.search("name=");
 
     var id = x.substr(idloc + 3);
-    var id1 = x.substr(idloc+3,nameloc-idloc-4);
+    var id1 = x.substr(idloc + 3, nameloc - idloc - 4);
     var name = decodeURIComponent(x.substr(nameloc + 5));
     console.log(id1);
     console.log(id);
@@ -29,9 +29,13 @@ $(document).ready(function () {
 
 
     $.ajax({
-        url: `/GetIcustomerByID?id=${id1}`,
-        method: 'get',
+        url: `/GetIcustomerByID`,
+        method: 'post',
         contentType: 'application/json',
+        data: JSON.stringify({
+            cusid : id1,
+            stuid : localStorage.getItem('UserStudioId')
+        })
     }).always(function (res) {
         show(res);
     })
@@ -40,6 +44,14 @@ $(document).ready(function () {
         console.log(res);
         if (res && res.data && res.data instanceof Array) {
             var count = 0;
+            cusnames.append(res.data[0].Customer_Name);
+            cusgenders.append(res.data[0].Customer_Gender);
+            cusaddresss.append(res.data[0].Customer_Address);
+            cusemails.append(res.data[0].Customer_Email);
+            cusnumbers.append(res.data[0].Customer_Number);
+            cusnotes.append(res.data[0].Customer_Note);
+            $('#other').append(res.data[0].Customer_Other);
+
             for (var i = 0; i < res.data.length; i++) {
                 var d = res.data[i];
                 var CustomerID = d.Customer_ID;
@@ -51,18 +63,32 @@ $(document).ready(function () {
                 var other = d.Customer_Other
                 var CustomerNote = d.Customer_Note;
 
-
+                var state =d.Contract_State;
                 //Cusids.append(CustomerID);
-                cusnames.append(CustomerName);
-                cusgenders.append(CustomerGender);
-                cusaddresss.append(CustomerAddress);
-                cusemails.append(CustomerEmail);
-                cusnumbers.append(CustomerNumber);
-                cusnotes.append(CustomerNote);
-                $('#other').append(other);
+                if(state=='Chưa thanh toán'){
+                    var sql = `<td style="color:red">${state}</td>`
+                }else if(state=='Đã thanh toán'){
+                    var sql = `<td style="color:green">${state}</td>`
+                }else if(state=='Đợi ảnh'){
+                    var sql = `<td style="color:#5bc0de">${state}</td>`
+                }else if(state=='Hoàn thành'){
+                    var sql = `<td style="color:green">${state}</td>`
+                }
+
+                var tr = $(`<tr><td>${d.Contract_ID}</td>
+                <td>${d.Contract_Description}</td>
+                <td>${d.Contract_cDate}</td>
+                <td>${d.Contract_sDate}</td>
+                <td>${d.Contract_eDate}</td>
+                `+sql+`
+                </tr>`)
+
+                $('#showDat').append(tr);
 
                 count++;
             }
+
+
 
             //var ProCount = count;
             //ProNum.append("Districts found: " + ProCount);
@@ -82,20 +108,20 @@ $(document).ready(function () {
         renderOptions(options);
     })*/
 
-/*
-    var renderOptions = function (options) {
-        console.log("ok");
-        var selectTag = $("#province");
-        for (var i = 0; i < options.length; i++) {
-            var name = options[i].Province_Name;
-            var id = options[i].Province_ID;
-            //create optionTag from database
-            var optionTag = null;
-            optionTag = $(`<option value='${id}'>${name}</option>`);
-
-            selectTag.append(optionTag);
-        }
-    }*/
+    /*
+        var renderOptions = function (options) {
+            console.log("ok");
+            var selectTag = $("#province");
+            for (var i = 0; i < options.length; i++) {
+                var name = options[i].Province_Name;
+                var id = options[i].Province_ID;
+                //create optionTag from database
+                var optionTag = null;
+                optionTag = $(`<option value='${id}'>${name}</option>`);
+    
+                selectTag.append(optionTag);
+            }
+        }*/
 
     //change district when privince change
     /*
@@ -136,7 +162,7 @@ $(document).ready(function () {
 
         var email = form.find("input[name='email']").val();
         var number = form.find("input[name='number']").val();
-        var note= form.find("input[name='note']").val();
+        var note = form.find("input[name='note']").val();
         /*var price = form.find("input[name='price']").val();*/
         console.log(id1, cusname, address, gender, email, number, note);
 
@@ -145,7 +171,7 @@ $(document).ready(function () {
             method: 'post',
             contentType: 'application/json',
             data: JSON.stringify({
-                ids:id1,
+                ids: id1,
                 cusname: cusname,
                 address: address,
                 gender: gender,
@@ -158,14 +184,14 @@ $(document).ready(function () {
             var success = res.success || 'Edit when wrong!';
             if (code == 200) {
                 alert("Successful");
-                window.location.href="http://localhost:5000/icustomerdetail.html?id="+id1+"?name="+cusname+"";
+                window.location.href = "http://localhost:5000/icustomerdetail.html?id=" + id1 + "?name=" + cusname + "";
             } else {
                 alert(success);
             }
         })
     })
 
-    delform.submit(function(e){
+    delform.submit(function (e) {
 
         $.ajax({
             url: '/DelIcustomer',
@@ -179,7 +205,7 @@ $(document).ready(function () {
             var success = res.success || 'Delete when wrong!';
             if (code == 200) {
                 alert("Successful");
-                window.location.href="http://localhost:5000/customer.html";
+                window.location.href = "http://localhost:5000/customer.html";
             } else {
                 alert(success);
             }

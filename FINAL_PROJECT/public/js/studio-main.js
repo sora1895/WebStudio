@@ -258,7 +258,7 @@ $(document).ready(function () {
                         <p>${PackageName}</p>
                         <hr>
                         <ul class="pricing-info">
-                            <li>${PackageDetail.substr(0, 200) + " ..."}</li>
+                            <li style="white-space: pre-line;">${PackageDetail.substr(0, 200) + " ..."}</li>
                         </ul>
                         <p>
                             <a id="cart"><img src="/picture/38919-200.png" width='50px'></a><br>

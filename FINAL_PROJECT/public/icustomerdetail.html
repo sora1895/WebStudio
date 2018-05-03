@@ -120,7 +120,32 @@
                                     
                                 </header>
                     </div>
-<div class="menu">
+<div class="menu"><table style="width: 100%;">
+    
+    <tr>
+        <td style="color:#00ADB5">Tên khách hàng:
+                <p id="names"></p></td>
+    
+        <td style="color:#00ADB5">Giới tính
+                <p id="genders"></p></td>
+    </tr>
+    <tr>
+            <td colspan="2" style="color:#00ADB5">Địa chỉ:
+            <p id="addresss"></td></p>
+    </tr>
+    <tr>
+        <td style="color:#00ADB5">Email:
+                <p id="emails"></p></td>
+                <td style="color:#00ADB5"   >Số điện thoại
+                <p id="phone"></p></td>
+    </tr>
+    <tr>    
+        <td  colspan="2" style="color:#00ADB5">Cách liên hệ khác:
+        <p id="other"></p></td></tr>
+    <tr>    
+            <td  colspan="2" style="color:#00ADB5">Ghi chú:
+            <p id="notes"></p></td></tr>
+</table>
     <form id="customerdetail" hidden>
         <table>
             <tr>
@@ -161,33 +186,15 @@
     </form>
 
 </div>
-<div class="main"><table style="width: 100%;">
-    
-    <tr>
-        <td style="color:#00ADB5">Tên khách hàng:
-                <p id="names" style="font-size:30px"></p></td>
-    
-        <td style="color:#00ADB5">Giới tính
-                <p id="genders" style="font-size:30px"></p></td>
-    </tr>
-    <tr>
-            <td colspan="2" style="color:#00ADB5">Địa chỉ:
-            <p id="addresss" style="font-size:30px"></td></p>
-    </tr>
-    <tr>
-        <td style="color:#00ADB5">Email:
-                <p id="emails" style="font-size:30px"></p></td>
-                <td style="color:#00ADB5"   >Số điện thoại
-                <p id="phone" style="font-size:30px"></p></td>
-    </tr>
-    <tr>    
-        <td  colspan="2" style="color:#00ADB5">Cách liên hệ khác:
-        <p id="other" style="font-size:30px"></p></td></tr>
-    <tr>    
-            <td  colspan="2" style="color:#00ADB5">Ghi chú:
-            <p id="notes" style="font-size:30px"></p></td></tr>
-</table>
-    
+<div class="main">
+    <table id="showDat">
+        <th>Contract ID</th>
+        <th>Contract Description</th>
+        <th>Create Date</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Contract State</th>
+    </table>
 </div>
 <footer id="footer">
         <div class="container">

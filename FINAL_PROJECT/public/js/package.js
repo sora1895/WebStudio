@@ -57,6 +57,7 @@ $(document).ready(function () {
                 editForm.find('#newDetail').val(data.Package_Detail);
                 editForm.find('#newPrice').val(data.Package_Price);
                 editForm.find('#checkAvail').val(data.Package_available);
+                editForm.find('#newUrl').val(data.Package_pic)
             }
 
             //del
@@ -104,7 +105,7 @@ $(document).ready(function () {
                 var tr = $(`<tr>
                     <td>${PackageID}</td>
                     <td><a href="view-pack.html?id=${StudioID}&name=${PackageName}">${PackageName}</a></td>
-                    <td>${PackageDetail.substr(0,200) + " ....."}</td>
+                    <td style="white-space: pre-line;">${PackageDetail.substr(0,200) + " ....."}</td>
                     <td>${PackagePrice.toLocaleString( 'en-US')} vnd</td>
                     <td>${yesno}</td>
                     <td><img width=400px src=${PackPic}></td>

@@ -96,9 +96,10 @@ exports.AddIcustomer = function (req, res) {
 
 //getStudio ByID
 exports.GetIcustomerbyID = function (req, res) {
-    var name = req.query.id;
-    //console.log(name);
-    connection.query("SELECT * FROM studioweb.customer where Customer_ID = '"+name+"'", function (error, results, fields) {
+    var cusid = req.body.cusid;
+    var stuid = req.body.stuid;
+    console.log(cusid,stuid);
+    connection.query("SELECT * FROM customer cus,contract con where cus.Customer_ID=con.Customer_ID and  cus.Customer_ID = '"+cusid+"' and con.Studio_ID="+stuid, function (error, results, fields) {
         if (error) {
             res.send({
                 "code": 400,

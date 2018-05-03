@@ -84,7 +84,7 @@ $(document).ready(function () {
 
             //ICON & MAIN & OTHER
             $('#Icon').val(d.Studio_Icon);
-            $('#icon').attr("src",d.Studio_Icon);
+            $('#ICON').attr("src",d.Studio_Icon);
             
             $('#main').val(d.Studio_main_pic);
             $('#mainpic').attr("src",d.Studio_main_pic);
@@ -465,7 +465,7 @@ $(document).ready(function () {
     })
     $('#Icon').blur(function(){
         var a = $(this).val();
-        $('#icon').attr("src",a)
+        $('#ICON').attr("src",a)
     })
     $('#main').blur(function(){
         var a = $(this).val();

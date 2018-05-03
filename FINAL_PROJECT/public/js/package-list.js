@@ -110,7 +110,7 @@ $(document).ready(function () {
                 </div>
                 <div class="desc">
                     <h3>${PackageName}</h3>
-                    <p>${PackageDetail}</p>
+                    <p style="white-space: pre-line;">${PackageDetail}</p>
                     <p><a id="cart"><img src="/picture/38919-200.png" width="50px" title="" style=""></a></p>
                     <p><a class="btn btn-primary btn-luxe-primary" id="buy">${PackagePrice.toLocaleString('en-US')} vnd</a></p>
                 </div>
