@@ -83,34 +83,18 @@
 						<a href="album.html" class="fh5co-sub-ddown">Album</a>
 						<ul class="fh5co-sub-menu">
 							<li>
-								<a href="left-sidebar.html">Ảnh cưới</a>
+								<a>Cộng Studio</a>
 							</li>
 							<li>
-								<a href="right-sidebar.html">Ảnh quảng cáo</a>
+								<a>Nupakachi Studio</a>
 							</li>
 							<li>
-								<a href="#" class="fh5co-sub-ddown">Ảnh trẻ con</a>
+								<a class="fh5co-sub-ddown">Liu Studio</a>
 								<ul class="fh5co-sub-menu">
 									<li>
-										<a href="http://freehtml5.co/preview/?item=build-free-html5-bootstrap-template" target="_blank">HIệu ứng đặc biệt</a>
+										<a href="Liu-A1.html" target="_blank">Ảnh kỷ yếu USSH</a>
 									</li>
-									<li>
-										<a href="http://freehtml5.co/preview/?item=work-free-html5-template-bootstrap" target="_blank">Ảnh tự nhiên</a>
-									</li>
-									<!--<li><a href="http://freehtml5.co/preview/?item=light-free-html5-template-bootstrap" target="_blank">Light</a></li>
-											<li><a href="http://freehtml5.co/preview/?item=relic-free-html5-template-using-bootstrap" target="_blank">Relic</a></li>
-											<li><a href="http://freehtml5.co/preview/?item=display-free-html5-template-using-bootstrap" target="_blank">Display</a></li>
-											<li><a href="http://freehtml5.co/preview/?item=sprint-free-html5-template-bootstrap" target="_blank">Sprint</a></li>-->
 								</ul>
-							</li>
-							<li>
-								<a href="#">Ảnh gia đình</a>
-							</li>
-							<li>
-								<a href="#">Ảnh chân dung</a>
-							</li>
-							<li>
-								<a href="#">Ảnh chụp tự do</a>
 							</li>
 						</ul>
 					</li>
@@ -187,7 +171,7 @@
 			$('a[href="album.html"]').addClass("active")
 		}
 		
-		if(active('user.html')>0||active('disdetail.html')>0||active('dismanage.html')>0||active('studio.html')>0){
+		if(active('/user.html')>0||active('/disdetail.html')>0||active('/dismanage.html')>0||active('/studio.html')>0){
 			if(localStorage.getItem('Admin')==0){
 				window.location.href = "login.html";
 			}

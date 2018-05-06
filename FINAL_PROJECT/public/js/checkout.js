@@ -98,7 +98,7 @@ $(document).ready(function () {
             var success = res.success || 'Insert when wrong!';
             //window.location.href="http://localhost:5000/icustomer.html"
             if (code == 200) {
-                alert("Insert Successful");
+                // alert("Insert Successful");
                 AddCon(res.data,info);
             } else {
                 alert(success);
@@ -170,7 +170,7 @@ $(document).ready(function () {
             var success = res.success || 'Insert when wrong!';
 
             if (code == 200) {
-                alert("Insert Contract Successful");
+                // alert("Insert Contract Successful");
                 //window.location.href = "http://localhost:5000/contract.html";
                 //console.log(res);
                 AddConDe(text);

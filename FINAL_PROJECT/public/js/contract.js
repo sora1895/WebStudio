@@ -564,7 +564,7 @@ $(document).ready(function () {
             var success = res.success || 'Insert when wrong!';
 
             if (code == 200) {
-                alert("Insert Contract Successful");
+                alert("Tạo hợp đồng mới thành công");
                 //window.location.href = "http://localhost:5000/contract.html";
                 //console.log(res);
                 AddConDe(text);
@@ -620,7 +620,7 @@ $(document).ready(function () {
             var success = res.success || 'Insert when wrong!';
 
             if (code == 200) {
-                alert("Insert Successful");
+                // alert("Insert Successful");
                 window.location.reload();
             } else {
                 alert(success);
@@ -660,7 +660,7 @@ $(document).ready(function () {
             var code = res.code;
             var success = res.success || 'Edit when wrong!';
             if (code == 200) {
-                alert("Edit Contract Successful!");// window.location.href = "http://localhost:5000/contract.html";
+                alert("Sửa hợp đồng thành công!");// window.location.href = "http://localhost:5000/contract.html";
                 EditConDe();
             } else {
                 alert(success);
@@ -718,7 +718,7 @@ $(document).ready(function () {
             var success = res.success || 'Insert when wrong!';
 
             if (code == 200) {
-                alert("Edit ConDE Successful!");
+                // alert("Edit ConDE Successful!");
                 //window.location.reload();
             } else {
                 alert(success);
@@ -890,7 +890,7 @@ $(document).ready(function () {
                         var success = res.success || 'Thêm khách hàng lỗi!';
                         //window.location.href="http://localhost:5000/icustomer.html"
                         if (code == 200) {
-                            alert("Thêm khách hàng thành công");
+                            // alert("Thêm khách hàng thành công");
                             AddCon(res.data, addform);
                         } else {
                             alert(success);
@@ -928,7 +928,7 @@ $(document).ready(function () {
                     var success = res.success || 'Chỉnh Sửa khách hàng lỗi!';
                     //window.location.href="http://localhost:5000/icustomer.html"
                     if (code == 200) {
-                        alert("Chỉnh Sửa khách hàng thành công");
+                        // alert("Chỉnh Sửa khách hàng thành công");
                         EditCon(CusID);
                     } else {
                         alert(success);
