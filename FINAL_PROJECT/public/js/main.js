@@ -86,7 +86,18 @@
 								<a>Cộng Studio</a>
 							</li>
 							<li>
-								<a>Nupakachi Studio</a>
+								<a class="fh5co-sub-ddown">Nupakachi Studio</a>
+								<ul class="fh5co-sub-menu">
+									<li>
+										<a href="Nupakachi-A1.html" target="_blank">Ảnh chụp gia đình</a>
+									</li>
+									<li>
+										<a href="Nupakachi-A2.html" target="_blank">Ảnh cưới bình minh</a>
+									</li>
+									<li>
+										<a href="Nupakachi-A3.html" target="_blank">Ảnh cưới Giang & Tuấn</a>
+									</li>
+								</ul>
 							</li>
 							<li>
 								<a class="fh5co-sub-ddown">Liu Studio</a>
