@@ -200,7 +200,7 @@ exports.SendEmailPass = function (req, res) {
             console.log('Kết nối thành công!');
             var mail = {
                 from: 'trungnhse03608@fpt.edu.vn', // Địa chỉ email của người gửi
-                to: 'trungnhse03608@gmail.com', // Địa chỉ email của người gửi
+                to: emailstud, // Địa chỉ email của người gửi
                 subject: 'Quên mật khẩu Studio', // Tiêu đề mail
                 text: 'Bạn '+returnid+' thân mến \n' +
                 'Bạn vừa thực hiện yêu cầu lấy lại mật khẩu trên Studio.\n' +
