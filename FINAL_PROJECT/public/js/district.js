@@ -87,6 +87,7 @@ $(document).ready(function () {
             }
             var ProCount = count;
             ProNum.append("Districts found: " + ProCount);
+            $('#showDat').DataTable();
         }
         else {
             alert("????")

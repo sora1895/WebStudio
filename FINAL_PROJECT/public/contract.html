@@ -24,6 +24,9 @@
     <link rel="stylesheet" href="css/flexslider.css">
 
     <link rel="stylesheet" href="css/style.css">    
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css">
     <style>
     button {
     width: 100%;
@@ -299,10 +302,10 @@ input[type=submit] {
 
     <div class="main">
         
-        <table id="showDat" border="1" cellpadding="7" cellspacing="1">
+        <table id="showDat"  class="table table-striped table-bordered">
             <thead>
                 <tr>
-                    <th colspan="3"><p id="ConNum" style="color:white"></p></th>
+                    <td colspan="3"><p id="ConNum"></p></td>
                 </tr>
                 <tr>
                     <th>ID Hợp đồng</th>
@@ -567,6 +570,9 @@ input[type=submit] {
     <script src="js/jquery.countTo.js"></script>
     <!-- Main JS (Do not remove) -->
     <script src="js/main.js"></script>
+    
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js"></script>
 </body>
 
 </html>

@@ -125,7 +125,7 @@
 							<li id="stu-btn" hidden><a href="studio.html">Quản lý Studio</a></li>
 							<li id="dis-btn" hidden><a href="dismanage.html">Quản lý tỉnh thành</a></li>
 							<li id="edit-profile-btn" hidden><a href="edit-studio.html">Thông tin Studio</a></li>
-							<li id="pack-btn" hidden><a href="package.html">Quản lý Gói hàng</a></li>
+							<li id="pack-btn" hidden><a href="package.html">Quản lý Gói dịch vụ</a></li>
 							<li id="pic-btn" hidden><a href="picture.html">Quản lý Ảnh</a></li>
 							<li id="con-btn" hidden><a href="contract.html">Hợp đồng</a></li>
 							<li id="change-btn" hidden><a href="changepass.html">Đổi mật khẩu</a></li>
@@ -187,8 +187,8 @@
 			$('a[href="album.html"]').addClass("active")
 		}
 		
-		if(active('user.html')>0||active('disdetail.html')||active('dismanage.html')||active('studio.html')){
-			if(localStorage.getItem('Admin')==10){
+		if(active('user.html')>0||active('disdetail.html')>0||active('dismanage.html')>0||active('studio.html')>0){
+			if(localStorage.getItem('Admin')==0){
 				window.location.href = "login.html";
 			}
 		}

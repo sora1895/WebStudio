@@ -127,6 +127,7 @@ $(document).ready(function(){
             StudioNum.append("Số Studio tìm được: " + count);
             //var ProCount = count;
             //ProNum.append("Districts found: " + ProCount);
+            $('#showDat').DataTable()
         }
         else {
             alert("Không có Studio nào!!")

@@ -122,7 +122,7 @@ $(document).ready(function () {
                 showDat.find("input[name='newCusPhone']").val(CustomerPhone);
                 showDat.find("input[name='newCusEmail']").val(CustomerEmail);
                 showDat.find("input[name='newCusNote']").val(CustomerNote);
-                showDat.find("input[name='gender']").val(CustomerGender);
+                showDat.find("p[id='gender']").text(CustomerGender);
                 showDat.find("input[id='SelNStu']").val(StudioName);
                 showDat.find("textarea[name='newCDes']").val(ContractDescription);
                 showDat.find("input[name='newCdate']").val(CreateDate);
@@ -217,7 +217,7 @@ $(document).ready(function () {
                 </tr>
                 <tr>
                     <td colspan="4" style="text-align: right">
-                       <p id="PakPrice">Giá tiền: ${PackagePrice.toLocaleString('en-US')} vnd</p>
+                       <p id="PakPrice" style="color:black">Giá tiền: ${PackagePrice.toLocaleString('en-US')} vnd</p>
                     </td>
                 </tr>
                 <tr>

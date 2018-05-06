@@ -62,6 +62,7 @@ $(document).ready(function () {
                         `+ theadbonus + `
                         <th>ID hợp đồng</th>
                         <th>ID chi tiết hợp đồng</th>
+                        <th>#</th>
                     </tr>`);
         showDatHead.append(thead);
         if (res && res.data && res.data instanceof Array) {
@@ -101,6 +102,7 @@ $(document).ready(function () {
 
             })
             PicNum.append("Số hợp đồng tìm đươc ảnh: " + count);
+            $('#showDat').DataTable();
         } else {
             PicNum.append("Số hợp đồng tìm đươc ảnh: " + count);
             alert("Không tìm thấy");

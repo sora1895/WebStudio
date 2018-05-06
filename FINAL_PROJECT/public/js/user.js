@@ -100,6 +100,7 @@ $(document).ready(function () {
             UserNum.append("Số tài khoản được tìm thấy: " + count);
             //var ProCount = count;
             //ProNum.append("Districts found: " + ProCount);
+            $('#showDat').DataTable();
         }
         else {
             alert("Tài khoản này không tồn tại!")

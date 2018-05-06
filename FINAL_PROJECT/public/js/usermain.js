@@ -25,6 +25,7 @@ $(document).ready(function () {
     }
     
     var show = function(res){
+        var count = 0;
         if (res && res.data && res.data instanceof Array) {
 
             var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
@@ -50,15 +51,18 @@ $(document).ready(function () {
                         <td>${date}</td>
                         `+sql+`
                     </tr>`);
+                    count++;
                 // viewButton.click(function (e) {
                 //     localStorage.setItem('condeid',ConDetailID);
                 //     window.location.href = `viewpicture.html?condeid=${ConDetailID}`;
                 // });
                 showDat.append(tr);
-
             })
+            $('#count').append("Số lượng hợp đồng tìm được: "+count);
+            
+            $('#showDat').DataTable();
         } else {
-            alert("????")
+            $('#count').append("Số lượng hợp đồng tìm được: "+count);
         }
     }
 

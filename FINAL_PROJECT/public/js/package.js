@@ -101,9 +101,9 @@ $(document).ready(function () {
                     yesno = 'no';
                 }
 
-
+                count++;
                 var tr = $(`<tr>
-                    <td>${PackageID}</td>
+                    <td>${count}</td>
                     <td><a href="view-pack.html?id=${StudioID}&name=${PackageName}">${PackageName}</a></td>
                     <td style="white-space: pre-line;">${PackageDetail.substr(0,200) + " ....."}</td>
                     <td>${PackagePrice.toLocaleString( 'en-US')} vnd</td>
@@ -121,9 +121,10 @@ $(document).ready(function () {
                 tr.append(editButton);
                 // tr.append(delButton);
                 showDat.append(tr);
-                count++;
             })
             PackNum.append("Số gói hàng tìm được: " + count);
+            
+            $('#showDat').DataTable();
         }
         else {
             alert("Gói hàng này không tồn tại")

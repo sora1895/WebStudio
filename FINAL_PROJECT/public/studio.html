@@ -23,6 +23,8 @@
 
     <link rel="stylesheet" href="css/style.css">
 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css">
 </head>
 <body style="font-family:Verdana">
         <div id="fh5co-wrapper">
@@ -299,7 +301,7 @@
 
     <div class="main">
         <p id="StudioNum"></p>
-        <table id="showDat" border="1" cellpadding="7" cellspacing="1">
+        <table id="showDat"  class="table table-striped table-bordered">
             <thead>
             <tr>
                 <th>Studio ID</th>
@@ -310,6 +312,8 @@
                 <th>Tọa độ Studio</th>
                 <th>Tỉnh</th>
                 <th>Quận/Huyện</th>
+                <th>#</th>
+                <th>#</th>
             </tr>
             </thead>
             <tbody>
@@ -407,6 +411,8 @@
     <!-- Main JS (Do not remove) -->
     <script src="js/main.js"></script>
 
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js"></script>
 </body>
 
 </html>

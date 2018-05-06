@@ -324,7 +324,7 @@ $(document).ready(function () {
                 </tr>
                 <tr>
                     <td colspan="4" style="text-align: right">
-                       <p id="PakPrice">Giá trước VAT: ${PackagePrice.toLocaleString('en-US')} vnd</p>
+                       <p id="PakPrice">Giá tiền: ${PackagePrice.toLocaleString('en-US')} vnd</p>
                     </td>
                 </tr>
                 <tr>
@@ -504,7 +504,7 @@ $(document).ready(function () {
                 count++;
             })
             ConNum.append("Số Hợp đồng tìm được: " + count);
-
+            $('#showDat').DataTable();
         }
         else {
             alert("Không tìm thấy hợp đồng");
